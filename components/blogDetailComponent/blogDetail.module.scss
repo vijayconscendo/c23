@@ -1,0 +1,88 @@
+@import "@/styles/mixins";
+
+// Breadcrumbs
+.breadcrumbs{
+    margin-bottom: 32px;
+    @include breakpoint(tablet-portrait){margin-bottom: 22px;}
+    ul{
+        list-style: none;
+        display: flex; align-items: center; column-gap: 8px; row-gap: 12px; flex-wrap: wrap;
+        li{ 
+            color: var(--color-primary);
+            a{
+                display: inline-flex; align-items: center; column-gap: 12px;
+                font-size: 24px; line-height: normal; font-weight: 500;
+                @include custom-breakpoint(1680px){font-size: 20px;}
+                @include custom-breakpoint(1536px){font-size: 18px;}
+                @include breakpoint(tablet-portrait){font-size: 16px;}
+                @include breakpoint(mobile-big-land){font-size: 14px;}
+            }
+            &:last-child{
+                color: #000000CC;
+                a{pointer-events: none; font-weight: 400;}
+            }
+        }
+    }
+  }
+
+
+  .blogTitle{
+    font-size: 42px;
+    line-height: 56px;
+    color: #000000;
+    word-break: break-word;
+    @include custom-breakpoint(1536px){font-size: 36px;line-height: 46px;}
+    @include breakpoint(tablet-portrait){font-size: 32px;line-height: 42px;}
+    @include breakpoint(mobile){font-size: 28px;line-height: 38px;}
+  }
+
+  .info {
+    span{
+        font-size: 16px;
+        line-height: normal;
+        font-weight: 500;
+        color: #000000;
+    }
+  }
+
+  .content{
+    margin-top: 16px;
+    h2{
+        font-size: 28px;
+        font-weight: 600;
+        color: #000000CC;
+        line-height: 38px;
+        margin-top: 32px;
+        margin-bottom: 12px;
+        word-break: break-word;
+        @include custom-breakpoint(1536px){font-size: 24px;line-height: 34px;}
+        @include breakpoint(tablet-portrait){font-size: 22px;line-height: 32px;}
+        @include breakpoint(mobile){font-size: 20px;line-height: 30px;}
+    }
+    h3{
+        font-size: 24px;
+        font-weight: 500;
+        color: #000000CC;
+        line-height: 34px;
+        margin-top: 24px;
+        margin-bottom: 12px;
+        @include custom-breakpoint(1536px){font-size: 20px;line-height: 30px;}
+        @include breakpoint(tablet-portrait){font-size: 18px;line-height: 28px;}
+    }
+    p{
+        font-size: 18px;
+        font-weight: 400;
+        color: #000000;
+        line-height: 28px;
+        margin-bottom: 12px;
+        @include breakpoint(tablet-portrait){font-size: 16px;line-height: 26px;}
+        span{
+            color: #000000;
+            font-weight: 600;
+        }
+    }
+    ul{
+        list-style-type: circle;
+        margin-left: 24px;
+    }
+  }

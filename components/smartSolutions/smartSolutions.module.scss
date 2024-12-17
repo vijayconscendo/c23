@@ -1,0 +1,59 @@
+@import "@/styles/mixins";
+
+.smartSolutions{
+    padding: 70px; position: relative;
+    background-image: url("../../public/Images/patterns/dots4.png");
+    background-position: -6% -20%;
+    background-repeat: no-repeat;
+    @include custom-breakpoint(1680px){padding: 70px 50px;}
+    @include breakpoint(tablet-portrait){padding: 70px 20px;}
+}
+.solutionGrid{
+    padding: 62px 0;
+}
+.solutionCard{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    @include custom-breakpoint(767.98px){margin-bottom: 2rem;}
+    &:nth-child(even){
+        @include custom-breakpoint(768px){
+            flex-direction: column-reverse;
+        }
+    }
+}
+.solutionCardImage{
+    position: relative; flex: 1; overflow: hidden;
+    img{object-fit: cover; height: 100%; width: 100%;transition: 0.5s linear;}
+    h3{
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 2px 20px;
+        font-size: 21px; line-height: 26px; font-weight: 600;text-align: center;
+        @include custom-breakpoint(1536px){font-size: 20px;line-height: 25px;}
+    }
+    &:hover{
+        img{transform: scale(1.2);}
+    }
+}
+.solutionCardContent{
+    flex: 1;
+    border: 1px solid #DB2D384D;
+    background-image: url("../../public/Images/patterns/solutioncard-bg.png");
+    background-position: center; background-repeat: no-repeat; background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include breakpoint(tablet){flex: none;}
+    p{
+        padding: 40px 40px 4px;
+        font-size: 24px;
+        line-height: 29px;
+        font-weight: 600;
+        word-break: break-word;
+        @include breakpoint(desktop-big){padding: 30px 30px 4px; font-size: 20px; line-height: 28px;}
+        @include custom-breakpoint(1600px){padding: 20px 16px 2px; font-size: 18px; line-height: 26px;}
+        @include breakpoint(tablet-portrait){padding: 16px 16px 2px; font-size: 16px; line-height: 26px;}
+    }
+    button{display:block;margin-left: auto;cursor: pointer;}
+}

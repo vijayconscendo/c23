@@ -1,0 +1,52 @@
+@import "@/styles/mixins";
+
+.bannerSection{
+    min-height: 698px;
+    @include custom-breakpoint(1680px){min-height: 500px;}
+    .bannerGrid{
+        min-height: 698px;
+        @include custom-breakpoint(1680px){min-height: 500px;}
+    }
+    .bannerLeftGrid{
+        background-image: url("../../public/Images/background/pattern.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        .dotsPattern{
+            max-width: 100%; height: auto;
+            @include breakpoint(desktop-big){width: 80px;}
+        }
+        .content{
+            padding: 120px 62px 94px 72px;
+            @include custom-breakpoint(1680px){padding: 120px 50px 65px 50px;}
+            @include breakpoint(tablet-portrait){padding: 100px 20px 65px 20px;max-width: 840px;}
+            @include breakpoint(mobile-big-land){padding: 80px 20px 65px 20px;}
+            h1{
+                font-size: 48px;
+                line-height: 59px;
+                font-weight: 600;
+                @include custom-breakpoint(1680px){font-size: 36px; line-height: 47px;}
+                @include breakpoint(desktop-small){font-size: 32px; line-height: 43px;}
+                @include breakpoint(mobile-big-land){font-size: 28px; line-height: 39px;}
+            }
+            p{
+                font-size: 24px;
+                line-height: 33px;
+                font-weight: 400;
+                margin: 20px 0 38px;
+                @include custom-breakpoint(1680px){font-size: 18px;line-height: 27px;margin: 26px 0 28px;}
+            }
+            .bannerBtn{
+                display: flex; align-items: center; justify-content: center;
+                height: 64px; padding: 12px 16px; min-width: 236px; font-size: 24px;line-height: normal;
+                @include custom-breakpoint(1680px){
+                    min-width: 168px;font-size: 18px !important; height: 48px;
+                }
+            }
+        }
+    }
+    .bannerRightGrid{
+        background-image: url("../../public/Images/background/pattern.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}

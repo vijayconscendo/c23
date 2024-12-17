@@ -1,0 +1,35 @@
+// Define your breakpoints as variables for better manageability
+$breakpoints: (
+  'below-big': 1800px,
+  'desktop-big': 1700px,
+  'mac': 1440px,
+  'laptop': 1366px,
+  'desktop-small': 1200px,
+  'tablet-portrait': 1024px,
+  'tablet': 991px,
+  'mobile': 767px,
+  'mobile-big-land': 640px,
+  'mobile-small': 576px,
+  'mobile-common-land': 480px,
+  'mobile-common': 360px,
+  'mobile-x-small': 320px
+);
+
+// Mixin for standard breakpoints
+@mixin breakpoint($point) {
+  $max-width: map-get($breakpoints, $point);
+  @if $max-width != null {
+    @media (max-width: $max-width) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$point}' not found in the breakpoints map.";
+  }
+}
+
+// Mixin for custom breakpoints
+@mixin custom-breakpoint($max-width) {
+  @media (max-width: $max-width) {
+    @content;
+  }
+}

@@ -1,0 +1,27 @@
+@import "@/styles/mixins";
+
+.teamExpertise{
+    padding: 45px 70px;
+    @include custom-breakpoint(1680px){padding: 45px 50px;}
+    @include breakpoint(tablet-portrait){padding: 45px 20px;}
+}
+
+.carouselContainer{
+    padding: 34px 0; margin-top: 40px;
+}
+.expertiseSlider{
+    .slickItem{
+        text-align: center;
+        span{
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 20px;
+            color: #000000;
+            padding: 10px 0;
+            word-wrap: break-word;
+            max-width: 167px;
+        }
+    }
+
+}

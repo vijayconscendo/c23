@@ -1,0 +1,67 @@
+@import "@/styles/mixins";
+.locations{
+    padding: 70px;
+    @include custom-breakpoint(1680px){padding: 70px 50px;}
+    @include breakpoint(tablet-portrait){padding: 70px 20px;}
+}
+.gridBlock{
+    padding-top: 65px; column-gap: 64px; row-gap: 42px;
+    @include custom-breakpoint(1680px){column-gap: 54px;}
+    @include custom-breakpoint(1536px){column-gap: 44px;}
+    @include breakpoint(mac){column-gap: 32px;}
+}
+.locationCard{
+    display: flex; flex-direction: column;
+    .cardImage{
+        height: 250px;
+        @include custom-breakpoint(1536px){height: 240px;}
+        @include breakpoint(mac){height: 220px;}
+        .image{
+            &:hover{
+                transform: scale(1.05);
+            }
+        }
+    }
+    .locationCardContent{
+        padding: 19px 0 0; margin-bottom: auto;
+        h3{
+            font-size: 24px; line-height: normal; font-weight: 600; margin-bottom: 9px; color: var(--color-primary);
+            @include custom-breakpoint(1680px){font-size: 22px;}
+            @include custom-breakpoint(1536){font-size: 20px;}
+            @include breakpoint(mac){font-size: 18px;}
+        }
+        ul{
+            display: flex; align-items: center; list-style-type: none;
+            li{
+                display: inline-flex; align-items: center;
+                position: relative;
+                color: var(--color-primary);
+                font-size: 16px; line-height: 20px; font-weight: 500;
+                &:not(:first-child){padding-left: 14px;}
+                &:not(:first-child)::after{
+                    content: ''; display: inline-block; width: 4px; height: 4px; background-color: var(--color-primary); border-radius: 50%;
+                    position: absolute; left: 4px;
+                }
+            }
+        }
+        .address{ margin: 12px 0;
+            span{
+                display: block; margin-bottom: 2px;
+                font-size: 14px; line-height: normal; font-weight: 400; color:#00000099;
+                @include breakpoint(mac){font-size: 12px;}
+            }
+            p{
+                font-size: 16px; line-height: 28px; font-weight: 400; color: #000000;
+                @include breakpoint(mac){font-size: 14px;}
+            }
+        }
+    }
+    .link{
+        display: inline-flex; align-items: center; column-gap: 6px; 
+        span{
+            font-size: 16px; line-height: 22px; font-weight: 400;color: #000000; text-transform: capitalize;
+            @include breakpoint(mac){font-size: 14px;}
+        }
+        &:last-child{span{font-weight: 600;}}
+    }
+}

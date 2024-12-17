@@ -1,0 +1,12 @@
+@import "@/styles/mixins";
+
+.labelName {
+  display: block;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30.7px;
+  text-align: left;
+  @include custom-breakpoint(1680px){font-size: 20px;line-height: 26px;}
+  @include custom-breakpoint(1536px){font-size: 18px;line-height: 24px;}
+  @include breakpoint(mac){font-size: 16px;line-height: 22px;}
+}

@@ -1,0 +1,94 @@
+@import "@/styles/mixins";
+
+.empResponsibilitiesCarousel{
+    padding: 70px;
+    @include custom-breakpoint(1680px){padding: 70px 50px;}
+    @include breakpoint(tablet-portrait){padding: 70px 20px;}
+    .sectionHeader{
+        display: flex; align-items: flex-end; justify-content: space-between; column-gap: 16px; row-gap: 30px;
+    }
+}
+
+.arrows{
+    align-items: center; column-gap: 49px;
+    @include custom-breakpoint(1680px){column-gap: 30px;}
+    button{
+        width: 75px; height: 75px; display: inline-flex; align-items: center; justify-content: center;
+        @include custom-breakpoint(1680px){width: 50px; height: 50px;}
+    }
+}
+
+
+
+.preBlock{
+    padding-top: 65px;
+    h2{
+        margin-bottom: 16px; font-size: 40px; line-height: 64px;font-weight: 600; color: var(--color-primary);
+        @include breakpoint(desktop-big){font-size: 36px; line-height: 46px;}
+        @include custom-breakpoint(1536px){font-size: 30px; line-height: 40px;}
+        @include breakpoint(mac){font-size: 24px; line-height: 38px;}
+    }
+    p{
+        margin-bottom: 16px; font-size: 24px; line-height: 31px;font-weight: 500;color: #000000; padding-bottom: 16px;
+        @include breakpoint(desktop-big){font-size: 22px; line-height: 32px;}
+        @include custom-breakpoint(1536px){font-size: 20px; line-height: 30px;}
+        @include breakpoint(mac){font-size: 18px; line-height: 28px;}
+    }
+}
+
+
+// Carousel Cards Styles
+.carouselCardGrid{
+    column-gap: 116px;
+    row-gap: 42px;
+    margin: 74px 0;
+    @include custom-breakpoint(1680px){column-gap: 100px;}
+    @include custom-breakpoint(1536px){column-gap: 80px;}
+    @include breakpoint(mac){column-gap: 60px;}
+}
+
+.carouselCard{
+    position: relative;
+    @include breakpoint(tablet-portrait){display: flex; column-gap: 16px; flex-wrap: wrap;justify-content: center;}
+}
+.imageCard{
+    width: 100%; max-width: 519px; height: 375px;
+    @include custom-breakpoint(1680px){max-width: 500px; height: auto;}
+    @include custom-breakpoint(1536px){max-width: 450px;}
+}
+.contentCard{
+    width: 100%; max-width: 436px;position: absolute; right: 0; top: 0;
+    @include custom-breakpoint(1680px){max-width: 400px;}
+    @include custom-breakpoint(1536px){max-width: 360px;}
+    @include breakpoint(desktop-small){position: unset;}
+    @include breakpoint(mobile){max-width: 100%;}
+    .contentCardHeader{
+        width: 100%;
+        background-color: transparent;
+    }
+    h3{
+        font-size: 32px; font-weight: 600; line-height: 39.01px; text-align: left; color: #000000;
+        max-width: 218px; margin: auto; background-color: #FFFFFF; padding: 40px 22px 22px;
+        @include custom-breakpoint(1680px){font-size: 28px;line-height: 35px;}
+        @include custom-breakpoint(1536px){font-size: 24px;line-height: 29px;}
+        @include breakpoint(mac){font-size: 20px;line-height: 25px;}
+        @include breakpoint(desktop-small){max-width: 100%; padding:20px 0;}
+    }
+    .contentCardBody{
+        background: #FFFFFF;
+        border: 1px solid var(--color-primary);
+        padding: 26px 9px 26px 30px;
+        border-top-right-radius: 50px;
+        min-height: 280px;
+        @include breakpoint(desktop-small){min-height: auto;}
+        p{
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 38.4px;
+            text-align: left;
+            @include custom-breakpoint(1680px){font-size: 20px;line-height: 34px;}
+            @include custom-breakpoint(1536px){font-size: 18px;line-height: 32px;}
+            @include breakpoint(mac){font-size: 16px;line-height: 25px;}
+        }
+    }
+}

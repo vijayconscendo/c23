@@ -1,0 +1,12 @@
+@import "@/styles/mixins";
+
+.imageTextBlockSection, .careersImageTextSection{
+    margin: 20px 0;
+    padding: 70px 0;
+    position: relative;
+    .sectionHeader{
+        padding: 0 70px;
+        @include custom-breakpoint(1680px){padding: 0 50px;}
+        @include breakpoint(tablet-portrait){padding: 0 20px;}
+    }
+}

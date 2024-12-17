@@ -1,0 +1,8 @@
+@import "@/styles/mixins";
+.pitCrew{
+    padding: 70px;
+    @include custom-breakpoint(1680px){padding: 70px 50px;}
+    @include breakpoint(tablet-portrait){padding: 70px 20px;}
+    background-image: url("../../public/Images/patterns/crew-bg-pattern.png");
+    background-repeat: no-repeat;
+}

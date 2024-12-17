@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./mixins";
+
+:root {
+  --background: #FFFFFF; // Background color
+  --foreground: #000000;
+  --primary-color: "#DB2D38", // Primary color
+  --white: "#FFFFFF",
+  --black: "#000000",
+  --transparent: "transparent",
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  color: var(--text-color);
+  background: var(--background);
+  @apply font-montserrat;
+}
+
+
+.img-responsive{
+  max-width: 100%; height: auto;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.hide-scroll{
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+
+// Page Styles Start
+
+// React Slick Customization
+
+.life-at-carousel-one{
+  .slick-active.slick-current{
+    .imageAvatar{
+      // border: 2px solid var(--color-primary);
+      padding: 2px;
+    }
+    img{
+      filter: brightness(0.5);
+    }
+  }
+}
+
+
+/* Slick carousel custom styles for client testimonials */
+.client-tesimonials{
+  .slick-track {
+    display: flex !important;
+  }
+  
+  .slick-slide {
+    height: inherit !important;
+    display: flex !important;
+  }
+  
+  .slick-slide > div {
+    flex: 1;
+    display: flex;
+  }
+}
+@layer base {
+  :root {
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem
+  }
+}
+
+// Input
+
+/* Autofill Background Override */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  box-shadow: inset 0 0 0px 1000px white !important; /* Change 'white' to match your background color */
+  -webkit-text-fill-color: inherit !important; /* Ensures text color matches */
+}
+
+
+// ------- File Upload -------
+.fileuploadContainer{
+.filepond--root {
+  font-family: inherit;
+  position: absolute !important;
+  inset: 0 !important;
+  margin: 0;
+  height: 100% !important;
+}
+
+.filepond--panel-root {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.filepond--drop-label {
+  color: transparent !important;
+  background: transparent !important;
+}
+
+.filepond--drip {
+  display: none !important;
+}
+
+.filepond--label-action {
+  display: none;
+}
+
+/* Hide FilePond elements we don't need */
+.filepond--list-scroller,
+.filepond--list,
+.filepond--file {
+  display: none !important;
+}
+
+/* Ensure the FilePond input covers the entire area */
+.filepond--browser.filepond--browser {
+  height: 100% !important;
+  width: 100% !important;
+  cursor: pointer;
+}
+
+/* Remove default FilePond styles that might interfere */
+.filepond--hopper {
+  background: transparent !important;
+  border: none !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+}
+.filepond--credits{
+  display: none !important;
+}
+// ------- File Upload End-------

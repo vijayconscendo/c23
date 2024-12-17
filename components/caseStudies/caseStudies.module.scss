@@ -1,0 +1,34 @@
+@import "@/styles/mixins";
+
+.caseStudies{
+    padding: 70px;
+    @include custom-breakpoint(1680px){padding: 70px 50px;}
+    @include breakpoint(tablet-portrait){padding: 70px 20px;}
+    .dots{
+        position: absolute;
+        right: 0;
+        top: 450px;
+        z-index: 1;
+        max-width: 100%; height: auto;
+        @include breakpoint(desktop-big){width: 148px; top: 380px;}
+    }
+    .viewAllBtn{
+        font-size: 24px; font-weight: 600; line-height: normal; padding: 8px 16px;
+        align-items: center; justify-content: center; min-width: 242px;
+        @include custom-breakpoint(1680px){font-size: 20px;min-width: 160px;}
+    }
+}
+
+.sectionHeader{
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    flex-wrap: wrap; row-gap: 30px;
+}
+
+.storyGrid{
+  position: relative;
+  column-gap: 62px;
+  z-index: 2;
+  @include custom-breakpoint(1680px){column-gap: 52px;}
+  @include custom-breakpoint(1536px){column-gap: 42px;}
+}
+

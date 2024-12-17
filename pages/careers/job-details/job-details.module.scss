@@ -1,0 +1,211 @@
+@import "@/styles/mixins";
+
+
+.pageBanner{
+  padding: 100px 70px 55px;
+  background: url("../../../public/Images/background/pattern.png") no-repeat;
+  @include custom-breakpoint(1680px){padding: 80px 50px 50px;}
+  @include custom-breakpoint(1536px){padding: 60px 50px 50px;}
+  @include breakpoint(tablet-portrait){padding: 60px 20px 50px;}
+  .bannerContent{
+    .title{
+      font-size: 64px;
+      font-weight: 600;
+      line-height: 78.02px;
+      color: var(--color-primary);
+      max-width: 746px;
+      @include custom-breakpoint(1700px){font-size: 54px; line-height: 64px;}
+      @include custom-breakpoint(1536px){font-size: 48px;line-height: 58px;}
+      @include breakpoint(mac){font-size: 36px; line-height: 46px;}
+      @include breakpoint(tablet-portrait){font-size: 30px; line-height: 40px;}
+      @include breakpoint(tablet){font-size: 28px; line-height: 38px;}
+    }
+    .location{
+      display: flex; align-items: center; column-gap: 110px; row-gap: 20px; flex-wrap: wrap;
+      margin: 25px 0 42px;
+      @include breakpoint(mac){margin: 20px 0 30px;}
+      li{
+        display: inline-flex; align-items: center; justify-content: flex-start; column-gap: 8px;
+        img{
+          @include custom-breakpoint(1536px){width: 24px;}
+          @include breakpoint(tablet-portrait){width: 20px;}
+        }
+        span{
+          font-size: 24px;
+          line-height: normal;
+          text-align: left;
+          @include custom-breakpoint(1700px){font-size: 22px;}
+          @include custom-breakpoint(1536px){font-size: 20px;}
+          @include breakpoint(mac){font-size: 18px;}
+          @include breakpoint(tablet-portrait){font-size: 16px;}
+        }
+      }
+    }
+    .actionButtons{
+      display: flex; align-items: center; column-gap: 65px; row-gap: 30px; flex-wrap: wrap;
+      @include custom-breakpoint(1680px){column-gap: 55px;}
+      button{
+        font-size: 24px; display: inline-flex; align-items: center;justify-content: center; line-height: normal;
+        @include custom-breakpoint(1700px){font-size: 22px;}
+        @include custom-breakpoint(1536px){font-size: 20px;}
+        @include breakpoint(mac){font-size: 16px;}
+      }
+    }
+    .applyNowBtn{
+      padding: 15px; width: 242px; border-radius: 5px;
+      @include custom-breakpoint(1700px){padding: 12px 16px; width: 160px;}
+    }
+    .btnWithIcon{
+      font-weight: 500; color: var(--color-primary); column-gap: 8px;
+    }
+
+  }
+}
+
+.contentBlock{
+  padding: 48px 70px;
+  @include custom-breakpoint(1680px){padding: 48px 50px;}
+  @include breakpoint(tablet-portrait){padding: 48px 20px;}
+}
+.blockTitle{
+  h2{
+    position: relative;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 51.17px;
+    text-align: left;
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+    color: var(--color-primary);
+    @include custom-breakpoint(1680px){font-size: 32px;line-height: 42px;}
+    @include custom-breakpoint(1536px){font-size: 28px;line-height: 40px;}
+    @include breakpoint(mac){font-size: 24px;line-height: 34px;}
+    &::after{
+      content: '';
+      display: block;
+      width: 178px; height: 3px; border-radius: 4px;
+      position: absolute; bottom: 0; background-color: var(--color-primary);
+    }
+  }
+}
+.titleTypeTwo{
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 51.17px;
+  text-align: left;
+  margin-bottom: 28px;
+  color: var(--color-primary);
+  @include custom-breakpoint(1680px){font-size: 32px;line-height: 42px;margin-bottom: 24px;}
+  @include custom-breakpoint(1536px){font-size: 28px;line-height: 38px;}
+  @include breakpoint(mac){font-size: 24px;line-height: 34px;}
+}
+
+.details {
+  p{
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30.7px;
+    text-align: left;
+    margin-bottom: 14px;
+    @include custom-breakpoint(1680px){font-size: 22px;line-height: 32px;}
+    @include custom-breakpoint(1536px){font-size: 20px;line-height: 30px;}
+    @include breakpoint(mac){font-size: 18px;line-height: 28px;}
+    @include breakpoint(laptop){font-size: 16px;line-height: 26px;}
+  }
+  ul{
+    padding-left: 12px;
+    li{
+      position: relative;padding-left: 20px;
+      ::before{
+        position: absolute;
+        left: 0; top: 12px;
+        content: "";
+        display: block;
+        width: 6px; height: 6px;
+        background-color: #000000;
+        border-radius: 50%;
+        color: #000000;
+      }
+    }
+  }
+}
+
+.jobOverview {
+  border: 1px solid var(--color-primary);
+  padding: 46px 21px 46px 44px;
+  height: fit-content;
+  @include custom-breakpoint(1680px){padding: 30px;}
+  @include custom-breakpoint(1536px){padding: 24px;}
+  ul{
+    li{
+      display: flex; row-gap: 10px; flex-wrap: wrap; column-gap: 10px;
+      margin-bottom: 14px;
+      background: #DB2D3833;
+      width: fit-content;
+      border-radius: 5px;
+      h4{
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 29.26px;
+        text-align: left;
+        color: #000000;
+        padding: 8px 14px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        @include custom-breakpoint(1680px){font-size: 22px;line-height: normal;}
+        @include custom-breakpoint(1536px){font-size: 20px;}
+        @include breakpoint(mac){font-size: 18px;}
+        @include breakpoint(laptop){font-size: 16px;}
+      }
+      p{
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 29.26px;
+        text-align: left;
+        color: #00000099;
+        padding: 8px 14px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        @include custom-breakpoint(1680px){font-size: 22px;line-height: normal;}
+        @include custom-breakpoint(1536px){font-size: 20px;}
+        @include breakpoint(mac){font-size: 18px;}
+        @include breakpoint(laptop){font-size: 16px;}
+      }
+    }
+  }
+
+
+  .rectBar {
+    // background: url("../../public/Images/patterns/corevalue-pattern.png")
+    //   no-repeat;
+    margin-top: 14px;
+    display: flex;
+    align-items: start;
+    padding: 8px;
+    border-radius: 4px;
+    .left {
+      min-width: 240px;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 29.26px;
+      text-align: left;
+      color: #000000;
+      background: #DB2D3833;
+      padding: 8px 14px;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+    .right {
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 29.26px;
+      text-align: left;
+      color: #00000099;
+      background: #DB2D3833;
+      padding: 8px 14px;
+      width: max-content;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+}

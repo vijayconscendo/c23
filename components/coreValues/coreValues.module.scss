@@ -1,0 +1,135 @@
+
+@import "@/styles/mixins";
+
+.coreValues{
+    position: relative;padding: 70px 0;
+    .dotsPattern{
+        position: absolute; right: 0; top: 40px; z-index: -1;
+    }
+    .sectionHeader{
+        padding: 0 70px;
+        @include custom-breakpoint(1680px){padding: 0 50px;}
+        @include breakpoint(tablet-portrait){padding: 0 20px;}
+    }
+}
+.carouselGrid{
+    padding: 70px 0;
+    overflow: hidden;
+    @include breakpoint(mobile){display: none;}
+}
+
+.tabsBlock{
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    ul{
+        li{
+            padding: 6px 32px 6px 100px;
+            font-size: 42px;
+            line-height: normal;
+            font-weight: 500;
+            text-transform: capitalize;
+            border-top-right-radius: 90px;
+            border-bottom-right-radius: 90px;
+            &:not(:last-child){
+                margin-bottom: 52px;
+                @include custom-breakpoint(1680px){margin-bottom: 42px;}
+                @include custom-breakpoint(1536px){margin-bottom: 32px;}
+            }
+            width: max-content;
+            @include custom-breakpoint(1680px){font-size: 32px;}
+            @include custom-breakpoint(1536px){font-size: 28px;}
+            @include breakpoint(mac){font-size: 24px;}
+            @include breakpoint(laptop){font-size: 22px;}
+        }
+    }
+}
+
+.carouselBlock{
+    display: flex; justify-content: center;
+    align-items: center;
+    background-image: url("../../public/Images/patterns/corevalue-pattern.png");
+    background-size: 100%;  background-position: center; background-repeat: no-repeat; z-index: -1;
+}
+
+
+.valueNum{
+    font-size: 159px;
+    -webkit-text-stroke: #DB2D3880;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-color: white;
+    @include custom-breakpoint(1680px){font-size: 120px;}
+}
+.carouselCircleBox{ 
+    position: relative; 
+    width: 642px; height: 642px; margin-left: auto;
+    @include custom-breakpoint(1680px){width: 542px; height: 542px;}
+    @include custom-breakpoint(1536px){width: 500px; height: 500px;}
+    @include breakpoint(mac){width: 450px; height: 450px;}
+    @include breakpoint(mobile){width: 300px; height: 300px;}
+    &::after{
+        content: '';
+        width: 100%;
+        height: 100%;
+        border: 3px solid var(--color-primary);
+        border-radius: 100%;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        z-index:-1;
+    }
+    .carouselCircle{
+        background-image: url("../../public/Images/patterns/carouselCirlce.png");
+        background-size: 100%; background-repeat: no-repeat; background-position: center;
+        h3{
+            font-size: 48px; line-height: 58px; margin-bottom: 24px; font-weight: 700;
+            @include custom-breakpoint(1680px){font-size: 40px; line-height: 50px;margin-bottom: 22px;}
+            @include custom-breakpoint(1536px){font-size: 36px; line-height: 46px;margin-bottom: 20px;}
+            @include breakpoint(mac){font-size: 30px; line-height: 40px;}
+        }
+        p{
+            font-size: 24px; line-height: 32px;
+            @include custom-breakpoint(1680px){font-size: 22px; line-height: 30px;}
+            @include custom-breakpoint(1536px){font-size: 18px; line-height: 24px;}
+            @include breakpoint(mac){font-size: 16px; line-height: 24px;}
+        }
+    }
+}
+
+
+// Core values Mobile View
+
+.coreValuesMobileView{
+    display: none;
+    padding: 0 70px;
+    margin-top: 40px;
+    @include custom-breakpoint(1680px){padding: 0 50px;}
+    @include breakpoint(tablet-portrait){padding: 0 20px;}
+    @include breakpoint(mobile){display: block;}
+}
+
+.selectTrigger{
+    font-size: 16px; font-weight: 500;
+}
+.selectItem{
+    font-size: 16px; font-weight: 400;cursor: pointer;padding: 10px;
+    &:hover{
+        background-color: #DB2D3880;
+    }
+}
+
+.selctedContent{
+    padding: 20px 0;
+    h2{
+        font-size: 20px;line-height: 28px; font-weight: 600; color: var(--color-primary);
+        margin-bottom: 10px;
+    }
+    p{
+        font-size: 16   px;line-height: 26px; font-weight: 500; color: #000000;
+        margin-bottom: 10px;
+    }
+}
+
+// End Core values Mobile View

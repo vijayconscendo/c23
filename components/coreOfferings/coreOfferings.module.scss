@@ -1,0 +1,29 @@
+@import "@/styles/mixins";
+
+.coreOfferings{
+    padding: 70px;
+    @include custom-breakpoint(1680px){padding: 70px 50px;}
+    @include breakpoint(tablet-portrait){padding: 70px 20px;}
+}
+
+.coreOfferingsGrid{
+    padding: 65px 0 0;gap: 36px;
+}
+.offeringCard{
+    border: 1px solid #DB2D384D;padding: 35px 19px;
+    h3{
+        font-size: 36px; line-height: 43px; font-weight: 600; margin-bottom: 18px;
+        @include custom-breakpoint(1680px){font-size: 30px; line-height: 40px;}
+        @include breakpoint(mac){font-size: 28px; line-height: 38px;}
+    }
+    p{
+        font-size: 24px; line-height: 29px; font-weight: 400;
+        @include custom-breakpoint(1680px){font-size: 22px; line-height: 32px;}
+        @include custom-breakpoint(1536px){font-size: 20px; line-height: 30px;}
+        @include breakpoint(mac){font-size: 18px; line-height: 28px;}
+        span{
+            display: block; margin-bottom: 6px; font-weight: 600;
+        }
+        &:not(:last-child){margin-bottom: 15px;}
+    }
+}

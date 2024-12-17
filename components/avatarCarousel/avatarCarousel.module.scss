@@ -1,0 +1,63 @@
+@import "@/styles/mixins";
+
+.carouselSection{
+    padding: 54px 70px;
+    @include custom-breakpoint(1680px){padding: 54px 50px;}
+    @include breakpoint(tablet-portrait){padding: 54px 20px;}
+}
+
+.slideContent{
+    width: 100%; max-width: 996px; padding-right: 10px;
+    h3{
+        font-size: 36px; line-height: 48px; font-weight: 600;
+        @include custom-breakpoint(1680px){font-size: 32px;line-height: 44px;}
+        @include custom-breakpoint(1536px){font-size: 28px;line-height: 40px;}
+        @include breakpoint(mac){font-size: 24px;line-height: 36px;}
+    }
+    p{
+        font-size: 24px; line-height: 32px; margin: 8px 0 16px; font-weight: 500;
+        @include custom-breakpoint(1680px){font-size: 22px;line-height: 30px;}
+        @include custom-breakpoint(1536px){font-size: 20px;line-height: 28px;}
+        @include breakpoint(mac){font-size: 18px;line-height: 30px;}
+    }
+    .readMore{
+        font-size: 24px; line-height: 30px; display: inline-block;
+        @include custom-breakpoint(1680px){font-size: 22px;line-height: 28px;}
+        @include custom-breakpoint(1536px){font-size: 20px;line-height: 26px;}
+        @include breakpoint(mac){font-size: 18px;line-height: 24px;}
+        .underLine{
+            width: 52px; height: 3px; border-radius: 9px; margin: 8px 0 0; transition: 0.2s ease-in-out;
+        }
+        &:hover{
+            .underLine{width: 100%;}
+        }
+    }
+}
+
+.imageBoxContainer{
+    .imageBox{
+        height: 507px; width: 100%;
+    }
+    .arrows{display: none; transition: 0.5s linear;}
+    &:hover{
+        .arrows{
+            display: flex;
+        }
+    }
+}
+
+
+
+// Image Avatar button slide
+.imageAvatar{
+    width: 100%;
+    max-width: 129px;
+    height: 129px;
+    margin-right: 40px;
+    border-radius: 3px; overflow: hidden;
+    @include custom-breakpoint(1680px){max-width: 100px;height: 100px;margin-right: 30px;}
+    @include custom-breakpoint(1536px){margin-right: 24px;}
+    img{
+        height: 100% !important;
+    }
+}

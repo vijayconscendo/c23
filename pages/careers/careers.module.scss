@@ -1,0 +1,144 @@
+@import "@/styles/mixins";
+
+.jobApplication{
+    padding: 42px 150px;
+    background: url("../../public/Images/background/pattern.png") repeat;
+    background-size: 100%; background-attachment: fixed;
+    @include custom-breakpoint(1680px){padding: 40px 50px;}
+    @include breakpoint(tablet-portrait){padding: 40px 20px;}
+}
+
+// Breadcrumbs
+.breadcrumbs{
+    margin-bottom: 32px;
+    @include breakpoint(tablet-portrait){margin-bottom: 22px;}
+    ul{
+        list-style: none;
+        display: flex; align-items: center; column-gap: 8px; row-gap: 12px; flex-wrap: wrap;
+        li{ 
+            color: var(--color-primary);
+            a{
+                display: inline-flex; align-items: center; column-gap: 12px;
+                font-size: 24px; line-height: normal; font-weight: 500;
+                @include custom-breakpoint(1680px){font-size: 20px;}
+                @include custom-breakpoint(1536px){font-size: 18px;}
+                @include breakpoint(tablet-portrait){font-size: 16px;}
+                @include breakpoint(mobile-big-land){font-size: 14px;}
+            }
+            &:last-child{
+                color: #000000CC;
+                a{pointer-events: none; font-weight: 400;}
+            }
+        }
+    }
+  }
+
+  .instructions{
+    margin-bottom: 55px;
+    @include breakpoint(tablet-portrait){margin-bottom: 35px;}
+    h1{
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 51.17px;
+        text-align: left;
+        color: var(--color-primary);
+        margin-bottom: 35px;
+        @include custom-breakpoint(1680px){font-size: 36px;margin-bottom: 30px;}
+        @include custom-breakpoint(1536px){font-size: 30px;margin-bottom: 20px;}
+        @include breakpoint(tablet-portrait){font-size: 28px;}
+        @include breakpoint(tablet){font-size: 24px;}
+    }
+    ol{
+        margin-bottom: 20px;
+        li{
+            margin-bottom: 10px;
+        }
+    } 
+    .caption{
+        margin-bottom: 20px;
+    }
+    .caption, ol > li{
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 30.7px;
+        text-align: left;
+        color: #000000;
+        @include custom-breakpoint(1680px){font-size: 20px;line-height: 26px;}
+        @include custom-breakpoint(1536px){font-size: 18px;line-height: 24px;}
+        @include breakpoint(tablet-portrait){font-size: 16px;}
+    }
+  }
+
+
+//   Accordion Container
+.accordionContainer{
+    .accordionTrigger{
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 40px;
+        padding: 32px;
+        &:hover{text-decoration: none;}
+        @include custom-breakpoint(1680px){font-size: 28px;line-height: 34px;padding: 28px;}
+        @include custom-breakpoint(1536px){font-size: 24px;line-height: 32px;padding: 24px;}
+        @include breakpoint(mac){font-size: 20px;line-height: 28px;padding: 20px;}
+        @include breakpoint(tablet-portrait){font-size: 18px; line-height: 26px;padding: 16px;}
+    }
+    .smallTitle{
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 35.82px;
+        text-align: left;
+        color: var(--color-primary);
+        margin: 10px 0 40px;
+        @include custom-breakpoint(1680px){font-size: 24px;}
+        @include custom-breakpoint(1536px){font-size: 22px;margin: 10px 0 30px;}
+        @include breakpoint(mac){font-size: 20px;}
+        @include breakpoint(tablet){font-size: 18px;}
+    }
+    .addExp{
+        display: flex; align-items: center;
+        font-size: 24px; line-height: normal;
+        color: #000080; column-gap: 10px; font-weight: 600;
+        margin: 10px 0 60px;
+        @include custom-breakpoint(1680px){font-size: 22px;}
+        @include custom-breakpoint(1536px){font-size: 20px;margin: 10px 0 50px;}
+        @include breakpoint(mac){font-size: 18px;}
+    }
+}
+
+
+
+.supportFormat{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 30.7px;
+    text-align: left;
+    margin-bottom: 30px;
+    @include custom-breakpoint(1680px){font-size: 22px;}
+    @include custom-breakpoint(1536px){font-size: 20px;}
+    @include breakpoint(mac){font-size: 18px;}
+    @include breakpoint(tablet-portrait){font-size: 16px;}
+}
+
+.imageTextBlockSection, .careersImageTextSection{
+    padding: 70px 0;
+    .sectionHeader{
+        padding: 0 70px;
+        @include custom-breakpoint(1680px){padding: 0 50px;}
+        @include breakpoint(tablet-portrait){padding: 0 20px;}
+    }
+}
+
+.storyGridSection{
+    padding: 0 70px;
+    @include custom-breakpoint(1680px){padding: 0 50px;}
+    @include breakpoint(tablet-portrait){padding: 0 20px;}
+    .storyGrid{
+        position: relative;
+        column-gap: 62px;
+        z-index: 2;
+        @include custom-breakpoint(1680px){column-gap: 52px;}
+        @include custom-breakpoint(1536px){column-gap: 42px;}
+      }
+      
+}

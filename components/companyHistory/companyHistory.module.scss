@@ -1,0 +1,45 @@
+@import "@/styles/mixins";
+
+.companyHistory{
+    padding: 70px;
+    @include custom-breakpoint(1680px){padding: 70px 50px;}
+    @include breakpoint(tablet-portrait){padding: 70px 20px;}
+}
+
+.gridblock{
+    padding-top: 65px; column-gap: 92px;row-gap:80px;align-items: center;
+    @include custom-breakpoint(1680px){column-gap: 82px;}
+    @include custom-breakpoint(1536px){column-gap: 72px;}
+    @include breakpoint(mac){column-gap: 62px;}
+    @include breakpoint(tablet-portrait){column-gap: 42px;}
+}
+.historyCard{
+    position: relative;display: flex; flex-direction: column; gap: 6px;
+    @include custom-breakpoint(640px){
+        &:nth-child(even){
+            flex-direction: column-reverse;
+        }
+    }
+    .content{
+        position: relative; padding-left: 13px; padding-bottom: 80px;
+        h3{
+            font-size: 48px; line-height: 76px; font-weight: 700; margin-bottom: 5px;
+            @include custom-breakpoint(1680px){font-size: 42px;}
+            @include breakpoint(mac){font-size: 38px;}
+        }
+        p{
+            font-size: 16px; line-height: 21px; font-weight: 500;
+        }
+        .line{
+            position: absolute;
+            left: 0;
+            top: 0;
+            min-height: 300px;
+            width: 5px;
+            height: 100%;
+            background-color: #db2d38;
+            overflow: hidden;
+        }
+    }
+
+}

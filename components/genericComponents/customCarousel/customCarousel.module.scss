@@ -1,0 +1,68 @@
+@import "@/styles/mixins";
+
+.carouselWrapper{
+    position: relative;
+    width: 100%;
+    overflow-x: hidden !important;
+}
+
+.sliderContainer{
+    width: 100%;
+}
+.slideCard{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 16px;
+    object-fit: contain;
+    img{
+        max-width: 100%; height: auto;
+    }
+}
+
+.customArrow{
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    z-index: 99;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    svg{
+        font-size: 28px;
+        color: var(--primary-color);
+    }
+    &:focus{outline: none; box-shadow: none;}
+}
+
+.customArrowLeft{
+    left: 6px;
+}
+.customArrowRight{
+    right: 6px;
+}
+
+
+// carousel styles
+
+.carouselContainer{
+    background-color: #FFFFFF;
+    padding: 36px 0 6px;
+    .sectionHeader{
+        padding: 0 70px;
+        @include custom-breakpoint(1680px){padding: 0 50px;}
+        @include breakpoint(tablet-portrait){padding: 0 20px;}
+    }
+    .insertedCarousel{
+        padding: 50px 0;
+    }
+}

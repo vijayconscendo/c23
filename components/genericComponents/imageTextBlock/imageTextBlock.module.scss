@@ -1,0 +1,86 @@
+@import "@/styles/mixins";
+
+.ImageTextBlock {
+  padding: 70px;
+  position: relative;
+  @include custom-breakpoint(1680px) {
+    padding: 70px 50px;
+  }
+  @include breakpoint(tablet-portrait) {
+    padding: 70px 20px;
+  }
+}
+
+.girdBlock {
+  column-gap: 62px;
+
+  @include custom-breakpoint(1680px) {
+    column-gap: 52px;
+  }
+  @include custom-breakpoint(1536px) {
+    column-gap: 42px;
+  }
+  .image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+}
+.leftGrid {
+  .dotpattern {
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+  }
+}
+.dotsPattern {
+  @include breakpoint(tablet-portrait) {
+    opacity: 0.5;
+  }
+}
+.rightGrid {
+  display: flex;
+  align-items: flex-end;
+  .blockContent {
+    width: 100%;
+    max-width: 701px;
+  }
+  p {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 500;
+    margin: 30px 0 28px;
+    @include custom-breakpoint(1680px) {
+      font-size: 18px;
+      line-height: 26px;
+      margin: 28px 0;
+    }
+  }
+  .sectionBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    padding: 12px 16px;
+    min-width: 236px;
+    font-size: 24px;
+    line-height: normal;
+    @include custom-breakpoint(1680px) {
+      min-width: 168px;
+      font-size: 18px !important;
+      height: 48px;
+    }
+  }
+}
+
+.imgGridBlocks {
+  row-gap: 40px;
+  div img {
+    margin: 0 auto;
+    box-shadow: 0px 4px 30.4px 15px #00000026;
+    -webkit-box-shadow: 0px 4px 30.4px 15px #00000026;
+    -moz-box-shadow: 0px 4px 30.4px 15px #00000026;
+    -ie-box-shadow: 0px 4px 30.4px 15px #00000026;
+    border: 1px solid #0000004d;
+  }
+}

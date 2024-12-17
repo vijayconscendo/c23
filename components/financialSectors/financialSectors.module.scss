@@ -1,0 +1,23 @@
+@import "@/styles/mixins";
+
+.financialSectors{
+    padding: 70px;
+    @include custom-breakpoint(1680px){padding: 70px 50px;}
+    @include breakpoint(tablet-portrait){padding: 70px 20px;}
+}
+
+.sectionHeader{
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+}
+.arrows{
+    align-items: center; column-gap: 49px;
+    @include custom-breakpoint(1680px){column-gap: 30px;}
+    button{
+        width: 75px; height: 75px; display: inline-flex; align-items: center; justify-content: center;
+        @include custom-breakpoint(1680px){width: 50px; height: 50px;}
+    }
+}
+
+.carouselContainer{
+    padding: 0; margin-top: 5px;
+}

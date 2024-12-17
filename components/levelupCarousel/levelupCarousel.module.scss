@@ -1,0 +1,103 @@
+@import "@/styles/mixins";
+
+.levelupCarousel{
+    padding: 70px 0;
+}
+.sectionHeader{
+    padding: 0 70px;
+    @include custom-breakpoint(1680px){padding: 0 50px;}
+    @include breakpoint(tablet-portrait){padding: 0 20px;}
+}
+.longContent{
+    align-items: flex-start; row-gap: 32px;padding: 84px 0;
+    @include breakpoint(mac){padding: 70px 0;}
+    @include breakpoint(desktop-small){padding: 50px 0;}
+    h3{
+        font-size: 48px; line-height: 79px; color: var(--color-primary); font-weight: 600;
+        width: 100%; word-wrap: break-word;
+        @include custom-breakpoint(1680px){font-size: 40px; line-height: 52px;}
+        @include custom-breakpoint(1536px){font-size: 36px; line-height: 48px;}
+        @include breakpoint(mac){font-size: 32px; line-height: 42px;}
+        @include breakpoint(desktop-small){font-size: 28px; line-height: 38px;}
+    }
+    p{
+        font-size: 24px; line-height: 38px; color: #000000; font-weight: 500;
+        @include custom-breakpoint(1680px){font-size: 22px; line-height: 34px;}
+        @include custom-breakpoint(1536px){font-size: 20px; line-height: 32px;}
+        @include breakpoint(mac){font-size: 18px; line-height: 30px;}
+    }
+}
+
+
+// Carousel
+
+.fullWidthCarousel{
+    background-color: var(--color-primary);
+    position: relative; 
+    .arrows{
+        position: absolute; right: 70px; top: 68px;z-index: 9;
+        display: flex;align-items: center; column-gap: 49px;
+        @include custom-breakpoint(1680px){column-gap: 30px;}
+        @include breakpoint(mobile){right: 30px;}
+        button{
+            width: 75px; height: 75px; display: inline-flex; align-items: center; justify-content: center;
+            @include custom-breakpoint(1680px){width: 50px; height: 50px;}
+        }
+    }
+}
+.carouselContainer{
+    padding: 68px 70px;
+    @include custom-breakpoint(1680px){padding: 60px 50px;}
+    @include breakpoint(tablet-portrait){padding: 50px 30px;}
+    @include breakpoint(tablet){padding: 50px 20px;}
+}
+
+.imageAndtext{
+    display: flex; align-items: flex-end; column-gap: 52px;row-gap: 42px; padding-bottom: 70px;
+    @include custom-breakpoint(1680px){column-gap: 32px; padding-bottom: 60px;}
+    @include breakpoint(mobile){flex-wrap: wrap;padding-bottom: 50px;}
+    .levelImage{
+        max-width: 396px;
+        @include custom-breakpoint(1680px){max-width: 320px;}
+        @include custom-breakpoint(575px){max-width: 100%;}
+    }
+    .content{
+        width: 100%; max-width: 950px;
+        h3{
+            font-size: 48px; line-height: 76px; color: #ffffff; font-weight: 600; margin-bottom: 10px;
+            @include custom-breakpoint(1680px){font-size: 40px;line-height: 50px;}
+            @include custom-breakpoint(1536px){font-size: 32px;line-height: 42px;}
+            @include breakpoint(mac){font-size: 28px;line-height: 38px;}
+            @include breakpoint(tablet){font-size: 24px;line-height: 34px;}
+        }
+        p{
+            font-size: 24px; line-height: 32px; color: #ffffff; font-weight: 500; 
+            @include custom-breakpoint(1680px){font-size: 22px;line-height: 32px;}
+            @include custom-breakpoint(1536px){font-size: 20px;line-height: 30px;}
+            @include breakpoint(mac){font-size: 18px;line-height: 28px;}
+            @include breakpoint(tablet){font-size: 16px;line-height: 26px;}
+        }
+    }
+}
+
+.slidewhiteCardGrid{
+    column-gap: 64px; row-gap: 30px;
+    @include custom-breakpoint(1680px){column-gap: 54px;}
+    @include custom-breakpoint(1536px){column-gap: 44px;}
+    @include breakpoint(mac){column-gap: 30px;}
+}
+.slidewhiteCard{
+    padding: 12px 26px; border-radius: 5px; background-color: #ffffff;
+    h4{ 
+        font-size: 32px; line-height: 50px; color: var(--color-primary); font-weight: 600;
+        @include custom-breakpoint(1680px){font-size: 28px;line-height: 40px;}
+        @include custom-breakpoint(1536px){font-size: 24px;line-height: 38px;}
+        @include breakpoint(mac){font-size: 22px;line-height: 34px;}
+    }
+    p{
+        font-size: 24px; line-height: 32px; color: #000000; font-weight: 500; margin: 10px 0;
+        @include custom-breakpoint(1680px){font-size: 20px;line-height: 32px;}
+        @include custom-breakpoint(1536px){font-size: 18px;line-height: 30px;}
+        @include breakpoint(mac){font-size: 16px;line-height: 26px;}
+    }
+}

@@ -1,0 +1,61 @@
+@import "@/styles/mixins";
+
+.keyMetrics{
+    background-image: url("../../../public/Images/patterns/square-pattern.png");
+    background-repeat: repeat;padding: 45px 70px 60px;
+    @include custom-breakpoint(1680px){padding: 45px 50px 55px;}
+    @include breakpoint(tablet-portrait){padding: 45px 20px 60px;}
+}
+
+.metricGrid{
+    margin-top: 62px;
+}
+.metricCard{
+    .metricCardContent{
+        width: 100%; max-width: 240px;
+        padding: 0 12px;
+        text-align: center;
+    }
+    &:first-child{
+        .metricCardContent{
+            @include custom-breakpoint(1024px){
+                margin: 0 auto;
+            }
+        }
+    }
+    &:not(:nth-child(1)){
+        .metricCardContent{
+            margin: 0 auto;
+        }
+    }
+    .number{
+        column-gap: 26px;
+        @include custom-breakpoint(1680px){column-gap: 20px;}
+    }
+    h3{
+        font-size: 64px;
+        line-height: 74px;
+        font-weight: 700;
+        @include custom-breakpoint(1680px){font-size: 54px; line-height: 64px;}
+        @include custom-breakpoint(1536px){font-size: 42px; line-height: 52px;}
+    }
+    p{
+        font-size: 21px;
+        line-height: 33px;
+        font-weight: 600;
+        padding: 6px 0;
+        @include custom-breakpoint(1680px){font-size: 18px; line-height: 30px;}
+    }
+    .line{
+        width: 70%;
+        height: 3px;
+        border-radius: 9px;
+        margin: 8px auto;
+        background-color: #FCA0A6;
+    }
+    .divider{
+        top: 50%;
+        transform: translateY(-50%);
+        @include custom-breakpoint(1024px){display: none;}
+    }
+}

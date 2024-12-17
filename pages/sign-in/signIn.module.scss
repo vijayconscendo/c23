@@ -1,0 +1,94 @@
+@import "@/styles/mixins";
+
+.signinpage{
+    background-image: url("../../public/Images/patterns/pattern-grid.png");
+    background-repeat: no-repeat; background-size: cover;
+    padding: 60px 150px;
+    @include custom-breakpoint(1680px){padding: 60px 50px;}
+    @include breakpoint(tablet-portrait){padding: 60px 20px;}
+}
+
+
+.signInForm{
+    h1{
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 51.17px;
+        text-align: left;
+        color: var(--color-primary);
+        margin-bottom: 54px;
+        max-width: 850px;
+        @include custom-breakpoint(1680px){font-size: 32px;line-height: 42px;margin-bottom: 40px;}
+        @include breakpoint(tablet-portrait){font-size: 28px;line-height: 38px;margin-bottom: 30px;}
+        @include breakpoint(mobile){font-size: 24px;line-height: 34px;}
+    }
+}
+
+.signInCard{
+    width: 100%; max-width: 548px;
+    padding: 16px 0;
+}
+
+// Sign In Button
+.signInButton{
+    width: 100%;
+    padding: 17px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30.7px;
+    text-align: center;
+    border-radius: 4px;
+    margin-top: 8px;
+    @include custom-breakpoint(1680px){ padding: 16px; font-size: 22px; font-weight: 500; }
+    @include custom-breakpoint(1536px){ font-size: 20px; padding: 14px; }
+    @include breakpoint(mac){ font-size: 18px;}
+}
+
+.signinusing{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 30.7px;
+    text-align: center;
+    color: #00000099;
+    margin: 32px 0 26px;
+    @include custom-breakpoint(1680px){ font-size: 22px; }
+    @include custom-breakpoint(1536px){ font-size: 20px; }
+    @include breakpoint(mac){ font-size: 18px; }
+    span{
+        display: block; margin-bottom: 18px;
+        @include custom-breakpoint(1680px){ margin-bottom: 16px; }
+        @include custom-breakpoint(1536px){ margin-bottom: 14px; }
+    }
+}
+
+.sociallogButtons{
+    @include custom-breakpoint(767px){
+        flex-wrap: wrap;
+    }
+    button{
+        font-size: 24px;
+        line-height: normal;
+        padding: 9px 16px;
+        @include custom-breakpoint(1680px){ font-size: 22px; }
+        @include custom-breakpoint(1536px){ font-size: 20px; }
+        @include breakpoint(mac){ font-size: 18px;}
+    }
+}
+
+// userExistText
+.userExistText{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 30.7px;
+    text-align: left;
+    color: #000000;
+    margin-top: 50px;
+    @include custom-breakpoint(1680px){ font-size: 20px; }
+    @include custom-breakpoint(1536px){ font-size: 18px; }
+    @include breakpoint(mac){ font-size: 16px;}
+    a{
+        color: var(--color-primary);
+        text-decoration: underline;
+        text-underline-offset: 8px;
+    }
+}

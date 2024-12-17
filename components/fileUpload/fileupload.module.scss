@@ -1,0 +1,42 @@
+@import "@/styles/mixins";
+
+.fileuploadContainer{
+    max-width: 1160px;
+    margin: auto;
+    .dropBox{
+        position: relative;
+        border: 1.5px solid #000;
+        border-style: dashed;
+        cursor: pointer;
+        padding: 54px 16px;
+        border-radius: 5px;
+    }
+    .dropContent{
+        text-align: center;
+        pointer-events: none;
+        p{
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 30.7px;
+            margin-top: 10px;
+            @include custom-breakpoint(1680px){font-size: 22px;line-height: 32px;}
+            @include custom-breakpoint(1536px){font-size: 20px;line-height: 30px;}
+            @include breakpoint(mac){font-size: 18px;line-height: 28px;}
+            span{
+                color: #1212D8;
+                border-bottom:2px solid #1212D8;
+            }
+        }
+    }
+    .supportFormat{
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 30.7px;
+        text-align: left;
+        margin: 20px 0 42px;
+        @include custom-breakpoint(1680px){font-size: 22px;margin-bottom: 32px;}
+        @include custom-breakpoint(1536px){font-size: 20px;}
+        @include breakpoint(mac){font-size: 18px;}
+        @include breakpoint(tablet-portrait){font-size: 16px;}
+    }
+}

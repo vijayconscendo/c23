@@ -1,0 +1,46 @@
+@import "@/styles/mixins";
+
+.requestDemo{
+    padding: 70px;
+    @include custom-breakpoint(1680px){padding: 70px 50px;}
+    @include breakpoint(tablet-portrait){padding: 70px 20px;}
+    .desc{
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 32.14px;
+        text-align: left;
+        margin: 30px 0;
+        @include custom-breakpoint(1680px){font-size: 22px; line-height: 28px;}
+        @include custom-breakpoint(1536px){font-size: 20px; line-height: 26px;}
+        @include breakpoint(mac){font-size: 18px; line-height: 24px;}
+        @include breakpoint(desktop-small){font-size: 16px; line-height: 22px;}
+    }
+    .submitBtn{
+        font-size: 24px;
+        font-weight: 600;
+        line-height: normal;
+        padding: 16px 88px;
+        @include custom-breakpoint(1680px){font-size: 22px;padding: 16px 80px;}
+        @include custom-breakpoint(1536px){font-size: 20px;padding: 16px 70px;}
+        @include breakpoint(mac){font-size: 18px;padding: 14px 60px;}
+        @include breakpoint(desktop-small){font-size: 16px; }
+    }
+}
+
+.infoWithLink{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 29.26px;
+    @include custom-breakpoint(1680px){font-size: 22px;line-height: 32px;}
+    @include custom-breakpoint(1536px){font-size: 20px;line-height: 30px;}
+    @include breakpoint(mac){font-size: 18px;line-height: 28px;}
+    @include breakpoint(desktop-small){font-size: 16px;line-height: 26px;}
+    display: block;
+    margin: 36px 0 50px;
+    text-align: center;
+    color: #000000;
+    a{
+        color: #000080 !important;
+        text-decoration: underline;
+    }
+}

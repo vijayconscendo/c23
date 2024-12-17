@@ -1,0 +1,72 @@
+@import "@/styles/mixins";
+
+.storyCard{
+    .cardImage{
+        height: 386px;
+        @include custom-breakpoint(1680px){height: 320px;}
+        @include custom-breakpoint(1536px){height: 280px;}
+        @include breakpoint(mac){height: 240px;}
+        .image{
+            &:hover{
+                transform: scale(1.05);
+            }
+        }
+        .rightTag{
+            position: absolute;min-width: 99px;
+            top: 0;right: 0;z-index: 2;
+            font-size: 13px; line-height: 20px; font-weight: 600;
+            padding: 4px 22px; text-align: center;
+            border-bottom-left-radius: 6px;
+        }
+        .leftTag{
+            position: absolute;min-width: 99px;
+            top: 0;left: 0;z-index: 2;
+            font-size: 24px; line-height: normal; font-weight: 600;
+            padding: 18px 8px; text-align: center;
+            @include custom-breakpoint(1680px){font-size: 20px;}
+            @include custom-breakpoint(1536px){font-size: 18px;}
+            @include breakpoint(tablet-portrait){font-size: 16px;}
+        }
+    }
+    .cardHeader{
+        .dateText{
+            font-size: 24px; line-height: 37px; padding: 21px 0 8px;
+            @include breakpoint(desktop-big){font-size: 22px;line-height: 35px;}
+            @include custom-breakpoint(1600px){font-size: 20px;line-height: 33px;}
+        }
+        .chip{
+            min-width: 52px; min-height: 20px; display: inline-flex; align-items: center; justify-content: center;
+            box-sizing: border-box; display: inline-block; border-radius: 2px;
+            font-size: 12px;font-weight: 600;line-height: normal; padding: 2px 10px;
+            margin: 21px 0 10px;
+        }
+        .cardTitle{
+            font-size: 24px; line-height: 37px; margin-bottom: 20px;
+            @include breakpoint(desktop-big){font-size: 22px;line-height: 35px;}
+            @include custom-breakpoint(1600px){font-size: 20px;line-height: 33px;margin-bottom: 15px;}
+        }
+    }
+    .cardContent{
+        .cardText{
+            font-size: 20px; line-height: 26px; margin-bottom: 20px;
+            @include breakpoint(desktop-big){font-size: 18px;line-height: 24px;}
+            @include custom-breakpoint(1600px){font-size: 16px;line-height: 25px;}
+        }
+    }
+    .cardFooter{
+        .readMore{
+            font-size: 24px; line-height: 30px; display: inline-block;
+            @include breakpoint(desktop-big){font-size: 22px;line-height: 28px;}
+            @include custom-breakpoint(1600px){font-size: 20px;line-height: 26px;}
+            .underLine{
+                width: 52px; height: 3px; border-radius: 9px; margin: 8px 0 0; transition: 0.2s ease-in-out;
+            }
+            &:hover{
+                .underLine{width: 100%;}
+            }
+        }
+        .borderBottom{
+            height: 14px; width: 100%; margin-top: 23px;
+        }
+    }
+}

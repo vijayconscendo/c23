@@ -1,0 +1,103 @@
+@import "@/styles/mixins";
+.stepperSection {
+  padding: 70px 150px;
+  background: url("../../public/Images/background/pattern.png") repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  @include custom-breakpoint(1680px){padding: 40px 50px;}
+  @include breakpoint(tablet-portrait){padding: 40px 20px;}
+}
+
+// Breadcrumbs
+.breadcrumbs{
+    margin-bottom: 32px;
+    @include breakpoint(tablet-portrait){margin-bottom: 22px;}
+    ul{
+        list-style: none;
+        display: flex; align-items: center; column-gap: 8px; row-gap: 12px; flex-wrap: wrap;
+        li{ 
+            color: var(--color-primary);
+            a{
+                display: inline-flex; align-items: center; column-gap: 12px;
+                font-size: 24px; line-height: normal; font-weight: 500;
+                @include custom-breakpoint(1680px){font-size: 20px;}
+                @include custom-breakpoint(1536px){font-size: 18px;}
+                @include breakpoint(tablet-portrait){font-size: 16px;}
+                @include breakpoint(mobile-big-land){font-size: 14px;}
+            }
+            &:last-child{
+                color: #000000CC;
+                a{pointer-events: none; font-weight: 400;}
+            }
+        }
+    }
+  }
+  
+// application message
+.applicationMsg {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30.7px;
+  text-align: left;
+  margin-bottom: 48px;
+}
+.stepperScroll{
+  @include custom-breakpoint(1200px){overflow-x: auto; padding-left: 90px;}
+}
+.stepperContainer {
+  height: 90px;
+  max-width: 1470px;
+  margin: 0 auto;
+  @include custom-breakpoint(1700px){width: 1024px;}
+  @include custom-breakpoint(1200px){width: 900px;}
+  span {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+  }
+}
+
+.congratsContent {
+  margin-top: 95px;
+  @include custom-breakpoint(1680px){margin-top: 60px;}
+  @include custom-breakpoint(1536px){margin-top: 40px;}
+  h2 {
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 78.02px;
+    text-align: center;
+    margin-bottom: 34px;
+    color: var(--color-primary);
+    @include custom-breakpoint(1680px){font-size: 54px;margin-bottom: 30px;}
+    @include custom-breakpoint(1536px){font-size: 42px;margin-bottom: 24px;}
+    @include breakpoint(mac){font-size: 32px;margin-bottom: 20px;}
+    @include breakpoint(desktop-small){font-size: 28px;}
+  }
+  p {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 36px;
+    text-align: left;
+    margin-bottom: 25px;
+    @include custom-breakpoint(1680px){font-size: 22px;margin-bottom: 20px;}
+    @include custom-breakpoint(1536px){font-size: 20px;}
+    @include breakpoint(mac){font-size: 18px;}
+    @include breakpoint(desktop-small){font-size: 16px;}
+  }
+  button {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30.7px;
+    text-align: center;
+    width: 236px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 42px;
+    padding: 14px 32px;
+    @include custom-breakpoint(1680px){font-size: 22px;line-height: normal; width: auto;}
+    @include custom-breakpoint(1536px){font-size: 20px;}
+    @include breakpoint(mac){font-size: 18px;}
+    @include breakpoint(desktop-small){font-size: 16px;}
+  }
+}
