@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { Menu, X, ChevronRight, User } from "lucide-react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import downArrow from "@/public/Images/icons/downArrow.png";
@@ -120,15 +120,18 @@ export default function Header({ onSubmenuOpen, onSubmenuClose, blok }) {
           <div
             className={`hidden lg:flex items-center ${styles.desktopNavRight}`}
           >
-            <button type="button" className={styles.search}>
+            {/* <button type="button" className={styles.search}>
               <Image src={searchIcon} alt="search Icon" />
-            </button>
+            </button> */}
             <Link
               href="/contact"
               className={`text-textsecondary hover:text-white hover:bg-primary px-4 py-2 rounded-md transition duration-300 ${styles.contactLink}`}
             >
               Contact us
             </Link>
+            <button className="rounded-full bg-gray-500 h-9 w-9 text-white flex items-center justify-center">
+              <User />
+            </button>
           </div>
         </div>
       </div>
