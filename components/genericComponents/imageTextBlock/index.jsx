@@ -169,7 +169,7 @@ const ImageTextBlock = ({
     ) : (
       <section
         id={blok?.id}
-        className={`relative overflow-hidden mt-10 mb-10 bg-white ${
+        className={`relative overflow-hidden mb-10 bg-white ${
           blok?.noSectionSpacing ? "mt-16" : styles.ImageTextBlock
         }`}
         {...storyblokEditable(blok)}
