@@ -31,6 +31,9 @@ import Footer from "@/components/Footer";
 import HighlightsComponent from "@/components/highlights";
 import Layout from "@/components/Layout";
 import Locations from "@/components/locations";
+import SplashScreen from "@/components/splashScreen";
+import { useEffect, useState } from "react";
+import SuccessStoryDetails from "@/components/successStoryDetails";
 
 const components = {
   storyCard: StoryCard,
@@ -63,9 +66,8 @@ const components = {
   highlights: HighlightsComponent,
   footer: Footer,
   locationsBlock: Locations,
+  storyDetails: SuccessStoryDetails,
 };
-import SplashScreen from "@/components/splashScreen";
-import { useEffect, useState } from "react";
 
 storyblokInit({
   accessToken: process.env.STORYBLOK_ACCESS_TOKEN,

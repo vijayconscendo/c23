@@ -1,5 +1,14 @@
 @import "@/styles/mixins";
 
+.blogDetailsPage{
+    padding: 70px;
+    background-color: #ffffff;
+    @include custom-breakpoint(1680px){padding: 70px 50px;}
+    @include breakpoint(tablet-portrait){padding: 70px 20px;}
+    background-image: url("../../public/Images/patterns/solutioncard-bg.png");
+}
+
+
 // Breadcrumbs
 .breadcrumbs{
     margin-bottom: 32px;
