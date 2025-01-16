@@ -66,7 +66,7 @@ const StoryCard = ({ blok }) => {
             </div>
             <div className={styles.cardContent}>
               <p
-                className={`${classNames.description} font-medium ${styles.cardText}`}
+                className={`${classNames.description} font-medium line-clamp-5 ${styles.cardText}`}
               >
                 {blok?.description}
               </p>

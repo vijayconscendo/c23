@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 import ImageWrapper from "@/components/storyblokComponents/imageWrapper";
 import { storyblokEditable } from "@storyblok/react";
 import { useRouter } from "next/router";
+import { RectangleEllipsis } from "lucide-react";
 
 /**
  * Title component
@@ -134,12 +135,14 @@ const ImageTextBlock = ({ blok, isCarousel = false, customClass = {} }) => {
                 viewport={{ once: true }}
                 variants={pAndButtonVariants}
               >
-                {blok?.desc}
+                <span className={`${viewMore ? "" : "line-clamp-5"}`}>
+                  {blok?.desc}
+                </span>
                 <span
-                  className="text-primary"
-                  onClick={() => setViewMore(true)}
+                  className="text-black italic font-montserrat font-semibold underline underline-offset-4 text-lg inline hover:text-primary cursor-pointer"
+                  onClick={() => setViewMore(!viewMore)}
                 >
-                  View more
+                  {viewMore ? "read less" : "read more"}
                 </span>
               </motion.p>
               {blok?.ctaText && (
