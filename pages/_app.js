@@ -87,12 +87,12 @@ function MyApp({ Component, pageProps }) {
   if (loading) {
     return <SplashScreen />;
   }
-  return (
-    pageProps?.config?.content && (
-      <Layout config={pageProps.config?.content}>
-        <Component {...pageProps} />
-      </Layout>
-    )
+  return pageProps?.config?.content ? (
+    <Layout config={pageProps.config?.content}>
+      <Component {...pageProps} />
+    </Layout>
+  ) : (
+    <Component {...pageProps} />
   );
 }
 
