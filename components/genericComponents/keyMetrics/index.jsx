@@ -63,7 +63,7 @@ const Counter = ({ start, end }) => {
       interval = setInterval(() => {
         setCount((prevCount) => {
           if (prevCount < end) {
-            if (end > 999) {
+            if (end > 100) {
               return prevCount + 10;
             }
             return prevCount + 1;

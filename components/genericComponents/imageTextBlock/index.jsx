@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./imageTextBlock.module.scss";
 
 // Images & Icons
@@ -28,6 +28,7 @@ import { useRouter } from "next/router";
 
 const ImageTextBlock = ({ blok, isCarousel = false, customClass = {} }) => {
   const router = useRouter();
+  const [viewMore, setViewMore] = useState(false);
   // Animation Variants
   const h1Variants = {
     hidden: { opacity: 0, x: 120 }, // Start off-screen to the right
@@ -134,6 +135,12 @@ const ImageTextBlock = ({ blok, isCarousel = false, customClass = {} }) => {
                 variants={pAndButtonVariants}
               >
                 {blok?.desc}
+                <span
+                  className="text-primary"
+                  onClick={() => setViewMore(true)}
+                >
+                  View more
+                </span>
               </motion.p>
               {blok?.ctaText && (
                 <motion.div
