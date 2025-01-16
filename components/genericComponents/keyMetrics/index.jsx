@@ -28,7 +28,13 @@ const KeyMetrics = ({ blok }) => {
                 <div
                   className={`flex items-center justify-center ${styles.number}`}
                 >
-                  <Counter start={0} end={Number(item?.title)} />
+                  {/^\d+$/.test(item?.title) ? ( // Check if the title contains only numbers
+                    <>
+                      <Counter start={0} end={Number(item?.title)} />
+                    </>
+                  ) : (
+                    <h3 className="text-white">{item?.title}</h3> // Show the title directly if it's not a number
+                  )}
                   <Image src={plusIcon} alt="plus icon" />
                 </div>
                 <div className={`bg-white ${styles.line}`}></div>

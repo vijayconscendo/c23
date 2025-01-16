@@ -76,7 +76,7 @@ const StoryCard = ({ blok }) => {
           <div className={styles.cardFooter}>
             {blok?.ctaText && (
               <Link
-                href="#"
+                href={blok?.redirectLink?.cached_url || "/"}
                 className={`text-primary font-medium uppercase ${
                   styles.readMore
                 } ${blok?.borderAll ? "p-2" : ""}`}
