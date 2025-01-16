@@ -7,6 +7,7 @@ import dotsPattern from "@/public/Images/patterns/dots.png";
 import { motion } from "framer-motion";
 import ImageWrapper from "../storyblokComponents/imageWrapper";
 import { storyblokEditable } from "@storyblok/react";
+import { useRouter } from "next/router";
 
 /**
  * Page banner component
@@ -23,9 +24,9 @@ import { storyblokEditable } from "@storyblok/react";
 
 export default function PageBanner({
   blok,
-  onButtonClick,
   leftBackgroundColor = "bg-primary",
 }) {
+  const router = useRouter();
   // Animation Variants
   const h1Variants = {
     hidden: { opacity: 0, x: 120 }, // Start off-screen to the right
@@ -40,6 +41,12 @@ export default function PageBanner({
   const imageVariants = {
     hidden: { opacity: 0, y: -100 }, // Start off-screen above
     visible: { opacity: 1, y: 0 }, // Move to the normal position (stop at the bottom)
+  };
+
+  const onButtonClick = () => {
+    if (blok?.buttonLink?.url) {
+      router.push(blok.buttonLink.url);
+    }
   };
 
   return (

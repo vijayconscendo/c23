@@ -129,7 +129,7 @@ export default function Header({ onSubmenuOpen, onSubmenuClose, blok }) {
             >
               Contact us
             </Link>
-            <button className="rounded-full bg-gray-500 h-9 w-9 text-white flex items-center justify-center">
+            <button className="rounded-full bg-gray-500 h-9 w-9 text-white items-center justify-center hidden">
               <User />
             </button>
           </div>

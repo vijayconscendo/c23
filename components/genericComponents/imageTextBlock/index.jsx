@@ -11,6 +11,7 @@ import SectionTitle from "../title";
 import { motion } from "framer-motion";
 import ImageWrapper from "@/components/storyblokComponents/imageWrapper";
 import { storyblokEditable } from "@storyblok/react";
+import { useRouter } from "next/router";
 
 /**
  * Title component
@@ -25,12 +26,8 @@ import { storyblokEditable } from "@storyblok/react";
  * @prop {string} dotsPosition placement of collection of dots
  */
 
-const ImageTextBlock = ({
-  blok,
-  isCarousel = false,
-  handleCta,
-  customClass = {},
-}) => {
+const ImageTextBlock = ({ blok, isCarousel = false, customClass = {} }) => {
+  const router = useRouter();
   // Animation Variants
   const h1Variants = {
     hidden: { opacity: 0, x: 120 }, // Start off-screen to the right
@@ -45,6 +42,12 @@ const ImageTextBlock = ({
   const imageVariants = {
     hidden: { opacity: 0, y: "-50%" }, // Start off-screen above
     visible: { opacity: 1, y: 0 }, // Move to the normal position (stop at the bottom)
+  };
+
+  const handleCta = () => {
+    if (blok?.buttonLink?.url) {
+      router.push(blok.buttonLink.url);
+    }
   };
 
   return blok?._uid ? (
