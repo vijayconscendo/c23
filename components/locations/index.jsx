@@ -65,14 +65,18 @@ const LocationCard = ({ blok }) => {
         </div>
       </div>
       <div className="flex justify-between flex-wrap gap-x-2 gap-y-4">
-        <Link href={`tel:${phoneNumber}`} className={styles.link}>
-          <Image src={callIcon} alt="Mobile Number" />
-          <span>{phoneNumber}</span>
-        </Link>
-        <Link href={directionsLink || ""} className={styles.link}>
-          <Image src={directionIcon} alt="Directions" />
-          <span>Get Directions</span>
-        </Link>
+        {phoneNumber && (
+          <Link href={`tel:${phoneNumber}`} className={styles.link}>
+            <Image src={callIcon} alt="Mobile Number" />
+            <span>{phoneNumber}</span>
+          </Link>
+        )}
+        {directionsLink && (
+          <Link href={directionsLink || ""} className={styles.link}>
+            <Image src={directionIcon} alt="Directions" />
+            <span>Get Directions</span>
+          </Link>
+        )}
       </div>
     </div>
   );

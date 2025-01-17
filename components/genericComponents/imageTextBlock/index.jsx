@@ -50,6 +50,10 @@ const ImageTextBlock = ({ blok, isCarousel = false, customClass = {} }) => {
   const handleCta = () => {
     if (blok?.buttonLink?.url) {
       router.push(blok.buttonLink.url);
+    } else if (blok?.buttonLink?.cached_url) {
+      router.push(blok.buttonLink.cached_url);
+    } else {
+      router.push("/");
     }
   };
 
