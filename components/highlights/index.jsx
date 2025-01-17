@@ -8,7 +8,10 @@ import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
 const HighlightsComponent = ({ blok }) => {
   const leftPart = blok?.mainTopic?.[0];
   return (
-    <section className={styles.highlightsComponent}  {...storyblokEditable(blok)}>
+    <section
+      className={styles.highlightsComponent}
+      {...storyblokEditable(blok)}
+    >
       {blok?.title?.[0] && <StoryblokComponent blok={blok.title[0]} />}
 
       <div
@@ -42,10 +45,12 @@ const HighlightsComponent = ({ blok }) => {
               <div
                 className={`text-gray-600 font-medium italic ${styles.dateText}`}
               >
-                {leftPart?.showDate && "20 June 2024"}
+                {leftPart?.showDate && (leftPart?.date || "20 June 2024")}
               </div>
               <h2 className={`text-primary font-bold ${styles.cardTitle}`}>
-                {leftPart?.topic}
+                <Link href={leftPart?.redirectLink?.cached_url || "/"}>
+                  {leftPart?.topic}
+                </Link>
               </h2>
             </div>
             <div className={styles.cardContent}>
@@ -55,7 +60,7 @@ const HighlightsComponent = ({ blok }) => {
             </div>
             <div className={styles.cardFooter}>
               <Link
-                href="#"
+                href={leftPart?.redirectLink?.cached_url || "/"}
                 className={`text-primary font-medium uppercase ${styles.readMore}`}
               >
                 <span>{leftPart?.ctaText}</span>
@@ -101,7 +106,9 @@ const HighlightsComponent = ({ blok }) => {
                       <h2
                         className={`text-black hover:text-primary font-semibold ${styles.cardTitle}`}
                       >
-                        {item?.title}
+                        <Link href={item?.redirectLink?.cached_url || "/"}>
+                          {item?.title}
+                        </Link>
                       </h2>
                     </div>
                   </div>
