@@ -27,7 +27,7 @@
     img{object-fit: cover; height: 100%; width: 100%;transition: 0.5s linear;}
     h3{
         top: 50%;
-        transform: translateY(-50%);
+        transform: translateY(-50%); left: 0; right: 0;
         padding: 2px 20px;
         font-size: 21px; line-height: 26px; font-weight: 600;text-align: center;
         @include custom-breakpoint(1536px){font-size: 20px;line-height: 25px;}
