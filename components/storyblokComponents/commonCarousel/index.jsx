@@ -46,67 +46,69 @@ function CommonCarousel({ blok }) {
   const subTitleClass = { subTitle: "text-primary" };
 
   return (
-    <section
-      className={`overflow-hidden ${styles.newsContainer}`}
-      {...storyblokEditable(blok)}
-      id={blok?.id}
-    >
-      <div className={styles.sectionHeader}>
-        {blok?.sectionTitle?.length > 0 && (
-          <StoryblokComponent blok={blok?.sectionTitle?.[0]} />
-        )}
+    !blok?.hide && (
+      <section
+        className={`overflow-hidden ${styles.newsContainer}`}
+        {...storyblokEditable(blok)}
+        id={blok?.id}
+      >
+        <div className={styles.sectionHeader}>
+          {blok?.sectionTitle?.length > 0 && (
+            <StoryblokComponent blok={blok?.sectionTitle?.[0]} />
+          )}
 
-        <div className={`hidden lg:flex ${styles.arrows}`}>
-          <button
-            onClick={handlePrevClick}
-            className="bg-white p-2 border-2 border-primary text-primary shadow-lg hover:bg-primary hover:text-white transition-all"
-          >
-            <ChevronLeft className="w-14 h-14 font-bold" />
-          </button>
-          <button
-            onClick={handleNextClick}
-            className="bg-white p-2  border-2 border-primary text-primary shadow-lg hover:bg-primary hover:text-white transition-all"
-          >
-            <ChevronRight className="w-14 h-14 font-bold" />
-          </button>
+          <div className={`hidden lg:flex ${styles.arrows}`}>
+            <button
+              onClick={handlePrevClick}
+              className="bg-white p-2 border-2 border-primary text-primary shadow-lg hover:bg-primary hover:text-white transition-all"
+            >
+              <ChevronLeft className="w-14 h-14 font-bold" />
+            </button>
+            <button
+              onClick={handleNextClick}
+              className="bg-white p-2  border-2 border-primary text-primary shadow-lg hover:bg-primary hover:text-white transition-all"
+            >
+              <ChevronRight className="w-14 h-14 font-bold" />
+            </button>
+          </div>
         </div>
-      </div>
-      <div className={styles.carouselContainer}>
-        <div className="client-tesimonials -mx-5">
-          <Slider {...settings} ref={sliderRef}>
-            {blok?.carouselBlock?.map((item) => (
-              <div className="h-full px-5" key={item?._uid}>
-                <div className={`h-full`}>
-                  <div
-                    className={`relative rounded-[6px] h-full flex flex-col`}
-                  >
-                    <ImageTextBlock
-                      isCarousel={true}
-                      blok={item}
-                      customClass={subTitleClass}
-                    />
+        <div className={styles.carouselContainer}>
+          <div className="client-tesimonials -mx-5">
+            <Slider {...settings} ref={sliderRef}>
+              {blok?.carouselBlock?.map((item) => (
+                <div className="h-full px-5" key={item?._uid}>
+                  <div className={`h-full`}>
+                    <div
+                      className={`relative rounded-[6px] h-full flex flex-col`}
+                    >
+                      <ImageTextBlock
+                        isCarousel={true}
+                        blok={item}
+                        customClass={subTitleClass}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </Slider>
+              ))}
+            </Slider>
+          </div>
+          <div className={`mt-6 flex lg:hidden ${styles.arrows}`}>
+            <button
+              onClick={handlePrevClick}
+              className="bg-white p-2 border-2 border-primary text-primary shadow-lg hover:bg-primary hover:text-white transition-all"
+            >
+              <ChevronLeft className="w-14 h-14 font-bold" />
+            </button>
+            <button
+              onClick={handleNextClick}
+              className="bg-white p-2  border-2 border-primary text-primary shadow-lg hover:bg-primary hover:text-white transition-all"
+            >
+              <ChevronRight className="w-14 h-14 font-bold" />
+            </button>
+          </div>
         </div>
-        <div className={`mt-6 flex lg:hidden ${styles.arrows}`}>
-          <button
-            onClick={handlePrevClick}
-            className="bg-white p-2 border-2 border-primary text-primary shadow-lg hover:bg-primary hover:text-white transition-all"
-          >
-            <ChevronLeft className="w-14 h-14 font-bold" />
-          </button>
-          <button
-            onClick={handleNextClick}
-            className="bg-white p-2  border-2 border-primary text-primary shadow-lg hover:bg-primary hover:text-white transition-all"
-          >
-            <ChevronRight className="w-14 h-14 font-bold" />
-          </button>
-        </div>
-      </div>
-    </section>
+      </section>
+    )
   );
 }
 
