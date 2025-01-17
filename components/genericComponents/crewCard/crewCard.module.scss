@@ -19,6 +19,7 @@
             position: absolute;
             bottom: 60px;
             z-index: 1;
+            height: 280px;
             @include custom-breakpoint(1680px){width: 280px;}
         }
         .carImg{
