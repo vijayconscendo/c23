@@ -47,7 +47,7 @@ const components = {
   commonCarousel: CommonCarousel,
   levelUpCarousel: LevelupCarousel,
   verticalTabSlider: ApplicationProcessTabs,
-  jobListCards: JobListCards,
+  jobsSection: JobListCards,
   eventsSection: EventsInfo,
   coreOfferings: CoreOfferings,
   successStory: SuccessStory,

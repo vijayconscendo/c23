@@ -16,8 +16,6 @@ import Image from "next/image";
 import searchIcon from "@/public/Images/icons/search-icon.png";
 import expIcon from "@/public/Images/icons/exp-icon.png";
 import mapPin from "@/public/Images/icons/map-pin.png";
-
-import { ChevronDown, ChevronUp } from "lucide-react";
 import { storyblokEditable } from "@storyblok/react";
 import { useRouter } from "next/router";
 
@@ -55,7 +53,7 @@ const JobListCards = ({ blok }) => {
     <section
       className={styles.jobListCards}
       {...storyblokEditable(blok)}
-      id={blok?.text}
+      id={blok?.id}
     >
       {/* ----- SearchBox ----- */}
       <div className={`relative w-full ${styles.searchContainer}`}>
@@ -76,10 +74,11 @@ const JobListCards = ({ blok }) => {
       {/* ----- Filters ----- */}
       <div className={styles.filtersSection}>
         <div className={styles.techChipList}>
-          <div className={styles.techChip}>Lorem Ipsum </div>
-          <div className={styles.techChip}>Lorem Ipsum </div>
-          <div className={styles.techChip}>Lorem Ipsum </div>
-          <div className={styles.techChip}>Lorem Ipsum </div>
+          {blok?.jobListings?.map((item, index) => (
+            <div className={styles.techChip} key={index}>
+              {item?.jobTitle}
+            </div>
+          ))}
         </div>
         <div className={styles.filterDropdown}>
           <Select>
@@ -110,25 +109,28 @@ const JobListCards = ({ blok }) => {
       <div
         className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ${styles.jobCardGrid}`}
       >
-        {[1, 2, 3, 4, 5].map((card, index) => (
+        {blok?.jobListings?.map((card, index) => (
           <div className={styles.jobCard} key={index}>
             <div className={styles.jobContent}>
-              <h2 className="text-black">Lorem Ipsum Developer</h2>
+              <h2 className="text-black">{card?.jobTitle}</h2>
 
               <Technologies technologiesList={technologiesList} />
               <div className={styles.jobLocAddType}>
                 <div>
                   <Image src={mapPin} alt="location" />
-                  <span>Johannesburg, S.A</span>
+                  <span>{card?.location || "Johannesburg, S.A"}</span>
                 </div>
                 <div>
                   <Image src={expIcon} alt="job type" />
-                  <span>Remote - Full time</span>
+                  <span>{card?.jobType || "Remote-Full time"} </span>
                 </div>
               </div>
-              <p className={styles.explevel}>
-                Experience Level : <span>0-2 years</span>
-              </p>
+              {card?.expInYears?.map((level, index) => (
+                <p className={styles.explevel} key={index}>
+                  {level.key}
+                  <span> {level.value}</span>
+                </p>
+              ))}
             </div>
             <button
               type="button"
