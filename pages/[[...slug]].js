@@ -20,7 +20,7 @@ export default function Slug({ story, config }) {
 
 export async function getStaticProps({ params }) {
   let slug = params.slug ? params.slug.join("/") : "home";
-
+  
   let sbParams = {
     version: process.env.STORYBLOK_VERSION, // or 'published'
     token: process.env.STORYBLOK_ACCESS_TOKEN,
@@ -64,9 +64,9 @@ export async function getStaticPaths() {
 
     paths.push({ params: { slug: splittedSlug } });
   });
-
+  
   return {
     paths: paths,
-    fallback: false,
+    fallback: true,
   };
 }
