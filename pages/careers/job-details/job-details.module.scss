@@ -101,6 +101,19 @@
 }
 
 .details {
+  margin-bottom: 24px;
+  h3{
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 30.7px;
+    text-align: left;
+    margin-bottom: 14px;
+    // padding-left: 12px;
+    @include custom-breakpoint(1680px){font-size: 22px;line-height: 32px;}
+    @include custom-breakpoint(1536px){font-size: 20px;line-height: 30px;}
+    @include breakpoint(mac){font-size: 18px;line-height: 28px;}
+    @include breakpoint(laptop){font-size: 16px;line-height: 26px;}
+  }
   p{
     font-size: 24px;
     font-weight: 400;
@@ -113,7 +126,7 @@
     @include breakpoint(laptop){font-size: 16px;line-height: 26px;}
   }
   ul{
-    padding-left: 12px;
+    padding-left: 24px;
     li{
       position: relative;padding-left: 20px;
       ::before{
