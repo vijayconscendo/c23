@@ -6,6 +6,7 @@ import car from "@/public/Images/team/car.png";
 import cancelIcon from "@/public/Images/icons/cancel-icon.png";
 import ImageWrapper from "@/components/storyblokComponents/imageWrapper";
 import { storyblokEditable } from "@storyblok/react";
+import { render } from "storyblok-rich-text-react-renderer";
 
 const CrewCard = ({ blok }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,29 +45,7 @@ const CrewCard = ({ blok }) => {
           <div className="md:px-5">
             <h2 className="text-primary">{blok?.name}</h2>
             <span className="text-primary">{blok?.role}</span>
-            <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English
-            </p>
-            <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English
-            </p>
-            <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English.It is a long
-              established fact that a reader will be distracted by the readable
-              content of a page when looking at its layout.
-            </p>
+            {render(blok?.content || "")}
           </div>
           <div className={`bg-primary h-full ${styles.profile}`}>
             <ImageWrapper blok={blok?.image?.[0]} altText="person" />
@@ -92,7 +71,6 @@ const Modal = ({ isOpen, onClose, title, children }) => {
       <div
         className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
         onClick={onClose}
-        
       />
 
       {/* Modal */}
