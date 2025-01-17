@@ -7,6 +7,7 @@ import save from "@/public/Images/icons/save.png";
 import share from "@/public/Images/icons/share.png";
 import { getStoryblokApi } from "@storyblok/react";
 import { useRouter } from "next/router";
+import { ArrowBigRight } from "lucide-react";
 
 function JobDetails() {
   const router = useRouter();
@@ -41,7 +42,7 @@ function JobDetails() {
             >
               <span>Apply Now</span>
             </button>
-            <div className="flex items-center gap-12">
+            <div className="flex items-center gap-12 hidden">
               <button type="button" className={styles.btnWithIcon}>
                 <Image src={save} alt="save" />
                 <span>SAVE JOB</span>
@@ -60,7 +61,113 @@ function JobDetails() {
       <div className={styles.contentBlock}>
         <div className="flex flex-col md:flex-row gap-x-5 gap-y-8 md:gap-x-12">
           <div className="order-2 md:order-1 md:flex-1 md:basis-7/12">
-            <div className={styles.blockTitle}>
+            <div>
+              <div className={`${styles.blockTitle}`}>
+                <h2>Experience Levels:</h2>
+              </div>
+              <div className={styles.details}>
+                <ul>
+                  <li>
+                    <p>
+                      <strong>Junior/Entry-Level : </strong> 0-2 years of
+                      experience
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <strong>Mid-Level : </strong> 2-5 years of experience
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <strong>Senior-Level : </strong> 5+ years of experience
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <div className={`mt-12 ${styles.blockTitle}`}>
+                <h2>Skill Sets:</h2>
+              </div>
+              <div className={styles.details}>
+                <h3 className="flex items-center gap-2">
+                  <ArrowBigRight /> Junior/Entry-Level:
+                </h3>
+                <ul>
+                  <li>
+                    <p>
+                      Bachelor’s degree in Computer Science or related field.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Strong attention to detail and excellent problem-solving
+                      skills.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Strong verbal/written communication and data presentation
+                      skills, including an ability to effectively communicate
+                      with both business and technical teams.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+              <div className={styles.details}>
+                <h3 className="flex items-center gap-2">
+                  <ArrowBigRight /> Mid-Level:
+                </h3>
+                <ul>
+                  <li>
+                    <p>
+                      Bachelor’s degree in Computer Science or related field.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Strong attention to detail and excellent problem-solving
+                      skills.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Strong verbal/written communication and data presentation
+                      skills, including an ability to effectively communicate
+                      with both business and technical teams.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+              <div className={styles.details}>
+                <h3 className="flex items-center gap-2">
+                  <ArrowBigRight /> Senior-Level :
+                </h3>
+                <ul>
+                  <li>
+                    <p>
+                      Bachelor’s degree in Computer Science or related field.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Strong attention to detail and excellent problem-solving
+                      skills.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Strong verbal/written communication and data presentation
+                      skills, including an ability to effectively communicate
+                      with both business and technical teams.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* <div className={styles.blockTitle}>
               <h2>Job Details</h2>
             </div>
             <div className={styles.details}>
@@ -73,12 +180,12 @@ function JobDetails() {
                 3rd party applications, AppExchange products, integration, and
                 custom code.
               </p>
-            </div>
+            </div> */}
 
-            <div className={`mt-12 ${styles.blockTitle}`}>
+            {/* <div className={`mt-12 ${styles.blockTitle}`}>
               <h2>Job Responsibilities</h2>
-            </div>
-            <div className={styles.details}>
+            </div> */}
+            {/* <div className={styles.details}>
               <ul>
                 <li>
                   <p>
@@ -124,12 +231,12 @@ function JobDetails() {
                   </p>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
-            <div className={`mt-12 ${styles.blockTitle}`}>
+            {/* <div className={`mt-12 ${styles.blockTitle}`}>
               <h2>Job Requirements</h2>
-            </div>
-            <div className={styles.details}>
+            </div> */}
+            {/* <div className={styles.details}>
               <ul>
                 <li>
                   <p>
@@ -150,7 +257,7 @@ function JobDetails() {
                   </p>
                 </li>
               </ul>
-            </div>
+            </div> */}
           </div>
           <div className="order-1 md:order-2 md:flex-1 md:basis-5/12">
             <div className="w-full lg:ml-auto">
@@ -188,99 +295,6 @@ function JobDetails() {
                 </ul>
               </div>
             </div>
-          </div>
-        </div>
-        <div>
-          <div className={`mt-12 ${styles.blockTitle}`}>
-            <h2>Skill & Experience</h2>
-          </div>
-          <div className={styles.details}>
-            <ul>
-              <li>
-                <p>Bachelor’s degree in Computer Science or related field.</p>
-              </li>
-              <li>
-                <p>
-                  Good communication skills to collaborate between Indian team
-                  and on-site team on a daily basis.
-                </p>
-              </li>
-              <li>
-                <p>
-                  2+ years previous development experience with one of the
-                  languages (Apex, C#, Java, TS or Python).
-                </p>
-              </li>
-              <li>
-                <p>
-                  Solid understanding of and detailed experience with OOPS
-                  concepts and API.
-                </p>
-              </li>
-              <li>
-                <p>
-                  Detailed experience writing Visualforce and Apex classes and
-                  triggers is advantageous.
-                </p>
-              </li>
-              <li>
-                <p>
-                  Proficiency in HTML, XML, Flex, JavaScript, ASP, SQL, Java or
-                  C++, SOAP-based web services.
-                </p>
-              </li>
-              <li>
-                <p>
-                  Experience using Salesforce data tools (Data Loader, Excel
-                  Connector, DemandTools, Eclipse Force.com IDE).
-                </p>
-              </li>
-              <li>
-                <p>Strong understanding of relational databases.</p>
-              </li>
-              <li>
-                <p>
-                  Demonstrative success with multiple Salesforce.com integration
-                  projects.
-                </p>
-              </li>
-              <li>
-                <p>
-                  Experience integrating Salesforce.com with other applications
-                  via real-time, batch, sync/async.
-                </p>
-              </li>
-              <li>
-                <p>
-                  Experience with scripted data loader, web services, cloud or
-                  on-premise middleware and other enterprise integrating
-                  technologies.
-                </p>
-              </li>
-              <li>
-                <p>
-                  Strong business analysis and functional experience, including
-                  requirements gathering, creating/deploying solutions to end
-                  users.
-                </p>
-              </li>
-              <li>
-                <p>Technical project management experience.</p>
-              </li>
-              <li>
-                <p>
-                  Strong attention to detail and excellent problem-solving
-                  skills.
-                </p>
-              </li>
-              <li>
-                <p>
-                  Strong verbal/written communication and data presentation
-                  skills, including an ability to effectively communicate with
-                  both business and technical teams.
-                </p>
-              </li>
-            </ul>
           </div>
         </div>
       </div>

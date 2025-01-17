@@ -91,6 +91,7 @@
     box-shadow: 0px 10px 65.5px 0px #0000001A;
     border-left: 21px solid var(--color-primary);
     overflow: hidden; border-radius: 8px;
+    display: flex; flex-direction: column;justify-content: space-between;
     @include custom-breakpoint(1680px){border-left-width: 12px;}
     @include custom-breakpoint(1536px){border-left-width: 8px;}
     @include breakpoint(mac){border-left-width: 6px;}

@@ -83,20 +83,20 @@ const JobListCards = ({ blok }) => {
         <div className={styles.filterDropdown}>
           <Select>
             <SelectTrigger
-              className={`px-4 py-6 bg-white border-black focus:ring-0 ${styles.selectTrigger}`}
+              className={`px-4 py-6 bg-white border-black focus:ring-0 hidden ${styles.selectTrigger}`}
             >
-              <SelectValue placeholder="Theme" />
+              <SelectValue placeholder="Filter" />
             </SelectTrigger>
             <SelectContent className={`bg-white ${styles.selectContent}`}>
               <SelectGroup className={`${styles.selectGroup}`}>
                 <SelectItem className={`${styles.selectItem}`} value="light">
-                  Light
+                  One
                 </SelectItem>
                 <SelectItem className={`${styles.selectItem}`} value="dark">
-                  Dark
+                  Two
                 </SelectItem>
                 <SelectItem className={`${styles.selectItem}`} value="system">
-                  System
+                  Three
                 </SelectItem>
               </SelectGroup>
             </SelectContent>
