@@ -23,7 +23,6 @@ const EventsInfo = ({ blok }) => {
       ? blok?.eventsList?.filter((item) => item.status === "upcoming")
       : blok?.eventsList?.filter((item) => item.status !== "upcoming");
 
-
   useEffect(() => {
     // Get the width and position of the active tab's text
     const activeRef = activeTab === "upcoming" ? upcomingRef : recapsRef;
@@ -104,7 +103,12 @@ const EventsInfo = ({ blok }) => {
 
               {/* Event Details */}
               <div className={`flex-1 pt-6 md:px-6 ${styles.eventDetailCard}`}>
-                <h2 className="font-bold text-black">{event.title}</h2>
+                <h2 className="font-bold text-black">
+                  {" "}
+                  <Link href={event?.redirectLink?.cached_url || "/"}>
+                    {event.title}
+                  </Link>
+                </h2>
                 <div
                   className={`flex flex-wrap justify-between gap-4 ${styles.eventTime}`}
                 >
@@ -119,7 +123,7 @@ const EventsInfo = ({ blok }) => {
                 </div>
                 <p className={styles.eventDesc}>{event.description}</p>
                 <Link
-                  href={`/events/${event.id}`}
+                  href={event?.redirectLink?.cached_url || "/"}
                   aria-label={`View details for ${event.title}`}
                   className={`text-primary font-medium uppercase transition-colors duration-200 focus:outline-none ${styles.readMore}`}
                 >

@@ -46,7 +46,7 @@ const JobListCards = ({ blok }) => {
   ];
 
   const handleApply = () => {
-    router.push("/careers/job-details");
+    router.push("/");
   };
 
   return (
