@@ -40,7 +40,11 @@ const StoryCard = ({ blok }) => {
             src={blok?.image}
           />
         </div>
-        <div className={blok?.borderAll ? "border border-[#db2d38]" : ""}>
+        <div
+          className={`flex flex-col justify-between flex-1 ${
+            blok?.borderAll ? "border border-[#db2d38]" : ""
+          }`}
+        >
           <div className={blok?.borderAll ? "p-2" : ""}>
             <div className={styles.cardHeader}>
               {blok?.showDate && (

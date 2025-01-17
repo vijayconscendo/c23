@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./imageTextBlock.module.scss";
 
 // Images & Icons
@@ -29,6 +29,8 @@ import { useRouter } from "next/router";
 const ImageTextBlock = ({ blok, isCarousel = false, customClass = {} }) => {
   const router = useRouter();
   const [viewMore, setViewMore] = useState(false);
+  const [isClamped, setIsClamped] = useState(false);
+  const textRef = useRef(null);
   // Animation Variants
   const h1Variants = {
     hidden: { opacity: 0, x: 120 }, // Start off-screen to the right
@@ -50,6 +52,19 @@ const ImageTextBlock = ({ blok, isCarousel = false, customClass = {} }) => {
       router.push(blok.buttonLink.url);
     }
   };
+
+  useEffect(() => {
+    // Check if the content exceeds 5 lines
+    if (textRef.current) {
+      const lineHeight = parseInt(
+        window.getComputedStyle(textRef.current).lineHeight
+      );
+      const maxHeight = lineHeight * 5; // Height for 5 lines
+      if (textRef.current.scrollHeight > maxHeight) {
+        setIsClamped(true);
+      }
+    }
+  }, [blok?.desc]);
 
   return blok?._uid ? (
     !isCarousel ? (
@@ -124,6 +139,7 @@ const ImageTextBlock = ({ blok, isCarousel = false, customClass = {} }) => {
                 />
               </motion.div>
               <motion.p
+                ref={textRef}
                 initial="hidden"
                 whileInView="visible"
                 transition={{
@@ -134,15 +150,19 @@ const ImageTextBlock = ({ blok, isCarousel = false, customClass = {} }) => {
                 viewport={{ once: true }}
                 variants={pAndButtonVariants}
               >
-                <span className={`${viewMore ? "" : "line-clamp-5"}`}>
+                <span
+                  className={`${viewMore || !isClamped ? "" : "line-clamp-5"}`}
+                >
                   {blok?.desc}
                 </span>
-                <span
-                  className="text-black italic font-montserrat font-semibold underline underline-offset-4 text-lg inline hover:text-primary cursor-pointer"
-                  onClick={() => setViewMore(!viewMore)}
-                >
-                  {viewMore ? "read less" : "read more"}
-                </span>
+                {isClamped && (
+                  <span
+                    className="text-black italic font-montserrat font-semibold underline underline-offset-4 text-lg inline hover:text-primary cursor-pointer"
+                    onClick={() => setViewMore(!viewMore)}
+                  >
+                    {viewMore ? "read less" : "read more"}
+                  </span>
+                )}
               </motion.p>
               {blok?.ctaText && (
                 <motion.div
