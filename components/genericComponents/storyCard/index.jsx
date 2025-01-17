@@ -27,9 +27,9 @@ const StoryCard = ({ blok }) => {
           )}
           {blok?.showDateAsTag && (
             <div className={`bg-primary text-white ${styles.leftTag}`}>
-              25
+              {blok?.date?.split(" ")?.[0] || "01"}
               <br />
-              August
+              {blok?.date?.split(" ")?.[1] || "Jan"}
             </div>
           )}
 
@@ -51,7 +51,7 @@ const StoryCard = ({ blok }) => {
                 <div
                   className={`text-gray-600 font-medium italic ${styles.dateText}`}
                 >
-                  20 June 2024
+                  {blok?.date || "01 Jan 2025"}
                 </div>
               )}
               {blok?.showChip && (
@@ -65,7 +65,12 @@ const StoryCard = ({ blok }) => {
                   blok?.customStyles?.[0] || classNames.topic
                 } font-bold ${styles.cardTitle}`}
               >
-                {blok?.topic}
+                <Link
+                  href={blok?.redirectLink?.cached_url || "/"}
+                  target="_blank"
+                >
+                  {blok?.topic}
+                </Link>
               </h2>
             </div>
             <div className={styles.cardContent}>
@@ -81,6 +86,7 @@ const StoryCard = ({ blok }) => {
             {blok?.ctaText && (
               <Link
                 href={blok?.redirectLink?.cached_url || "/"}
+                target="_blank"
                 className={`text-primary font-medium uppercase ${
                   styles.readMore
                 } ${blok?.borderAll ? "p-2" : ""}`}

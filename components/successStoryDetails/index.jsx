@@ -1,9 +1,5 @@
 import React from "react";
 import styles from "../blogDetailComponent/blogDetail.module.scss";
-import Link from "next/link";
-import { ChevronsRight } from "lucide-react";
-import { CircleUserRound } from "lucide-react";
-import { Calendar } from "lucide-react";
 import Image from "next/image";
 import blogBannerImg from "@/public/Images/banners/home-banner.png";
 
@@ -73,3 +69,20 @@ const SuccessStoryDetails = ({ blok }) => {
 };
 
 export default SuccessStoryDetails;
+
+export async function getStaticProps() {
+  let sbParams = {
+    version: process.env.STORYBLOK_VERSION, // or 'published'
+    token: process.env.STORYBLOK_ACCESS_TOKEN,
+  };
+
+  const storyblokApi = getStoryblokApi();
+  let { data: config } = await storyblokApi.get("cdn/stories/config", sbParams);
+
+  return {
+    props: {
+      config: config ? config.story : false,
+    },
+    revalidate: 3600,
+  };
+}

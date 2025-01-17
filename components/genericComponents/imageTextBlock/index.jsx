@@ -12,7 +12,6 @@ import { motion } from "framer-motion";
 import ImageWrapper from "@/components/storyblokComponents/imageWrapper";
 import { storyblokEditable } from "@storyblok/react";
 import { useRouter } from "next/router";
-import { RectangleEllipsis } from "lucide-react";
 
 /**
  * Title component
