@@ -60,7 +60,7 @@ const BlogDetailComponent = ({ blok }) => {
             )}
 
             <div className={styles.content}>
-              {blok?.content?.map((item) => {
+              {blok?.content?.map((item, index) => {
                 if (item?.component === "textAndBlock") {
                   return (
                     <>
@@ -88,6 +88,8 @@ const BlogDetailComponent = ({ blok }) => {
                       ))}
                     </>
                   );
+                } else if (item?.component === "skills") {
+                  return <p key={index}>{item?.skills}</p>;
                 } else if (item?.component === "richTextWithTitle") {
                   return (
                     <>
