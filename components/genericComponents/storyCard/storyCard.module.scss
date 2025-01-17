@@ -1,6 +1,7 @@
 @import "@/styles/mixins";
 
 .storyCard{
+    display: flex; flex-direction: column;
     .cardImage{
         height: 386px;
         @include custom-breakpoint(1680px){height: 320px;}

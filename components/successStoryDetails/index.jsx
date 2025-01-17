@@ -10,7 +10,9 @@ import blogBannerImg from "@/public/Images/banners/home-banner.png";
 const SuccessStoryDetails = ({ blok }) => {
   return (
     <div className={styles.blogDetailsPage}>
-      <div className={styles.blogDetailComponent}>
+      <div
+        className={`md:max-w-[1280px] md:mx-auto px-4 ${styles.blogDetailComponent}`}
+      >
         {/* <div className={styles.breadcrumbs}>
           <ul>
             <li>
@@ -32,9 +34,7 @@ const SuccessStoryDetails = ({ blok }) => {
         {/* ----- Details Grid ----- */}
         <div className="w-full">
           <div>
-            <h1
-              className={`font-semibold w-full mb-4 md:max-w-[1200px] ${styles.blogTitle}`}
-            >
+            <h1 className={`font-semibold mb-4 ${styles.blogTitle}`}>
               {blok?.title}
             </h1>
             {/* <div
@@ -53,7 +53,7 @@ const SuccessStoryDetails = ({ blok }) => {
                 </div>
               </div>
             </div> */}
-            <div className={styles.blogImage}>
+            <div className={`${styles.blogImage} mb-7`}>
               <Image src={blogBannerImg} alt="blog image" />
             </div>
             <div className={styles.content}>
