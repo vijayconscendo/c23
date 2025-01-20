@@ -304,9 +304,9 @@ function JobDetails() {
 
 export default JobDetails;
 
-export async function getStaticProps() {
+export async function getStaticProps({ preview }) {
   let sbParams = {
-    version: process.env.STORYBLOK_VERSION, // or 'published'
+    version: preview ? "draft" : "published", // or 'published'
     token: process.env.STORYBLOK_ACCESS_TOKEN,
   };
 

@@ -4,7 +4,7 @@ import Page from "../components/storyblokComponents/page";
 
 import { useStoryblokState, getStoryblokApi } from "@storyblok/react";
 
-export default function Slug({ story, config }) {
+export default function Slug({ story, config, preview }) {
   story = useStoryblokState(story);
 
   return (
@@ -18,11 +18,11 @@ export default function Slug({ story, config }) {
   );
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, preview }) {
   let slug = params.slug ? params.slug.join("/") : "home";
-  
+
   let sbParams = {
-    version: process.env.STORYBLOK_VERSION, // or 'published'
+    version: preview ? "draft" : "published",
     token: process.env.STORYBLOK_ACCESS_TOKEN,
   };
 
@@ -35,6 +35,7 @@ export async function getStaticProps({ params }) {
       story: data ? data.story : false,
       key: data ? data.story.id : false,
       config: config ? config.story : false,
+      preview: preview || false,
     },
     revalidate: 3600,
   };
@@ -43,28 +44,24 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const storyblokApi = getStoryblokApi();
   let { data } = await storyblokApi.get("cdn/links/", {
-    version: process.env.STORYBLOK_VERSION,
+    version: "published",
     token: process.env.STORYBLOK_ACCESS_TOKEN,
   });
 
   let paths = [];
 
   Object.keys(data.links).forEach((linkKey) => {
-    if (
-      data.links[linkKey].is_folder ||
-      data.links[linkKey].slug === "config"
-    ) {
+    if (data.links[linkKey].is_folder || data.links[linkKey].slug === "config") {
       return;
     }
 
     const slug = data.links[linkKey].slug;
 
-    let splittedSlug =
-      data.links[linkKey].slug === "home" ? [] : slug.split("/");
+    let splittedSlug = data.links[linkKey].slug === "home" ? [] : slug.split("/");
 
     paths.push({ params: { slug: splittedSlug } });
   });
-  
+
   return {
     paths: paths,
     fallback: true,
