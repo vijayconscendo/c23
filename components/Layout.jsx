@@ -3,6 +3,7 @@ import NextNProgress from "nextjs-progressbar";
 import { useEffect, useState } from "react";
 import { StoryblokComponent } from "@storyblok/react";
 import { useRouter } from "next/router";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function Layout({ children, config }) {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
@@ -56,6 +57,7 @@ export default function Layout({ children, config }) {
           <StoryblokComponent blok={config.footer?.[0]} />
         )}
       </div>
+      <Analytics />
     </div>
   );
 }
