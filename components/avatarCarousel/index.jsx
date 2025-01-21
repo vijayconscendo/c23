@@ -75,8 +75,10 @@ function AvatarCarousel({ blok }) {
               dots={false}
               arrows={false}
               centerMode={false}
-              infinite={false}
+              infinite={blok?.data?.length > 8}
               variableWidth={true}
+              autoplay={true}
+              loop={true}
               // draggable={false}
               // swipe={false}
               // lazyLoad={true}
@@ -131,15 +133,17 @@ function AvatarCarousel({ blok }) {
                       <div className={styles.slideContent}>
                         <h3 className="text-primary">{item?.title}</h3>
                         <p className="text-black">{item?.description}</p>
-                        <Link
-                          href="#"
-                          className={`text-primary font-medium uppercase transition-colors duration-200 focus:outline-none ${styles.readMore}`}
-                        >
-                          <span>{item?.ctaText}</span>
-                          <div
-                            className={`bg-primary ${styles.underLine}`}
-                          ></div>
-                        </Link>
+                        {item?.ctaText && (
+                          <Link
+                            href="#"
+                            className={`text-primary font-medium uppercase transition-colors duration-200 focus:outline-none ${styles.readMore}`}
+                          >
+                            <span>{item?.ctaText}</span>
+                            <div
+                              className={`bg-primary ${styles.underLine}`}
+                            ></div>
+                          </Link>
+                        )}
                       </div>
                     </div>
                   ))}
