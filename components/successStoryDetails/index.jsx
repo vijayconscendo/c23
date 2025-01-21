@@ -50,7 +50,12 @@ const SuccessStoryDetails = ({ blok }) => {
               </div>
             </div> */}
             <div className={`${styles.blogImage} mb-7`}>
-              <Image src={blogBannerImg} alt="blog image" />
+              <Image
+                src={blok?.image}
+                alt="blog image"
+                width={1140}
+                height={500}
+              />
             </div>
             <div className={styles.content}>
               {blok?.details?.length > 0 &&
@@ -69,4 +74,3 @@ const SuccessStoryDetails = ({ blok }) => {
 };
 
 export default SuccessStoryDetails;
-
