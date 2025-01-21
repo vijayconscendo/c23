@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../blogDetailComponent/blogDetail.module.scss";
 import Image from "next/image";
 import blogBannerImg from "@/public/Images/banners/home-banner.png";
+import ImageWrapper from "../storyblokComponents/imageWrapper";
 
 const SuccessStoryDetails = ({ blok }) => {
   return (
@@ -49,14 +50,16 @@ const SuccessStoryDetails = ({ blok }) => {
                 </div>
               </div>
             </div> */}
-            <div className={`${styles.blogImage} mb-7`}>
-              <Image
-                src={blok?.image}
-                alt="blog image"
-                width={1140}
-                height={500}
-              />
-            </div>
+            {blok?.image?.[0] && (
+              <div className={`${styles.blogImage} mb-7`}>
+                <ImageWrapper
+                  blok={blok?.image?.[0]}
+                  altText="blog image"
+                  width={1140}
+                  height={500}
+                />
+              </div>
+            )}
             <div className={styles.content}>
               {blok?.details?.length > 0 &&
                 blok.details.map((item) => (
