@@ -57,7 +57,7 @@ export default function KeyPillarsApproach({ blok }) {
           >
             <div className="flex-shrink-0">
               <div
-                className={`bg-primary rounded-full flex items-center justify-center ${styles.icon}`}
+                className={`bg-primary rounded-full flex items-center justify-center p-5 ${styles.icon}`}
               >
                 <ImageWrapper
                   blok={blok?.elements?.[0]?.blocks?.[0]}
@@ -82,7 +82,7 @@ export default function KeyPillarsApproach({ blok }) {
             >
               <div className="flex-shrink-0">
                 <div
-                  className={`bg-primary rounded-full flex items-center justify-center ${styles.icon}`}
+                  className={`bg-primary rounded-full flex items-center justify-center p-5 ${styles.icon}`}
                 >
                   <ImageWrapper
                     blok={blok?.elements?.[1]?.blocks?.[0]}
@@ -104,7 +104,7 @@ export default function KeyPillarsApproach({ blok }) {
             >
               <div className="flex-shrink-0">
                 <div
-                  className={`bg-primary rounded-full flex items-center justify-center ${styles.icon}`}
+                  className={`bg-primary rounded-full flex items-center justify-center p-5 ${styles.icon}`}
                 >
                   <ImageWrapper
                     blok={blok?.elements?.[2]?.blocks?.[0]}
@@ -142,7 +142,7 @@ export default function KeyPillarsApproach({ blok }) {
             >
               <div className="flex-shrink-0">
                 <div
-                  className={`bg-primary rounded-full flex items-center justify-center ${styles.icon}`}
+                  className={`bg-primary rounded-full flex items-center justify-center p-5 ${styles.icon}`}
                 >
                   <ImageWrapper
                     blok={blok?.elements?.[3]?.blocks?.[0]}
@@ -164,7 +164,7 @@ export default function KeyPillarsApproach({ blok }) {
             >
               <div className="flex-shrink-0">
                 <div
-                  className={`bg-primary rounded-full flex items-center justify-center ${styles.icon}`}
+                  className={`bg-primary rounded-full flex items-center justify-center p-5 ${styles.icon}`}
                 >
                   <ImageWrapper
                     blok={blok?.elements?.[4]?.blocks?.[0]}
@@ -179,29 +179,55 @@ export default function KeyPillarsApproach({ blok }) {
             </motion.div>
           </div>
         </div>
-        <div className="grid grid-cols-12 mt-10 md:mt-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            transition={{ duration: 1, ease: "easeInOut", repeat: 0 }}
-            variants={animateBtoT}
-            className={`flex items-start col-span-12 lg:mx-auto ${styles.KeyPillarsApproachCard}`}
-          >
-            <div className="flex-shrink-0">
-              <div
-                className={`bg-primary rounded-full flex items-center justify-center ${styles.icon}`}
-              >
-                <ImageWrapper
-                  blok={blok?.elements?.[5]?.blocks?.[0]}
-                  altText="expertiseIcon"
-                />
+        <div className="grid grid-cols-12 mt-0 md:mt-8">
+          <div className="col-span-12 lg:col-span-6 flex justify-center">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              transition={{ duration: 1, ease: "easeInOut", repeat: 0 }}
+              variants={animateBtoT}
+              className={`flex items-start col-span-12 lg:mx-auto mb-5 md:mb-12 ${styles.KeyPillarsApproachCard}`}
+            >
+              <div className="flex-shrink-0">
+                <div
+                  className={`bg-primary rounded-full flex items-center justify-center p-5 ${styles.icon}`}
+                >
+                  <ImageWrapper
+                    blok={blok?.elements?.[5]?.blocks?.[0]}
+                    altText="expertiseIcon"
+                  />
+                </div>
               </div>
-            </div>
-            <div>
-              <h3 className="text-primary">{blok?.elements?.[5]?.title}</h3>
-              <p className="text-black">{blok?.elements?.[5]?.description}</p>
-            </div>
-          </motion.div>
+              <div>
+                <h3 className="text-primary">{blok?.elements?.[5]?.title}</h3>
+                <p className="text-black">{blok?.elements?.[5]?.description}</p>
+              </div>
+            </motion.div>
+          </div>
+          <div className="col-span-12 lg:col-span-6">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              transition={{ duration: 1, ease: "easeInOut", repeat: 0 }}
+              variants={animateBtoT}
+              className={`flex items-start col-span-12 lg:mx-auto ${styles.KeyPillarsApproachCard}`}
+            >
+              <div className="flex-shrink-0">
+                <div
+                  className={`bg-primary rounded-full flex items-center justify-center p-5 ${styles.icon}`}
+                >
+                  <ImageWrapper
+                    blok={blok?.elements?.[6]?.blocks?.[0]}
+                    altText="expertiseIcon"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 className="text-primary">{blok?.elements?.[6]?.title}</h3>
+                <p className="text-black">{blok?.elements?.[6]?.description}</p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
