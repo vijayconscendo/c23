@@ -14,11 +14,13 @@ const StoryCard = ({ blok }) => {
   return (
     blok?._uid && (
       <div
-        className={`w-full overflow-hidden ${styles.storyCard}`}
+        className={`w-full overflow-hidden ${styles.storyCard} ${
+          blok?.borderAll ? "border border-[#db2d38]" : ""
+        }`}
         {...storyblokEditable(blok)}
       >
         <div
-          className={`relative aspect-[16/9] w-full overflow-hidden ${styles.cardImage}`}
+          className={`relative aspect-[16/9] w-full overflow-hidden shadow-black/5 shadow-md ${styles.cardImage}`}
         >
           {blok?.showRightTag && (
             <div className={`bg-primary text-white ${styles.rightTag}`}>
@@ -35,16 +37,12 @@ const StoryCard = ({ blok }) => {
 
           <Image
             alt="Digital Transformation VR Interface"
-            className={`w-full object-cover transition-transform duration-300 ${styles.image}`}
+            className={`w-full object-cover transition-transform duration-300 ${styles.image} `}
             fill
             src={blok?.image}
           />
         </div>
-        <div
-          className={`flex flex-col justify-between flex-1 ${
-            blok?.borderAll ? "border border-[#db2d38]" : ""
-          }`}
-        >
+        <div className={`flex flex-col justify-between flex-1 `}>
           <div className={blok?.borderAll ? "p-2" : ""}>
             <div className={styles.cardHeader}>
               {blok?.showDate && (
@@ -75,13 +73,15 @@ const StoryCard = ({ blok }) => {
                 </Link>
               </h2>
             </div>
-            <div className={styles.cardContent}>
-              <p
-                className={`${classNames.description} font-medium line-clamp-5 ${styles.cardText}`}
-              >
-                {blok?.description}
-              </p>
-            </div>
+            {blok?.description && (
+              <div className={styles.cardContent}>
+                <p
+                  className={`${classNames.description} font-medium line-clamp-5 ${styles.cardText}`}
+                >
+                  {blok.description}
+                </p>
+              </div>
+            )}
           </div>
 
           <div className={styles.cardFooter}>
