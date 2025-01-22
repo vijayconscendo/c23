@@ -35,6 +35,7 @@ import SplashScreen from "@/components/splashScreen";
 import { useEffect, useState } from "react";
 import SuccessStoryDetails from "@/components/successStoryDetails";
 import BlogDetailComponent from "@/components/blogDetailComponent";
+import MessageFromCEO from "@/components/messageFromCEO";
 
 const components = {
   storyCard: StoryCard,
@@ -69,6 +70,7 @@ const components = {
   locationsBlock: Locations,
   storyDetails: SuccessStoryDetails,
   blogDetails: BlogDetailComponent,
+  messageFromCEO: MessageFromCEO,
 };
 
 storyblokInit({
