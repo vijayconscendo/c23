@@ -4,7 +4,7 @@ import ImageWrapper from "../storyblokComponents/imageWrapper";
 
 function MissionAndVision({ blok }) {
   return (
-    <section {...storyblokEditable(blok)}>
+    <section {...storyblokEditable(blok)} id={blok?.id}>
       {blok?.title?.[0] && <StoryblokComponent blok={blok.title[0]} />}
       <div className="flex">
         {blok?.content?.length > 0 &&
