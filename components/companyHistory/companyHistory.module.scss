@@ -12,6 +12,10 @@
     @include custom-breakpoint(1536px){column-gap: 72px;}
     @include breakpoint(mac){column-gap: 62px;}
     @include breakpoint(tablet-portrait){column-gap: 42px;}
+    
+}
+.historySwiper{
+    padding-top: 65px;
 }
 .historyCard{
     position: relative;display: flex; flex-direction: column; gap: 6px;
