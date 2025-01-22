@@ -35,7 +35,7 @@ export async function getStaticProps({ params, preview }) {
       story: data ? data.story : false,
       key: data ? data.story.id : false,
       config: config ? config.story : false,
-      preview: "draft" || false,
+      preview: preview || false,
     },
     revalidate: 3600,
   };
