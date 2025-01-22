@@ -35,7 +35,7 @@ export async function getStaticProps({ params, preview }) {
       story: data ? data.story : false,
       key: data ? data.story.id : false,
       config: config ? config.story : false,
-      preview: preview || false,
+      preview: "draft" || false,
     },
     revalidate: 3600,
   };
@@ -51,13 +51,17 @@ export async function getStaticPaths() {
   let paths = [];
 
   Object.keys(data.links).forEach((linkKey) => {
-    if (data.links[linkKey].is_folder || data.links[linkKey].slug === "config") {
+    if (
+      data.links[linkKey].is_folder ||
+      data.links[linkKey].slug === "config"
+    ) {
       return;
     }
 
     const slug = data.links[linkKey].slug;
 
-    let splittedSlug = data.links[linkKey].slug === "home" ? [] : slug.split("/");
+    let splittedSlug =
+      data.links[linkKey].slug === "home" ? [] : slug.split("/");
 
     paths.push({ params: { slug: splittedSlug } });
   });
