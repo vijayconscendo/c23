@@ -36,6 +36,7 @@ import { useEffect, useState } from "react";
 import SuccessStoryDetails from "@/components/successStoryDetails";
 import BlogDetailComponent from "@/components/blogDetailComponent";
 import MessageFromCEO from "@/components/messageFromCEO";
+import MissionAndVision from "@/components/mission-vision";
 
 const components = {
   storyCard: StoryCard,
@@ -71,6 +72,7 @@ const components = {
   storyDetails: SuccessStoryDetails,
   blogDetails: BlogDetailComponent,
   messageFromCEO: MessageFromCEO,
+  missionAndVision: MissionAndVision,
 };
 
 storyblokInit({

@@ -1,11 +1,11 @@
-import { StoryblokComponent } from "@storyblok/react";
+import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
 import React from "react";
 import { render } from "storyblok-rich-text-react-renderer";
 import ImageWrapper from "../storyblokComponents/imageWrapper";
 
 function MessageFromCEO({ blok }) {
   return (
-    <section>
+    <section {...storyblokEditable(blok)}>
       {blok?.title?.[0] && <StoryblokComponent blok={blok?.title?.[0]} />}
       <div className="flex">
         <div>
