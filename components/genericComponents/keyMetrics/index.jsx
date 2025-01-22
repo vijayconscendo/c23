@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./keyMetrics.module.scss";
 
 // Images & Icons
@@ -56,10 +56,35 @@ export default KeyMetrics;
 
 const Counter = ({ start, end }) => {
   const [count, setCount] = useState(start);
+  const [isVisible, setIsVisible] = useState(false);
+  const counterRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.7 } // Trigger when 20% of the element is visible
+    );
+
+    if (counterRef.current) {
+      observer.observe(counterRef.current);
+    }
+
+    return () => {
+      if (counterRef.current) {
+        observer.unobserve(counterRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     let interval;
-    if (count < end) {
+    if (isVisible && count < end) {
       interval = setInterval(() => {
         setCount((prevCount) => {
           if (prevCount < end) {
@@ -75,7 +100,11 @@ const Counter = ({ start, end }) => {
       }, 40);
     }
     return () => clearInterval(interval);
-  }, [count, end]);
+  }, [isVisible, count, end]);
 
-  return <h3 className="text-white">{count}</h3>;
+  return (
+    <h3 className="text-white" ref={counterRef}>
+      {count}
+    </h3>
+  );
 };

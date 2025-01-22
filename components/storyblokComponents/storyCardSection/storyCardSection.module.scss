@@ -21,6 +21,10 @@
       width: 148px;
     }
   }
+  .sectionHeader{
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    flex-wrap: wrap; row-gap: 30px;
+  }
   .storyGrid {
     position: relative;
     column-gap: 62px;
@@ -31,5 +35,10 @@
     @include custom-breakpoint(1536px) {
       column-gap: 42px;
     }
+  }
+  .viewAllBtn{
+    font-size: 24px; font-weight: 600; line-height: normal; padding: 8px 16px;
+    align-items: center; justify-content: center; min-width: 242px;
+    @include custom-breakpoint(1680px){font-size: 20px;min-width: 160px;}
   }
 }

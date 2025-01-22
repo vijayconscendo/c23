@@ -51,7 +51,7 @@ const StoryCard = ({ blok }) => {
                 <div
                   className={`text-gray-600 font-medium italic ${styles.dateText}`}
                 >
-                  {blok?.date || "01 Jan 2025"}
+                  {blok?.date}
                 </div>
               )}
               {blok?.showChip && (
@@ -63,7 +63,9 @@ const StoryCard = ({ blok }) => {
               <h2
                 className={`${
                   blok?.customStyles?.[0] || classNames.topic
-                } font-bold ${styles.cardTitle}`}
+                } font-bold ${styles.cardTitle} ${
+                  blok?.showChip ? "" : "mt-2"
+                }`}
               >
                 <Link
                   href={blok?.redirectLink?.cached_url || "/"}
