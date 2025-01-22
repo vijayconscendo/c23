@@ -6,10 +6,11 @@ import { CircleUserRound } from "lucide-react";
 import { Calendar } from "lucide-react";
 import ImageWrapper from "../storyblokComponents/imageWrapper";
 import { render } from "storyblok-rich-text-react-renderer";
+import { storyblokEditable } from "@storyblok/react";
 
 const BlogDetailComponent = ({ blok }) => {
   return (
-    <div className={styles.blogDetailsPage}>
+    <div className={styles.blogDetailsPage} {...storyblokEditable(blok)}>
       <div className={styles.blogDetailComponent}>
         <div className={styles.breadcrumbs}>
           <ul>

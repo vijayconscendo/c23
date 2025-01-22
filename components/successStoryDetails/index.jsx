@@ -3,10 +3,11 @@ import styles from "../blogDetailComponent/blogDetail.module.scss";
 import Image from "next/image";
 import blogBannerImg from "@/public/Images/banners/home-banner.png";
 import ImageWrapper from "../storyblokComponents/imageWrapper";
+import { storyblokEditable } from "@storyblok/react";
 
 const SuccessStoryDetails = ({ blok }) => {
   return (
-    <div className={styles.blogDetailsPage}>
+    <div className={styles.blogDetailsPage} {...storyblokEditable(blok)}>
       <div
         className={`md:max-w-[1280px] md:mx-auto px-4 ${styles.blogDetailComponent}`}
       >

@@ -21,6 +21,7 @@ import { useRouter } from "next/router";
 
 const JobListCards = ({ blok }) => {
   const [selectedValue, setSelectedValue] = useState("");
+  const [jobCards, setJobCards] = useState(blok?.jobListings || []);
 
   const router = useRouter();
 
@@ -49,6 +50,16 @@ const JobListCards = ({ blok }) => {
     router.push("/");
   };
 
+  const handleSearch = (event) => {
+    const value = event.target.value;
+    const modifiedList = blok?.jobListings?.filter(
+      (card) =>
+        card?.jobTitle.toLowerCase().includes(value) ||
+        card?.location.toLowerCase().includes(value)
+    );
+    setJobCards(modifiedList);
+  };
+
   return (
     <section
       className={styles.jobListCards}
@@ -64,17 +75,18 @@ const JobListCards = ({ blok }) => {
           <input
             type="text"
             placeholder="Search for role or location based"
-            className="w-full text-base"
+            className="w-full text-sm"
+            onChange={handleSearch}
           />
         </div>
-        <button className="bg-primary text-white px-8">Search</button>
+        {/* <button className="bg-primary text-white px-8">Search</button> */}
       </div>
       {/* ----- End SearchBox ----- */}
 
       {/* ----- Filters ----- */}
-      <div className={styles.filtersSection}>
+      {/* <div className={styles.filtersSection}>
         <div className={styles.techChipList}>
-          {blok?.jobListings?.map((item, index) => (
+          {jobCards?.map((item, index) => (
             <div className={styles.techChip} key={index}>
               {item?.jobTitle}
             </div>
@@ -102,28 +114,32 @@ const JobListCards = ({ blok }) => {
             </SelectContent>
           </Select>
         </div>
-      </div>
+      </div> */}
       {/* ----- End Filters ----- */}
 
       {/* ----- Job List ----- */}
       <div
         className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ${styles.jobCardGrid}`}
       >
-        {blok?.jobListings?.map((card, index) => (
+        {jobCards?.map((card, index) => (
           <div className={styles.jobCard} key={index}>
             <div className={styles.jobContent}>
               <h2 className="text-black">{card?.jobTitle}</h2>
 
               <Technologies technologiesList={technologiesList} />
               <div className={styles.jobLocAddType}>
-                <div>
-                  <Image src={mapPin} alt="location" />
-                  <span>{card?.location || "Johannesburg, S.A"}</span>
-                </div>
-                <div>
-                  <Image src={expIcon} alt="job type" />
-                  <span>{card?.jobType || "Remote-Full time"} </span>
-                </div>
+                {card?.location && (
+                  <div>
+                    <Image src={mapPin} alt="location" />
+                    <span>{card?.location}</span>
+                  </div>
+                )}
+                {card?.jobType && (
+                  <div>
+                    <Image src={expIcon} alt="job type" />
+                    <span>{card?.jobType} </span>
+                  </div>
+                )}
               </div>
               {card?.expInYears?.map((level, index) => (
                 <p className={styles.explevel} key={index}>
