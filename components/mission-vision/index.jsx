@@ -5,7 +5,11 @@ import styles from "./mission-vision.module.scss";
 
 function MissionAndVision({ blok }) {
   return (
-    <section className={styles.missionAndVision} {...storyblokEditable(blok)}>
+    <section
+      className={styles.missionAndVision}
+      {...storyblokEditable(blok)}
+      id={blok?.id}
+    >
       {blok?.title?.[0] && <StoryblokComponent blok={blok.title[0]} />}
       <div
         className={`${styles.gridblock} flex flex-col md:flex-row md:gap-x-4 gap-y-10 w-full justify-between`}

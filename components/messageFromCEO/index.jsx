@@ -6,7 +6,11 @@ import styles from "./messafeFromCEO.module.scss";
 
 function MessageFromCEO({ blok }) {
   return (
-    <section className={styles.messageFromCeo} {...storyblokEditable(blok)}>
+    <section
+      className={styles.messageFromCeo}
+      {...storyblokEditable(blok)}
+      id={blok?.id}
+    >
       {blok?.title?.[0] && <StoryblokComponent blok={blok?.title?.[0]} />}
       <div
         className={`w-full flex flex-col md:flex-row gap-y-10 gap-x-10 lg:gap-x-[92px] md:gap-x-[82px] ${styles.gridblock}`}
