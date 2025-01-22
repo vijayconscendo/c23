@@ -124,7 +124,7 @@ export default function Header({ onSubmenuOpen, onSubmenuClose, blok }) {
               <Image src={searchIcon} alt="search Icon" />
             </button> */}
             <Link
-              href="/contact"
+              href="/contact-us"
               className={`text-textsecondary hover:text-white hover:bg-primary px-4 py-2 rounded-md transition duration-300 ${styles.contactLink}`}
             >
               Contact us
@@ -215,7 +215,7 @@ export default function Header({ onSubmenuOpen, onSubmenuClose, blok }) {
               );
             })}
             <Link
-              href="/contact"
+              href="/contact-us"
               className="block w-full rounded-md bg-red-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-red-700"
             >
               Contact us
