@@ -12,7 +12,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 
 // Optional modules
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import {Autoplay } from "swiper/modules";
 
 const CompanyHistory = ({ blok }) => {
   const animateVarients = {
@@ -31,20 +31,32 @@ const CompanyHistory = ({ blok }) => {
     >
       {blok?.title?.[0] && <StoryblokComponent blok={blok.title[0]} />}
 
-      <div>
+      <div className={styles.historySwiper}>
         <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
+          modules={[Autoplay]}
           spaceBetween={50}
-          slidesPerView={5}
-          navigation
-          pagination={{ clickable: true }}
+          slidesPerView={1}
           autoplay={{ delay: 3000 }}
+          breakpoints={{
+            640: {
+              slidesPerView: 1, // Show 1 slide on mobile screens (width < 640px)
+            },
+            768: {
+              slidesPerView:3 , // Show 2 slides on tablets (width >= 640px and < 1024px)
+            },
+            1024: {
+              slidesPerView: 4, // Show 5 slides on web (width >= 1024px)
+            },
+            1280: {
+              slidesPerView: 5, // Show 5 slides on web (width >= 1024px)
+            },
+          }}
         >
           {blok?.yearWiseHistory?.length > 0 &&
             blok.yearWiseHistory.map((year, index) => (
-              <SwiperSlide>
+              <SwiperSlide key={year?._uid}>
                 {index % 2 === 0 ? (
-                  <div className={styles.historyCard} key={year?._uid}>
+                  <div className={styles.historyCard}>
                     <div className={styles.content}>
                       <motion.h3
                         className="text-primary"
@@ -79,7 +91,7 @@ const CompanyHistory = ({ blok }) => {
                     />
                   </div>
                 ) : (
-                  <div className={styles.historyCard} key={year?._uid}>
+                  <div className={styles.historyCard}>
                     <ImageWrapper
                       blok={year?.blocks?.[0]}
                       altText={year?.title}
