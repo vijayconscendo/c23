@@ -44,6 +44,12 @@ body {
 
 // Page Styles Start
 
+.team-expertise{
+    .slick-slider .slick-track{
+      display: flex; align-items: center;
+    }
+}
+
 // React Slick Customization
 
 .life-at-carousel-one{

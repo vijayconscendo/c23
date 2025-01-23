@@ -67,8 +67,8 @@ const TeamExpertise = ({ blok }) => {
                     <ImageWrapper
                       blok={item?.blocks?.[0] || item}
                       altText={item?.title}
-                      width={150}
-                      height={100}
+                      width={256}
+                      height={85}
                       {...storyblokEditable(item?.blocks?.[0] || item)}
                     />
                     <span>{item?.title}</span>
