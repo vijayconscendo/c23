@@ -75,7 +75,7 @@ function AvatarCarousel({ blok }) {
               dots={false}
               arrows={false}
               centerMode={false}
-              infinite={blok?.data?.length > 8}
+              infinite={false}
               variableWidth={true}
               autoplay={true}
               loop={true}
