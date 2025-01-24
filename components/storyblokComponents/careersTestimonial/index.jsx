@@ -10,12 +10,12 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 // Manually import Swiper styles
 import "swiper/swiper-bundle.css";
+import { StoryblokComponent } from "@storyblok/react";
 
 function CareersTestimonial({ blok }) {
   return (
     <section className={styles.careersTestimonial}>
-      {blok.title1 && <h2>{blok.title1}</h2>}
-      {blok.title2 && <h2>{blok.title2}</h2>}
+      {blok?.title?.[0] && <StoryblokComponent blok={blok.title[0]} />}
 
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
