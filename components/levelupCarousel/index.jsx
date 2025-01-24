@@ -43,15 +43,9 @@ const LevelupCarousel = ({ blok }) => {
         <div className={styles.sectionHeader}>
           {blok?.title?.[0] && <SectionTitle blok={blok?.title?.[0]} />}
 
-          <div
-            className={`grid grid-cols-12 md:gap-x-12 ${styles.longContent}`}
-          >
-            <div className="col-span-12 md:col-span-5 md:text-center">
-              <h3>{blok?.contentTitle} </h3>
-            </div>
-            <div className="col-span-12 md:col-span-7">
-              <p>{blok?.contentDesc}</p>
-            </div>
+          <div className={`${styles.longContent}`}>
+            <h3>{blok?.contentTitle} </h3>
+            <p>{blok?.contentDesc}</p>
           </div>
         </div>
 
