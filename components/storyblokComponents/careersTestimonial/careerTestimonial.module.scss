@@ -20,7 +20,7 @@
             @include custom-breakpoint(1680px){width: 70px;}
             @include custom-breakpoint(1536px){width: 60px;}
         }
-        p{
+        .desc{
             font-size: 24px;
             font-weight: 500;
             line-height: 36px;
@@ -28,6 +28,13 @@
             padding: 16px;
             @include custom-breakpoint(1680px){font-size: 18px;line-height: 28px;padding: 16px 0;}
             @include custom-breakpoint(1556px){font-size: 16px;line-height: 26px;}
+            &.lineClamp{
+                p{
+                
+                    display: -webkit-box; /* Enable line clamping */-webkit-line-clamp: 5; /* Number of lines to clamp */-webkit-box-orient: vertical; /* Vertical text flow */overflow: hidden; /* Hide overflow */text-overflow: ellipsis; /* Add ellipsis */
+               }
+            }
+            
         }
     }
 
