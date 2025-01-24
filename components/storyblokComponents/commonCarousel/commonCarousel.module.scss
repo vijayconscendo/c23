@@ -1,12 +1,12 @@
 @import "@/styles/mixins";
 
 .newsContainer {
-  padding: 45px 70px;
+  padding: 70px 70px;
   @include custom-breakpoint(1680px) {
-    padding: 45px 50px;
+    padding: 70px 50px;
   }
   @include breakpoint(tablet-portrait) {
-    padding: 45px 20px;
+    padding: 70px 20px;
   }
 }
 
