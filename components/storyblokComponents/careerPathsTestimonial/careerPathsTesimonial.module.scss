@@ -38,7 +38,7 @@
 }
 
 .quoteIcon{
-  width: 90px;
+  width: 80px;
   @include custom-breakpoint(1680px) {width: 70px;}
   @include custom-breakpoint(1536px) {width: 50px;}
   @include custom-breakpoint(991px) {width: 30px;}

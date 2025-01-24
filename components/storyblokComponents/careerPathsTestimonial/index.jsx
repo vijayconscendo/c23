@@ -62,17 +62,17 @@ function CareerPathsTestimonial({ blok }) {
                   />
                   <div>
                     {testimonial?.heading && (
-                      <h4 className="text-xl lg:text-2xl xl:text-[32px] leading-normal text-primary mb-4 font-semibold">
+                      <h4 className="text-xl md:text-3xl leading-relaxed text-primary mb-4 font-semibold">
                         {testimonial?.heading}
                       </h4>
                     )}
                     {testimonial?.content && (
-                      <p className="text-base lg:text-xl xl:text-2xl leading-relaxed text-black">
+                      <p className="text-lg md:text-xl font-medium leading-relaxed text-black">
                         {render(testimonial.content)}
                       </p>
                     )}
                     {testimonial?.author && (
-                      <p className="text-2xl lg:text-3xl xl:text-4xl text-primary font-semibold text-end mt-3 leading-normal">
+                      <p className="text-2xl md:text-3xl text-primary font-semibold text-end mt-3 leading-normal">
                         {testimonial.author}
                       </p>
                     )}
