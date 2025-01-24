@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import styles from "./commonCarousel.module.scss";
 import { useRef } from "react";
 import ImageTextBlock from "@/components/genericComponents/imageTextBlock";
+import AwardSection from "@/components/awardsAndRecognition";
 
 function CommonCarousel({ blok }) {
   const sliderRef = useRef(null); // Reference to the slider
@@ -81,11 +82,15 @@ function CommonCarousel({ blok }) {
                     <div
                       className={`relative rounded-[6px] h-full flex flex-col`}
                     >
-                      <ImageTextBlock
-                        isCarousel={true}
-                        blok={item}
-                        customClass={subTitleClass}
-                      />
+                      {item?.component !== "awardSection" ? (
+                        <ImageTextBlock
+                          isCarousel={true}
+                          blok={item}
+                          customClass={subTitleClass}
+                        />
+                      ) : (
+                        <AwardSection blok={item} />
+                      )}
                     </div>
                   </div>
                 </div>
