@@ -22,7 +22,7 @@ const SmartSolutions = ({ blok }) => {
   };
 
   return (
-    <section className={styles.smartSolutions} {...storyblokEditable(blok)}>
+    <section className={styles.smartSolutions} {...storyblokEditable(blok)} id={blok?.id}>
       {blok?.title?.[0] && <StoryblokComponent blok={blok.title[0]} />}
       <Image
         width={204}
