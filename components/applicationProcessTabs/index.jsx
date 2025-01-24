@@ -7,6 +7,7 @@ import rectangleVertical from "@/public/Images/patterns/rectangle-vertical.png";
 import Image from "next/image";
 import Button from "../ui/Button/button";
 import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
+import { useRouter } from "next/router";
 
 const tabVariants = {
   active: {
@@ -39,8 +40,8 @@ const ApplicationProcessTabs = ({ blok }) => {
   });
   const tabRefs = useRef([]);
   const containerRef = useRef(null);
+  const { push } = useRouter();
 
-  
   useEffect(() => {
     // Check screen size and set mobile state
     const checkMobileView = () => {
@@ -191,7 +192,11 @@ const ApplicationProcessTabs = ({ blok }) => {
                       {tab.step}
                     </h3>
                     <p className="text-black">{tab.content}</p>
-                    <Button variant="outline" className={styles.sectionBtn}>
+                    <Button
+                      variant="outline"
+                      className={styles.sectionBtn}
+                      onClick={() => push("/careers")}
+                    >
                       Apply Now
                     </Button>
                   </div>
