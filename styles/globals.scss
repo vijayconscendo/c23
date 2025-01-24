@@ -64,6 +64,51 @@ body {
   }
 }
 
+.career-testimonial-swiper{
+  position: relative;
+  .career-swiper-slide{
+    padding: 90px 0;
+    .swiper-card{
+      padding: 20px;
+      box-shadow: 0px 4px 19.5px 5px #00000026;
+    }
+  }
+  .swiper-slide-active{
+    margin-top: -65px;
+  }
+}
+
+  /* Custom Pagination Styles */
+  .custompagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 42px;
+    overflow: hidden;
+    height: 30px;
+    position: absolute;
+    bottom: 85px !important;
+    z-index: 99;
+  }
+
+  .custom-bullet {
+    width: 26px;
+    height: 26px;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .custom-bullet:hover {
+    background-color: #FFC7C2;
+  }
+
+  .custom-bullet-active {
+    background-color: #FFC7C2;
+    border: 2px solid #FFC7C2;
+  }
+
 
 /* Slick carousel custom styles for client testimonials */
 .client-tesimonials{

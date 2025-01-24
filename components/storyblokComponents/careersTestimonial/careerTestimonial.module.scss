@@ -1,0 +1,67 @@
+@import "@/styles/mixins";
+
+.careersTestimonial{
+    padding: 70px 0;
+    .sectionHeader{
+        padding: 0 70px;
+        @include custom-breakpoint(1680px){padding: 0 50px;}
+        @include breakpoint(tablet-portrait){padding: 0 20px;}
+    }
+}
+.swiperCard{
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 19.5px 5px #00000026;
+    .swiperCardHeader{
+        padding: 50px 50px 0;
+        @include custom-breakpoint(1680px){padding: 40px 40px 0;}
+        @include custom-breakpoint(1536px){padding: 30px 30px 0;}
+        .quoteIcon{
+            width: 80px;
+            @include custom-breakpoint(1680px){width: 70px;}
+            @include custom-breakpoint(1536px){width: 60px;}
+        }
+        p{
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 36px;
+            text-align: left;
+            padding: 16px;
+            @include custom-breakpoint(1680px){font-size: 18px;line-height: 28px;padding: 16px 0;}
+            @include custom-breakpoint(1556px){font-size: 16px;line-height: 26px;}
+        }
+    }
+
+}
+.cardFooter{
+    display: flex; align-items: center; column-gap: 18px;
+    padding: 28px 38px;
+    background: linear-gradient(0deg, rgba(219, 45, 56, 0.05), rgba(219, 45, 56, 0.05));
+    @include custom-breakpoint(1680px){padding: 28px;column-gap: 16px;}
+    @include custom-breakpoint(1556px){padding: 22px;}
+    .avatarIcon{
+        width: 138px; height: 138px; overflow: hidden; border-radius: 50%;
+        @include custom-breakpoint(1680px){width: 120px;height: 120px;}
+        @include custom-breakpoint(1556px){width: 80px;height: 80px;}
+    }
+    h5{
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 42.85px;
+        text-align: left;
+        @include custom-breakpoint(1680px){font-size: 24px;line-height: 34px;}
+        @include custom-breakpoint(1556px){font-size: 18px;line-height: 28px;}
+    }
+    span{
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 26.78px;
+        text-align: left;
+        color:#DB2D38;
+        @include custom-breakpoint(1680px){font-size: 16px;line-height: 26px;}
+        @include custom-breakpoint(1556px){font-size: 14px;line-height: 24px;}
+    }
+}
+
+.careersTestimonial{
+    position: relative;
+}

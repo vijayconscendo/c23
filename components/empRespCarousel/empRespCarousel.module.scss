@@ -67,8 +67,8 @@
         background-color: transparent;
     }
     h3{
-        font-size: 32px; font-weight: 600; line-height: 39.01px; text-align: left; color: #000000;
-        max-width: 218px; margin: auto; background-color: #FFFFFF; padding: 40px 22px 22px;
+        font-size: 28px; font-weight: 600; line-height: 39.01px; text-align: left; color: #000000;
+        max-width: 218px; margin: auto; background-color: #FFFFFF; padding: 22px 22px;
         @include custom-breakpoint(1680px){font-size: 28px;line-height: 35px;}
         @include custom-breakpoint(1536px){font-size: 24px;line-height: 29px;}
         @include breakpoint(mac){font-size: 20px;line-height: 25px;}
