@@ -193,7 +193,7 @@ const ImageTextBlock = ({ blok, isCarousel = false, customClass = {} }) => {
           </div>
 
           {/* Decorative dots */}
-          {blok?.dotsPosition?.length && (
+          {blok?.dotsPosition?.length > 0 && (
             <div
               className={`absolute z-0 ${blok.dotsPosition} ${styles.dotsPattern}`}
             >
