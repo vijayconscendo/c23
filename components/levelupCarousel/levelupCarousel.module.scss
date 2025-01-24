@@ -13,8 +13,8 @@
     @include breakpoint(mac){padding: 50px 0;}
     @include breakpoint(desktop-small){padding: 40px 0;}
     h3{
-        font-size: 48px; line-height: 79px; color: var(--color-primary); font-weight: 600;
-        width: 100%; word-wrap: break-word;
+        font-size: 40px; line-height: 50px; color: var(--color-primary); font-weight: 600;
+        width: 100%; word-wrap: break-word;margin-bottom: 14px;
         @include custom-breakpoint(1680px){font-size: 40px; line-height: 52px;}
         @include custom-breakpoint(1536px){font-size: 36px; line-height: 48px;}
         @include breakpoint(mac){font-size: 32px; line-height: 42px;}

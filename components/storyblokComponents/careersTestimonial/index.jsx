@@ -12,11 +12,22 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import { StoryblokComponent } from "@storyblok/react";
 import { useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function CareersTestimonial({ blok }) {
   return (
     <section className={styles.careersTestimonial}>
-      {blok?.title?.[0] && <StoryblokComponent blok={blok.title[0]} />}
+      <div className={styles.sectionHeader}>
+        {blok?.title?.[0] && <StoryblokComponent blok={blok.title[0]} />}
+        <div className={`hidden lg:flex ${styles.arrows}`}>
+          <button className="custom-prev bg-white p-2 border-2 border-primary text-primary shadow-lg hover:bg-primary hover:text-white transition-all">
+            <ChevronLeft className="w-14 h-14 font-bold" />
+          </button>
+          <button className="custom-next bg-white p-2  border-2 border-primary text-primary shadow-lg hover:bg-primary hover:text-white transition-all">
+            <ChevronRight className="w-14 h-14 font-bold" />
+          </button>
+        </div>
+      </div>
 
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
@@ -30,8 +41,8 @@ function CareersTestimonial({ blok }) {
           bulletActiveClass: "custom-bullet-active",
         }}
         navigation={{
-          nextEl: ".customnext", // Custom class for next button
-          prevEl: ".customprev", // Custom class for previous button
+          nextEl: ".custom-next", // Custom class for next button
+          prevEl: ".custom-prev", // Custom class for previous button
         }}
         speed={1000}
         easing="ease-in-out"
@@ -97,6 +108,14 @@ function CareersTestimonial({ blok }) {
           style={{ textAlign: "center", marginTop: "20px" }}
         ></div>
       </Swiper>
+      <div className={`justify-center flex lg:hidden ${styles.arrows}`}>
+        <button className="custom-prev bg-white p-2 border-2 border-primary text-primary shadow-lg hover:bg-primary hover:text-white transition-all">
+          <ChevronLeft className="w-14 h-14 font-bold" />
+        </button>
+        <button className="custom-next bg-white p-2  border-2 border-primary text-primary shadow-lg hover:bg-primary hover:text-white transition-all">
+          <ChevronRight className="w-14 h-14 font-bold" />
+        </button>
+      </div>
       {/* Custom Pagination Container */}
     </section>
   );
@@ -122,7 +141,9 @@ const Content = ({ desc }) => {
   }, [desc]);
   return (
     <div
-      className={`${styles.desc} ${viewMore || !isClamped ? "" : styles.lineClamp}`}
+      className={`${styles.desc} ${
+        viewMore || !isClamped ? "" : styles.lineClamp
+      }`}
       ref={textRef}
     >
       {desc && render(desc)}

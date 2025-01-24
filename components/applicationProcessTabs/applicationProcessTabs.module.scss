@@ -12,6 +12,7 @@
         left: 0;
         bottom: 0;
         z-index: -1;
+        @include custom-breakpoint(991px){display: none;}
     }
 }
 
@@ -33,8 +34,8 @@
             font-size: 36px; line-height: normal; font-weight: 500;
             margin-bottom: 40px; width: max-content;
             display: flex; align-items: center; padding: 12px 50px 12px 70px;
-            @include custom-breakpoint(1680px){font-size: 30px;padding: 12px 20px 12px 50px;margin-bottom: 30px;}
-            @include custom-breakpoint(1536px){font-size: 24px;margin-bottom: 20px;}
+            @include custom-breakpoint(1680px){font-size: 26px;padding: 12px 20px 12px 50px;margin-bottom: 30px;}
+            @include custom-breakpoint(1536px){font-size: 22px;margin-bottom: 20px;}
             @include breakpoint(mac){font-size: 20px;}
         }
     }
