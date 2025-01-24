@@ -10,12 +10,13 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 // Manually import Swiper styles
 import "swiper/swiper-bundle.css";
+import { StoryblokComponent } from "@storyblok/react";
+import { useEffect, useRef, useState } from "react";
 
 function CareersTestimonial({ blok }) {
   return (
     <section className={styles.careersTestimonial}>
-      {blok.title1 && <h2>{blok.title1}</h2>}
-      {blok.title2 && <h2>{blok.title2}</h2>}
+      {blok?.title?.[0] && <StoryblokComponent blok={blok.title[0]} />}
 
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
@@ -70,7 +71,9 @@ function CareersTestimonial({ blok }) {
                       alt="quote"
                     />
                     {testimonial?.heading && <h4>{testimonial?.heading}</h4>}
-                    <p>{testimonial?.content && render(testimonial.content)}</p>
+                    {testimonial?.content && (
+                      <Content desc={testimonial.content} />
+                    )}
                   </div>
                   <div className={styles.cardFooter}>
                     <div className={styles.avatarIcon}>
@@ -99,3 +102,38 @@ function CareersTestimonial({ blok }) {
   );
 }
 export default CareersTestimonial;
+
+const Content = ({ desc }) => {
+  const [isClamped, setIsClamped] = useState(false);
+  const [viewMore, setViewMore] = useState(false);
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    // Check if the content exceeds 5 lines
+    if (textRef.current) {
+      const lineHeight = parseInt(
+        window.getComputedStyle(textRef.current).lineHeight
+      );
+      const maxHeight = lineHeight * 5; // Height for 5 lines
+      if (textRef.current.scrollHeight > maxHeight) {
+        setIsClamped(true);
+      }
+    }
+  }, [desc]);
+  return (
+    <div
+      className={`${styles.desc} ${viewMore || !isClamped ? "" : styles.lineClamp}`}
+      ref={textRef}
+    >
+      {desc && render(desc)}
+      {isClamped && (
+        <span
+          className="text-black italic font-montserrat font-medium underline underline-offset-4 md:text-base text-sm inline hover:text-primary cursor-pointer"
+          onClick={() => setViewMore(!viewMore)}
+        >
+          {viewMore ? "read less" : "read more"}
+        </span>
+      )}
+    </div>
+  );
+};
