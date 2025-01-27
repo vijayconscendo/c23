@@ -59,7 +59,11 @@ const TeamExpertise = ({ blok }) => {
       {/* ----- Expertise Slider ----- */}
       <div className={styles.carouselContainer}>
         {blok?.data?.length > 0 && (
-          <div className="team-expertise -mx-5">
+          <div
+            className={`${
+              blok?.hasCarouselContent ? "" : "team-expertise"
+            } -mx-5`}
+          >
             <Slider {...settings} className={styles.expertiseSlider}>
               {blok.data.map((item, index) => (
                 <div key={index} className="h-full px-5">
