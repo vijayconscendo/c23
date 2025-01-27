@@ -72,7 +72,6 @@ const components = {
   highlights: HighlightsComponent,
   footer: Footer,
   locationsBlock: Locations,
-  storyDetails: SuccessStoryDetails,
   blogDetails: BlogDetailComponent,
   messageFromCEO: MessageFromCEO,
   missionAndVision: MissionAndVision,

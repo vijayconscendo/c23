@@ -47,7 +47,7 @@ const LocationCard = ({ blok }) => {
       >
         <Image
           alt={city}
-          className={`w-full h-full object-cover transition-transform duration-300 ${styles.image}`}
+          className={`w-full h-full object-cover transition-transform duration-300 brightness-90 ${styles.image}`}
           src={image}
           width={396}
           height={252}

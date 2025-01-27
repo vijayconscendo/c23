@@ -42,12 +42,14 @@ const BlogDetailComponent = ({ blok }) => {
                   <span>{blok?.username}</span>
                 </div>
               </div>
-              <div className="py-2">
-                <div className="flex items-center gap-2">
-                  <Calendar />
-                  <span>{blok?.date}</span>
+              {blok?.date && (
+                <div className="py-2">
+                  <div className="flex items-center gap-2">
+                    <Calendar />
+                    <span>{blok?.date}</span>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
             {blok?.image?.[0] && (
               <div className={styles.blogImage}>
@@ -60,49 +62,7 @@ const BlogDetailComponent = ({ blok }) => {
               </div>
             )}
 
-            <div className={styles.content}>
-              {blok?.content?.map((item, index) => {
-                if (item?.component === "textAndBlock") {
-                  return (
-                    <>
-                      <h2>{item?.title}</h2>
-                      <p>{item?.description}</p>
-                    </>
-                  );
-                } else if (item?.component === "blogContentListSection") {
-                  return (
-                    <>
-                      <h2>{item?.title}</h2>
-                      {item?.content?.map((listItem) => (
-                        <>
-                          <h3>{listItem?.title}</h3>
-                          <ul>
-                            {listItem?.points?.map((point, index) => (
-                              <li key={index}>
-                                <p>
-                                  <span>{point.key} </span> {point.value}
-                                </p>
-                              </li>
-                            ))}
-                          </ul>
-                        </>
-                      ))}
-                    </>
-                  );
-                } else if (item?.component === "skills") {
-                  return <p key={index}>{item?.skills}</p>;
-                } else if (item?.component === "richTextWithTitle") {
-                  return (
-                    <>
-                      <h2>{item?.title}</h2>
-                      <p>{render(item?.text)}</p>
-                    </>
-                  );
-                }
-              })}
-              {/* <h2> {render(blok?.content?.[0]?.title)}</h2>
-              {render(blok?.content?.[0]?.text)} */}
-            </div>
+            <div className={styles.content}>{render(blok?.data)}</div>
           </div>
         </div>
       </div>
