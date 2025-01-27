@@ -1,0 +1,47 @@
+@import "@/styles/mixins";
+
+.contactForm{
+    padding: 70px;
+    @include custom-breakpoint(1680px){padding: 70px 50px;}
+    @include breakpoint(tablet-portrait){padding: 70px 20px;}
+    .select, .input{
+        height: 60px;
+    }
+    .select, .input, .textarea{
+        font-size: 18px;
+        font-weight: 500;
+        line-height:normal;
+        color: #000000;
+        width: 100%;
+        border: 1px solid #000000;
+        border-radius: 4px;
+        padding: 12px;
+        ::placeholder{
+            color: #0000004D;
+        }
+        @include custom-breakpoint(1680px){font-size: 16px;}
+        @include breakpoint(tablet-portrait){font-size: 14px;}
+    }
+    .checkInfo{
+        font-size: 20px;
+        line-height: normal;
+        color: #000000;
+        display: flex;
+        align-items: flex-start;
+        column-gap: 16px;
+        @include custom-breakpoint(1680px){font-size: 15px;}
+        @include breakpoint(tablet-portrait){font-size: 14px;}
+        input{
+            border: 1px solid #000000;
+        }
+    }
+    .submitBtn{
+        padding: 16px;
+        height: 64px;
+        width: 269px;
+        font-size: 24px;
+        line-height: normal;
+        @include custom-breakpoint(1680px){font-size: 20px;}
+        @include custom-breakpoint(1200px){font-size: 18px;}
+    }
+}

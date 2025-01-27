@@ -39,6 +39,7 @@ import MessageFromCEO from "@/components/messageFromCEO";
 import MissionAndVision from "@/components/mission-vision";
 import CareerPathsTestimonial from "@/components/storyblokComponents/careerPathsTestimonial";
 import CareersTestimonial from "@/components/storyblokComponents/careersTestimonial";
+import ContactForm from "@/components/storyblokComponents/contactForm";
 
 const components = {
   storyCard: StoryCard,
@@ -77,6 +78,7 @@ const components = {
   missionAndVision: MissionAndVision,
   careerPathsTestimonial: CareerPathsTestimonial,
   careersTestimonial: CareersTestimonial,
+  contactForm: ContactForm,
 };
 
 storyblokInit({
