@@ -33,7 +33,6 @@ import Layout from "@/components/Layout";
 import Locations from "@/components/locations";
 import SplashScreen from "@/components/splashScreen";
 import { useEffect, useState } from "react";
-import SuccessStoryDetails from "@/components/successStoryDetails";
 import BlogDetailComponent from "@/components/blogDetailComponent";
 import MessageFromCEO from "@/components/messageFromCEO";
 import MissionAndVision from "@/components/mission-vision";
