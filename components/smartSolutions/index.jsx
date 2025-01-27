@@ -22,7 +22,11 @@ const SmartSolutions = ({ blok }) => {
   };
 
   return (
-    <section className={styles.smartSolutions} {...storyblokEditable(blok)} id={blok?.id}>
+    <section
+      className={styles.smartSolutions}
+      {...storyblokEditable(blok)}
+      id={blok?.id}
+    >
       {blok?.title?.[0] && <StoryblokComponent blok={blok.title[0]} />}
       <Image
         width={204}
@@ -67,9 +71,11 @@ const SmartSolutions = ({ blok }) => {
                       </span>{" "}
                       {solution?.suffixDesc}
                     </p>
-                    <button type="button" className="bg-primary p-2">
-                      <Image src={arrowRight} alt="digital" />
-                    </button>
+                    {(solution?.link?.cached_url || solution?.link?.url) && (
+                      <button type="button" className="bg-primary p-2">
+                        <Image src={arrowRight} alt="digital" />
+                      </button>
+                    )}
                   </div>
                 </div>
               );
@@ -85,9 +91,11 @@ const SmartSolutions = ({ blok }) => {
                     </span>{" "}
                     {solution?.suffixDesc}
                   </p>
-                  <button type="button" className="bg-primary p-2">
-                    <Image src={arrowRight} alt="digital" />
-                  </button>
+                  {(solution?.link?.cached_url || solution?.link?.url) && (
+                    <button type="button" className="bg-primary p-2">
+                      <Image src={arrowRight} alt="digital" />
+                    </button>
+                  )}
                 </div>
                 <motion.div
                   className={`relative ${styles.solutionCardImage}`}

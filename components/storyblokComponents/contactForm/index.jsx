@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./contactform.module.scss";
 import Link from "next/link";
 import Button from "@/components/ui/Button/button";
-import { StoryblokComponent } from "@storyblok/react";
+import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
 
 const ContactForm = ({ blok }) => {
   const [formData, setFormData] = useState({
@@ -32,8 +32,12 @@ const ContactForm = ({ blok }) => {
   };
 
   return (
-    <section id={blok.id} className={styles.contactForm}>
-      <div className="w-full max-w-6xl">
+    <section
+      id={blok?.id}
+      className={`hidden ${styles.contactForm}`}
+      {...storyblokEditable(blok)}
+    >
+      <div className="w-full max-w-6xl ">
         {blok?.title?.[0] && <StoryblokComponent blok={blok.title[0]} />}
         <form onSubmit={handleSubmit} className="space-y-11 mt-10">
           <div className="w-full">

@@ -10,13 +10,13 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
 // Manually import Swiper styles
 import "swiper/swiper-bundle.css";
-import { StoryblokComponent } from "@storyblok/react";
+import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function CareersTestimonial({ blok }) {
   return (
-    <section className={styles.careersTestimonial}>
+    <section className={styles.careersTestimonial} {...storyblokEditable(blok)}>
       <div className={styles.sectionHeader}>
         {blok?.title?.[0] && <StoryblokComponent blok={blok.title[0]} />}
         <div className={`hidden lg:flex ${styles.arrows}`}>
