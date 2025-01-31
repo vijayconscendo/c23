@@ -1,50 +1,34 @@
-import React, { useState } from "react";
 import styles from "./contactform.module.scss";
 import Link from "next/link";
 import Button from "@/components/ui/Button/button";
-import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
+import { StoryblokComponent } from "@storyblok/react";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const ContactForm = ({ blok }) => {
-  const [formData, setFormData] = useState({
-    inquiryType: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    mobile: "",
-    organization: "",
-    role: "",
-    country: "",
-    message: "",
-    consent: false,
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+  const onSubmit = async (data) => {
+    console.log("Form submitted:", data);
+    const response = await axios.post("url", { data });
+    if (response?.status) {
+      console.log("Form submitted successfully");
+    }
   };
 
   return (
-    <section
-      id={blok?.id}
-      className={`hidden ${styles.contactForm}`}
-      {...storyblokEditable(blok)}
-    >
+    <section id={blok?.id} className={` ${styles.contactForm}`}>
       <div className="w-full max-w-6xl ">
         {blok?.title?.[0] && <StoryblokComponent blok={blok.title[0]} />}
-        <form onSubmit={handleSubmit} className="space-y-11 mt-10">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-11 mt-10">
           <div className="w-full">
             <select
               name="inquiryType"
-              value={formData.inquiryType}
-              onChange={handleChange}
+              {...register("inquiryType", { required: "Field is required" })}
               className={styles.select}
               placeholder="Inquiry Type"
             >
@@ -53,77 +37,110 @@ const ContactForm = ({ blok }) => {
               <option value="sales">Sales</option>
               <option value="general">General</option>
             </select>
+            {errors?.inquiryType && (
+              <span className="text-primary">
+                {errors?.inquiryType?.message}
+              </span>
+            )}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-11">
-            <input
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-              value={formData.firstName}
-              onChange={handleChange}
-              className={styles.input}
-            />
+            <div>
+              <input
+                type="text"
+                placeholder="First Name"
+                className={styles.input}
+                {...register("firstName", {
+                  required: "First name is required",
+                })}
+              />
+              {errors?.firstName && (
+                <span className="text-primary">
+                  {errors?.firstName?.message}
+                </span>
+              )}
+            </div>
+
             <input
               type="text"
               name="lastName"
+              {...register("lastName")}
               placeholder="Last Name"
-              value={formData.lastName}
-              onChange={handleChange}
               className={styles.input}
             />
           </div>
 
           <input
             type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
             className={styles.input}
+            name="email"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Invalid email format",
+              },
+            })}
+            placeholder="Email"
           />
+          {errors?.email && (
+            <span className="text-primary">{errors?.email?.message}</span>
+          )}
 
           <input
             type="tel"
-            name="mobile"
-            placeholder="Mobile Number (Please include country code as well)"
-            value={formData.mobile}
-            onChange={handleChange}
             className={styles.input}
+            name="mobile"
+            {...register("mobile", {
+              required: "Mobile number is required",
+              pattern: {
+                value: /^\+?\d{10,15}$/,
+                message: "Enter a valid mobile number with country code",
+              },
+            })}
+            placeholder="Mobile Number (Please include country code as well)"
           />
-
+          {errors?.mobile && (
+            <span className="text-primary">{errors?.mobile?.message}</span>
+          )}
           <input
             type="text"
-            name="organization"
-            placeholder="Organization Name"
-            value={formData.organization}
-            onChange={handleChange}
             className={styles.input}
+            name="organization"
+            {...register("organization", {
+              required: "Organization name is required",
+            })}
+            placeholder="Organization Name"
           />
+          {errors?.organization?.message && (
+            <span className="text-primary">
+              {errors?.organization?.message}
+            </span>
+          )}
 
           <input
             type="text"
             name="role"
-            placeholder="Your Role / Function"
-            value={formData.role}
-            onChange={handleChange}
             className={styles.input}
+            {...register("role", { required: "Role is required" })}
+            placeholder="Your Role / Function"
           />
+          {errors?.role && (
+            <span className="text-primary">{errors?.role?.message}</span>
+          )}
 
           <input
             type="text"
             name="country"
-            placeholder="Country / Region"
-            value={formData.country}
-            onChange={handleChange}
+            {...register("country")}
             className={styles.input}
+            placeholder="Country / Region"
           />
 
           <textarea
-            name="message"
+            name="comments"
+            {...register("comments")}
             placeholder="How can we help you?"
-            value={formData.message}
-            onChange={handleChange}
             rows={4}
             className={styles.textarea}
           />
@@ -132,8 +149,7 @@ const ContactForm = ({ blok }) => {
             <input
               type="checkbox"
               name="consent"
-              checked={formData.consent}
-              onChange={handleChange}
+              {...register("consent")}
               className="min-h-[30px] min-w-[30px]"
             />
             <label>
@@ -151,7 +167,7 @@ const ContactForm = ({ blok }) => {
           >
             Submit
           </Button> */}
-          <Button className={styles.submitBtn} variant="outline">
+          <Button className={styles.submitBtn} variant="outline" type="submit">
             Submit
           </Button>
         </form>

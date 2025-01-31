@@ -2,6 +2,7 @@
 import React from "react";
 
 const Button = ({
+  type = "button",
   children,
   onClick,
   className = "",
@@ -20,6 +21,7 @@ const Button = ({
 
   return (
     <button
+      type={type}
       onClick={onClick}
       className={`${baseStyles} ${variants[variant]} ${className}`}
       disabled={disabled}
