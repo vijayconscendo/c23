@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import styles from "./requestDemo.module.scss";
 import SectionTitle from "../genericComponents/title";
 import Button from "../ui/Button/button";
@@ -6,6 +7,24 @@ import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
 import Link from "next/link";
 
 const RequestDemo = ({ blok }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      name: "",
+      company: "",
+      country: "",
+      email: "",
+      comments: "",
+    },
+  });
+
+  const onSubmit = (data) => {
+    console.log("Form submitted:", data);
+    // Add your form submission logic here
+  };
   return (
     <>
       <section className={styles.requestDemo} {...storyblokEditable(blok)}>
@@ -21,37 +40,78 @@ const RequestDemo = ({ blok }) => {
           </div>
           <div className="w-full lg:w-7/12">
             <div>
-              <BorderedFloatingInput label="Name" type="text" name="name" />
-              <div className="flex flex-col md:flex-row gap-x-5">
-                <div className="w-full lg:w-6/12">
-                  <BorderedFloatingInput
-                    label="Company Name"
-                    type="text"
-                    name="name"
-                  />
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <BorderedFloatingInput
+                  label="Name"
+                  type="text"
+                  name="name"
+                  register={register}
+                  validation={{
+                    required: "Name is required",
+                    minLength: {
+                      value: 2,
+                      message: "Name must be at least 2 characters",
+                    },
+                  }}
+                  error={errors.name?.message}
+                />
+                <div className="flex flex-col md:flex-row gap-x-5">
+                  <div className="w-full lg:w-6/12">
+                    <BorderedFloatingInput
+                      label="Company Name"
+                      type="text"
+                      name="company"
+                      register={register}
+                      validation={{
+                        required: "Company name is required",
+                      }}
+                      error={errors.company?.message}
+                    />
+                  </div>
+                  <div className="w-full lg:w-6/12">
+                    <BorderedFloatingInput
+                      label="Country"
+                      type="text"
+                      name="country"
+                      register={register}
+                      validation={{
+                        required: "Country is required",
+                      }}
+                      error={errors.country?.message}
+                    />
+                  </div>
                 </div>
-                <div className="w-full lg:w-6/12">
-                  <BorderedFloatingInput
-                    label="Country"
-                    type="text"
-                    name="name"
-                  />
-                </div>
-              </div>
-              <BorderedFloatingInput label="Email" type="text" name="name" />
-              <BorderedFloatingInput
-                label="Additional Comments"
-                type="text"
-                name="name"
-                size="large"
-              />
-              <Button
-                className={styles.submitBtn}
-                variant="outline"
-                color="primary"
-              >
-                Submit
-              </Button>
+                <BorderedFloatingInput
+                  label="Email"
+                  type="email"
+                  name="email"
+                  register={register}
+                  validation={{
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: "Invalid email address",
+                    },
+                  }}
+                  error={errors.email?.message}
+                />
+                <BorderedFloatingInput
+                  label="Additional Comments"
+                  type="text"
+                  name="comments"
+                  size="large"
+                  register={register}
+                  error={errors.comments?.message}
+                />
+                <Button
+                  type="submit"
+                  className={styles.submitBtn}
+                  variant="outline"
+                  color="primary"
+                >
+                  Submit
+                </Button>
+              </form>
             </div>
           </div>
         </div>
@@ -72,9 +132,9 @@ const BorderedFloatingInput = ({
   label,
   type = "text",
   name,
-  value,
-  onChange,
-  error = "",
+  register,
+  validation,
+  error,
   className = "",
   size = "default",
 }) => {
@@ -89,8 +149,7 @@ const BorderedFloatingInput = ({
         <input
           type={type}
           name={name}
-          value={value}
-          onChange={onChange}
+          {...(register && register(name, validation))}
           onFocus={handleFocus}
           onBlur={handleBlur}
           placeholder=" "
@@ -129,7 +188,7 @@ const BorderedFloatingInput = ({
               duration-300
               pointer-events-none
               ${
-                isFocused || value
+                isFocused
                   ? "text-black text-md -translate-y-1/2 top-0"
                   : `text-[#0000004D] text-base lg:text-xl xl:text-2xl ${
                       size === "large" ? "top-2" : "top-1/2 -translate-y-1/2"
