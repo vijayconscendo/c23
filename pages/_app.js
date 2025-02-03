@@ -39,6 +39,7 @@ import MissionAndVision from "@/components/mission-vision";
 import CareerPathsTestimonial from "@/components/storyblokComponents/careerPathsTestimonial";
 import CareersTestimonial from "@/components/storyblokComponents/careersTestimonial";
 import ContactForm from "@/components/storyblokComponents/contactForm";
+import { Toaster } from "@/components/ui/toaster";
 
 const components = {
   storyCard: StoryCard,
@@ -101,10 +102,13 @@ function MyApp({ Component, pageProps }) {
   }
   return pageProps?.config?.content ? (
     <Layout config={pageProps.config?.content}>
+      <Toaster />
       <Component {...pageProps} />
     </Layout>
   ) : (
-    <Component {...pageProps} />
+    <>
+      <Toaster /> <Component {...pageProps} />
+    </>
   );
 }
 

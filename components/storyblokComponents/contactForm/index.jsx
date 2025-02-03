@@ -4,6 +4,7 @@ import Button from "@/components/ui/Button/button";
 import { StoryblokComponent } from "@storyblok/react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { toast } from "@/hooks/use-toast";
 
 const ContactForm = ({ blok }) => {
   const {
@@ -28,10 +29,13 @@ const ContactForm = ({ blok }) => {
           <div className="w-full">
             <select
               name="inquiryType"
-              {...register("inquiryType", { required: "Field is required" })}
+              {...register("inquiryType", {
+                required: "Inquiry Type is required",
+              })}
               className={styles.select}
               placeholder="Inquiry Type"
             >
+              <option value="">Please choose Inquiry type</option>
               <option value="inquiryType">Inquiry Type</option>
               <option value="support">Support</option>
               <option value="sales">Sales</option>
