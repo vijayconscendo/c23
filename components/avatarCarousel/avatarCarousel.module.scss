@@ -7,7 +7,8 @@
 }
 
 .slideContent{
-    width: 100%; max-width: 996px; padding-right: 10px;
+    width: 100%; max-width: 996px; padding-right: 10px; margin-top: 4rem;
+    @include custom-breakpoint(1024px){margin-top: 2rem;}
     h3{
         font-size: 36px; line-height: 48px; font-weight: 600;
         @include custom-breakpoint(1680px){font-size: 32px;line-height: 44px;}

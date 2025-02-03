@@ -55,11 +55,11 @@ body {
 .life-at-carousel-one{
   .slick-active.slick-current{
     .imageAvatar{
-      // border: 2px solid var(--color-primary);
-      padding: 2px;
+      border: 2px solid var(--color-primary) !important;
+      padding: 2px !important;
     }
     img{
-      filter: brightness(0.5);
+      filter: brightness(0.5) !important;
     }
   }
 }

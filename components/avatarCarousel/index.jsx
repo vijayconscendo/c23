@@ -51,7 +51,7 @@ function AvatarCarousel({ blok }) {
       {blok?.title?.[0] && <StoryblokComponent blok={blok.title[0]} />}
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-[60px] mt-10 overflow-hidden">
-        <div className="lg:col-span-7 flex flex-col justify-between h-full ">
+        <div className="lg:col-span-7 flex flex-col">
           {/* --------Avatar Buttons Slider Start-------- */}
           <motion.div
             initial="hidden"

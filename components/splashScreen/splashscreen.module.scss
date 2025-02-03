@@ -23,8 +23,17 @@
     background-image: url("../../public/Images/background/pattern.png");
 }
 
-.logo{
+.logoContainer{
     position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
     width: 100px;
     height: 100px;
     display: inline-flex;
@@ -32,18 +41,21 @@
     justify-content: center;
     border-radius: 50%;
     background-color: #ffffff;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     user-select: none;
+    margin-bottom: 16px;
+    object-fit: contain;
+    padding: 10px;
+    img{
+        max-width: 100%; height: auto;
+    }
+    @media (max-width:1680px){
+        width: 85px; height: 85px;
+    }
 }
 
 .loadingtext{
-    position: absolute;
-    left: 50%;
-    top: 55%;
-    transform: translate(-50% , -50%);
     color: white;
+    position: relative;
     span {
         font-size: 20px;
         font-weight: 600;
