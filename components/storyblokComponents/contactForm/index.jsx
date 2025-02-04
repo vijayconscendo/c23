@@ -3,23 +3,67 @@ import Link from "next/link";
 import Button from "@/components/ui/Button/button";
 import { StoryblokComponent } from "@storyblok/react";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { toast } from "@/hooks/use-toast";
+import api from "@/utils/api-instance";
+import { useEffect } from "react";
+import { getCookie, setCookie } from "@/utils/storage";
+import countryCodes from "@/utils/countryCodes.json";
+import { Controller } from "react-hook-form";
+import Select from "react-select";
+import errorHandler from "@/utils/error-handler";
 
 const ContactForm = ({ blok }) => {
   const {
     register,
     handleSubmit,
+    control,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log("Form submitted:", data);
-    const response = await axios.post("url", { data });
-    if (response?.status) {
-      console.log("Form submitted successfully");
+    const payload = {
+      leadJson: {
+        FirstName: data?.firstName,
+        LastName: data?.lastName,
+        Company: data?.organization,
+        Email: data?.email,
+        MobilePhone: `${data?.countryCode} ${data?.mobile}`,
+        Role__c: data?.role,
+        Description: data?.comments,
+        Consent__c: data?.consent ? "true" : "false",
+        InquiryType__c: data?.inquiryType,
+        Country: data?.country,
+      },
+    };
+    try {
+      const response = await api.post("/api/createLead", payload);
+      if (response?.["Status"]) {
+        toast({ variant: "success", title: response?.message });
+        reset();
+      }
+    } catch (err) {
+      errorHandler(err);
     }
   };
+
+  const getToken = async () => {
+    try {
+      const response = await api.get("api/token");
+      if (response?.access_token) {
+        setCookie("leadToken", response.access_token);
+      }
+    } catch (err) {
+      errorHandler(err);
+    }
+  };
+
+  useEffect(() => {
+    const hasLeadToken = getCookie("leadToken");
+    if (!hasLeadToken) {
+      getToken();
+    }
+  }, []);
 
   return (
     <section id={blok?.id} className={` ${styles.contactForm}`}>
@@ -36,7 +80,6 @@ const ContactForm = ({ blok }) => {
               placeholder="Inquiry Type"
             >
               <option value="">Please choose Inquiry type</option>
-              <option value="inquiryType">Inquiry Type</option>
               <option value="support">Support</option>
               <option value="sales">Sales</option>
               <option value="general">General</option>
@@ -91,22 +134,32 @@ const ContactForm = ({ blok }) => {
             <span className="text-primary">{errors?.email?.message}</span>
           )}
 
-          <input
-            type="tel"
-            className={styles.input}
-            name="mobile"
-            {...register("mobile", {
-              required: "Mobile number is required",
-              pattern: {
-                value: /^\+?\d{10,15}$/,
-                message: "Enter a valid mobile number with country code",
-              },
-            })}
-            placeholder="Mobile Number (Please include country code as well)"
-          />
-          {errors?.mobile && (
-            <span className="text-primary">{errors?.mobile?.message}</span>
-          )}
+          <div className={styles.countryCodeWrapper}>
+            <CountryCodeSelect
+              control={control}
+              name="countryCode"
+              error={errors.countryCode?.message}
+            />
+            <div className="w-full">
+              <input
+                type="tel"
+                className={styles.input}
+                name="mobile"
+                {...register("mobile", {
+                  required: "Mobile number is required",
+                  pattern: {
+                    value: /^\d{10,15}$/,
+                    message: "Enter a valid mobile number",
+                  },
+                })}
+                placeholder="Mobile Number"
+              />
+              {errors?.mobile && (
+                <span className="text-primary">{errors?.mobile?.message}</span>
+              )}
+            </div>
+          </div>
+
           <input
             type="text"
             className={styles.input}
@@ -181,3 +234,30 @@ const ContactForm = ({ blok }) => {
 };
 
 export default ContactForm;
+
+const CountryCodeSelect = ({ control, name, error }) => {
+  return (
+    <Controller
+      control={control}
+      name={name}
+      rules={{ required: "Country code is required" }}
+      render={({ field: { onChange, value, ref } }) => (
+        <div className={styles.countryCodeSelect}>
+          <Select
+            inputRef={ref}
+            options={countryCodes}
+            value={
+              countryCodes.find((option) => option.value === value) || null
+            }
+            onChange={(selectedOption) => onChange(selectedOption?.value)}
+            placeholder="Select Country Code"
+            className="react-select-control"
+            classNamePrefix="reactSelect"
+            isClearable
+          />
+          {error && <span className="text-primary">{error}</span>}
+        </div>
+      )}
+    />
+  );
+};

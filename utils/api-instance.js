@@ -8,20 +8,5 @@ const api = axios.create({
   },
 });
 
-api.interceptors.response.use(
-  (response) => response.data,
-  (error) => console.log(error)
-);
-
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("token") || "";
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => console.log(error)
-);
-
+api.interceptors.response.use((response) => response.data);
 export default api;

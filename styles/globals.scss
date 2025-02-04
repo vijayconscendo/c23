@@ -237,3 +237,34 @@ select:-webkit-autofill {
 }
 // ------- File Upload End-------
 
+// ------- react-select-custom ---------
+.reactSelect__control{
+  height: 62px;
+  font-family: var(--font-montserrat) !important;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  border-color: #000000 !important;
+  @include custom-breakpoint(1700px){height: 60px;}
+}
+
+/* Change border color and box shadow for the focused state */
+.reactSelect__control--is-focused {
+  border-color: #000000 !important;
+  box-shadow: none !important;
+}
+
+/* Optional: Customize the hover effect for focused control */
+.reactSelect__control--is-focused:hover {
+  border-color: #000000 !important;
+}
+
+/* Style the input element */
+.reactSelect__input, .reactSelect__placeholder {
+  font-size: 14px !important; /* Font size */
+  font-weight: 500 !important;
+  overflow: hidden; /* Prevent overflow */
+  text-overflow: ellipsis; /* Use ellipsis for overflowing text */
+  white-space: nowrap; /* Prevent text from wrapping */
+  color: #0000004D;
+}
