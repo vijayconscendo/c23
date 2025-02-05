@@ -11,6 +11,7 @@ import countryCodes from "@/utils/countryCodes.json";
 import { Controller } from "react-hook-form";
 import Select from "react-select";
 import errorHandler from "@/utils/error-handler";
+import { customStyles } from "@/lib/react-select-custom-styles";
 
 const ContactForm = ({ blok }) => {
   const {
@@ -256,13 +257,10 @@ const CountryCodeSelect = ({ control, name, error }) => {
           <Select
             inputRef={ref}
             options={countryCodes}
-            value={
-              countryCodes.find((option) => option.value === value) || null
-            }
+            value={countryCodes.find((option) => option.value === value) || null}
             onChange={(selectedOption) => onChange(selectedOption?.value)}
             placeholder="Select Country Code"
-            className="react-select-control"
-            classNamePrefix="reactSelect"
+            styles={customStyles}
             isClearable
           />
           {error && <span className="text-primary">{error}</span>}
