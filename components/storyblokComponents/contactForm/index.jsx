@@ -80,9 +80,11 @@ const ContactForm = ({ blok }) => {
               placeholder="Inquiry Type"
             >
               <option value="">Please choose Inquiry type</option>
-              <option value="support">Support</option>
-              <option value="sales">Sales</option>
-              <option value="general">General</option>
+              {inquiryTypeDropdownOptions.map((item, index) => (
+                <option value={item?.value} key={index}>
+                  {item?.label}
+                </option>
+              ))}
             </select>
             {errors?.inquiryType && (
               <span className="text-primary">
@@ -107,14 +109,22 @@ const ContactForm = ({ blok }) => {
                 </span>
               )}
             </div>
-
-            <input
-              type="text"
-              name="lastName"
-              {...register("lastName")}
-              placeholder="Last Name"
-              className={styles.input}
-            />
+            <div>
+              <input
+                type="text"
+                name="lastName"
+                {...register("lastName", {
+                  required: "Last name is required",
+                })}
+                placeholder="Last Name"
+                className={styles.input}
+              />
+              {errors?.lastName && (
+                <span className="text-primary">
+                  {errors?.lastName?.message}
+                </span>
+              )}
+            </div>
           </div>
 
           <input
@@ -261,3 +271,38 @@ const CountryCodeSelect = ({ control, name, error }) => {
     />
   );
 };
+
+const inquiryTypeDropdownOptions = [
+  {
+    label: "Request for Proposal (RFP)",
+    value: "Request for Proposal (RFP)",
+  },
+  {
+    label: "Service Inquiry",
+    value: "Service Inquiry",
+  },
+  {
+    label: "Partnership Opportunity",
+    value: "Partnership Opportunity",
+  },
+  {
+    label: "Technical Support",
+    value: "Technical Support",
+  },
+  {
+    label: "HR & Recruitment Query",
+    value: "HR & Recruitment Query",
+  },
+  {
+    label: "Career Opportunities",
+    value: "Career Opportunities",
+  },
+  {
+    label: "Compliance & Legal",
+    value: "Compliance & Legal",
+  },
+  {
+    label: "Other",
+    value: "Other",
+  },
+];
