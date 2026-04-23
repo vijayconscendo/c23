@@ -42,7 +42,7 @@ function JobDetails() {
             >
               <span>Apply Now</span>
             </button>
-            <div className="flex items-center gap-12 hidden">
+            <div className="items-center gap-12 hidden">
               <button type="button" className={styles.btnWithIcon}>
                 <Image src={save} alt="save" />
                 <span>SAVE JOB</span>
