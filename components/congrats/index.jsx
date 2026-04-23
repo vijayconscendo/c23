@@ -97,12 +97,14 @@ function CongratsPage() {
           help you understand our culture and how you can be part of our
           journey.
         </p>
-        {/* <button
+        <Link href="/">
+          <button   
           type="button"
           className="border-2 border-primary text-primary font-semibold rounded-md hover:text-white hover:bg-primary"
         >
-          About us
-        </button> */}
+          Home
+        </button>
+        </Link>
       </div>
       {/* ----- End Congratulations ----- */}
     </section>

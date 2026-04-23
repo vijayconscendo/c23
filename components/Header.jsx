@@ -11,6 +11,12 @@ import styles from "./components.module.scss";
 import ImageWrapper from "./storyblokComponents/imageWrapper";
 import { storyblokEditable } from "@storyblok/react";
 
+const toAbsolute = (url) => {
+  if (!url) return "/";
+  if (url.startsWith("/") || url.startsWith("http")) return url;
+  return `/${url}`;
+};
+
 export default function Header({ onSubmenuOpen, onSubmenuClose, blok }) {
   const [hoveredItem, setHoveredItem] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -92,7 +98,7 @@ export default function Header({ onSubmenuOpen, onSubmenuClose, blok }) {
                       }}
                     >
                       <Link
-                        href={item?.link?.cached_url || item?.link?.url}
+                        href={toAbsolute(item?.link?.cached_url || item?.link?.url)}
                         className={`flex items-center h-full text-textsecondary hover:text-primary font-medium ${
                           styles.navItem
                         } ${isActive ? `${styles.activeNavItem}` : ""}`}
@@ -157,7 +163,7 @@ export default function Header({ onSubmenuOpen, onSubmenuClose, blok }) {
                     }`}
                     onClick={closeOverlayMnenu}
                   >
-                    <Link href={item?.link?.cached_url || item?.link?.url}>
+                    <Link href={toAbsolute(item?.link?.cached_url || item?.link?.url)}>
                       {item?.title}
                     </Link>
                     {item?.subMenu?.length > 0 && (
@@ -179,10 +185,7 @@ export default function Header({ onSubmenuOpen, onSubmenuClose, blok }) {
                           <div key={section?._uid} className="mb-4">
                             <h3 className="mb-2 text-sm font-semibold text-red-600">
                               <Link
-                                href={
-                                  section?.link?.cached_url ||
-                                  section?.link?.url
-                                }
+                                href={toAbsolute(section?.link?.cached_url || section?.link?.url)}
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
                                 {section?.title}
@@ -196,11 +199,7 @@ export default function Header({ onSubmenuOpen, onSubmenuClose, blok }) {
                                   className="block text-sm text-gray-500 hover:text-red-600 cursor-pointer"
                                 >
                                   <Link
-                                    href={
-                                      subItem?.link?.url ||
-                                      subItem?.link?.cached_url ||
-                                      ""
-                                    }
+                                    href={toAbsolute(subItem?.link?.url || subItem?.link?.cached_url)}
                                   >
                                     {subItem?.title}
                                   </Link>
@@ -255,9 +254,7 @@ export default function Header({ onSubmenuOpen, onSubmenuClose, blok }) {
                         <div key={section?._uid} className={styles.submenuList}>
                           <h3 className="text-primary">
                             <Link
-                              href={
-                                section?.link?.cached_url || section?.link?.url
-                              }
+                              href={toAbsolute(section?.link?.cached_url || section?.link?.url)}
                               onClick={closeOverlayMnenu}
                             >
                               {section?.title}
@@ -271,11 +268,7 @@ export default function Header({ onSubmenuOpen, onSubmenuClose, blok }) {
                                 onClick={closeOverlayMnenu}
                               >
                                 <Link
-                                  href={
-                                    subItem?.link?.url ||
-                                    subItem?.link?.cached_url ||
-                                    ""
-                                  }
+                                  href={toAbsolute(subItem?.link?.url || subItem?.link?.cached_url)}
                                 >
                                   {subItem?.title}
                                 </Link>
