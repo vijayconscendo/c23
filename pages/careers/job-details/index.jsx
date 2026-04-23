@@ -42,7 +42,7 @@ function JobDetails() {
             >
               <span>Apply Now</span>
             </button>
-            <div className="hidden items-center gap-10">
+            <div className="hidden items-center gap-12 ">
               <button type="button" className={styles.btnWithIcon}>
                 <Image src={save} alt="save" />
                 <span>SAVE JOB</span>
