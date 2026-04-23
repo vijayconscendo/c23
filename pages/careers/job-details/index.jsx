@@ -147,7 +147,7 @@ function JobDetails() {
                 <ul>
                   <li>
                     <p>
-                      Bachelors degree in Computer Science or related field.
+                      Bachelor's degree in Computer Science or related field.
                     </p>
                   </li>
                   <li>
