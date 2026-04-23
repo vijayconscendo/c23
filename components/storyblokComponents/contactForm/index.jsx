@@ -4,93 +4,68 @@ import Button from "@/components/ui/Button/button";
 import { StoryblokComponent } from "@storyblok/react";
 import { useForm } from "react-hook-form";
 import { toast } from "@/hooks/use-toast";
-import api from "@/utils/api-instance";
-import { useEffect } from "react";
-import { getCookie, setCookie } from "@/utils/storage";
-import countryCodes from "@/utils/countryCodes.json";
-import { Controller } from "react-hook-form";
-import Select from "react-select";
-import errorHandler from "@/utils/error-handler";
-import { customStyles } from "@/lib/react-select-custom-styles";
+import { useState } from "react";
+
+const API_PROXY = "/api/submitToGoogleForm";
 
 const ContactForm = ({ blok }) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const {
     register,
     handleSubmit,
-    control,
     reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (data) => {
-    const payload = {
-      leadJson: {
-        FirstName: data?.firstName,
-        LastName: data?.lastName,
-        Company: data?.organization,
-        Email: data?.email,
-        MobilePhone: `${data?.countryCode} ${data?.mobile}`,
-        Role__c: data?.role,
-        Description: data?.comments,
-        Consent__c: data?.consent ? "true" : "false",
-        InquiryType__c: data?.inquiryType,
-        Country: data?.country,
-      },
-    };
+    setIsSubmitting(true);
     try {
-      const response = await api.post("/api/createLead", payload);
-      if (response?.["Status"]) {
-        toast({ variant: "success", title: response?.message });
-        reset();
-      }
-    } catch (err) {
-      errorHandler(err);
+      const fields = {
+        inquiryType:  data.inquiryType  || "",
+        firstName:    data.firstName    || "",
+        lastName:     data.lastName     || "",
+        email:        data.email        || "",
+        mobile:       data.mobile       || "",
+        organization: data.organization || "",
+        role:         data.role         || "",
+        country:      data.country      || "",
+        comments:     data.comments     || "",
+        consent:      data.consent ? "Yes" : "No",
+      };
+
+      const res = await fetch(API_PROXY, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fields }),
+      });
+
+      if (!res.ok) throw new Error("Submission failed");
+
+      toast({ variant: "success", title: "Your message has been sent successfully!" });
+      reset();
+    } catch {
+      toast({ variant: "destructive", title: "Something went wrong. Please try again." });
+    } finally {
+      setIsSubmitting(false);
     }
   };
-
-  const getToken = async () => {
-    try {
-      const response = await api.get("api/token");
-      if (response?.access_token) {
-        setCookie("leadToken", response.access_token);
-      }
-    } catch (err) {
-      errorHandler(err);
-    }
-  };
-
-  useEffect(() => {
-    const hasLeadToken = getCookie("leadToken");
-    if (!hasLeadToken) {
-      getToken();
-    }
-  }, []);
 
   return (
-    <section id={blok?.id} className={` ${styles.contactForm}`}>
-      <div className="w-full max-w-6xl ">
+    <section id={blok?.id} className={styles.contactForm}>
+      <div className="w-full max-w-6xl">
         {blok?.title?.[0] && <StoryblokComponent blok={blok.title[0]} />}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-11 mt-10">
-          <div className="w-full">
-            <select
-              name="inquiryType"
-              {...register("inquiryType", {
-                required: "Inquiry Type is required",
-              })}
-              className={styles.select}
+
+          <div>
+            <input
+              type="text"
               placeholder="Inquiry Type"
-            >
-              <option value="">Please choose Inquiry type</option>
-              {inquiryTypeDropdownOptions.map((item, index) => (
-                <option value={item?.value} key={index}>
-                  {item?.label}
-                </option>
-              ))}
-            </select>
+              className={styles.input}
+              {...register("inquiryType", { required: "Inquiry Type is required" })}
+            />
             {errors?.inquiryType && (
-              <span className="text-primary">
-                {errors?.inquiryType?.message}
-              </span>
+              <span className="text-primary">{errors.inquiryType.message}</span>
             )}
           </div>
 
@@ -100,143 +75,130 @@ const ContactForm = ({ blok }) => {
                 type="text"
                 placeholder="First Name"
                 className={styles.input}
-                {...register("firstName", {
-                  required: "First name is required",
-                })}
+                {...register("firstName", { required: "First Name is required" })}
               />
               {errors?.firstName && (
-                <span className="text-primary">
-                  {errors?.firstName?.message}
-                </span>
+                <span className="text-primary">{errors.firstName.message}</span>
               )}
             </div>
             <div>
               <input
                 type="text"
-                name="lastName"
-                {...register("lastName", {
-                  required: "Last name is required",
-                })}
                 placeholder="Last Name"
                 className={styles.input}
+                {...register("lastName", { required: "Last Name is required" })}
               />
               {errors?.lastName && (
-                <span className="text-primary">
-                  {errors?.lastName?.message}
-                </span>
+                <span className="text-primary">{errors.lastName.message}</span>
               )}
             </div>
           </div>
 
-          <input
-            type="email"
-            className={styles.input}
-            name="email"
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "Invalid email format",
-              },
-            })}
-            placeholder="Email"
-          />
-          {errors?.email && (
-            <span className="text-primary">{errors?.email?.message}</span>
-          )}
-
-          <div className={styles.countryCodeWrapper}>
-            <CountryCodeSelect
-              control={control}
-              name="countryCode"
-              error={errors.countryCode?.message}
-            />
-            <div className="w-full">
-              <input
-                type="tel"
-                className={styles.input}
-                name="mobile"
-                {...register("mobile", {
-                  required: "Mobile number is required",
-                  pattern: {
-                    value: /^\d{10,15}$/,
-                    message: "Enter a valid mobile number",
-                  },
-                })}
-                placeholder="Mobile Number"
-              />
-              {errors?.mobile && (
-                <span className="text-primary">{errors?.mobile?.message}</span>
-              )}
-            </div>
-          </div>
-
-          <input
-            type="text"
-            className={styles.input}
-            name="organization"
-            {...register("organization", {
-              required: "Organization name is required",
-            })}
-            placeholder="Organization Name"
-          />
-          {errors?.organization?.message && (
-            <span className="text-primary">
-              {errors?.organization?.message}
-            </span>
-          )}
-
-          <input
-            type="text"
-            name="role"
-            className={styles.input}
-            {...register("role", { required: "Role is required" })}
-            placeholder="Your Role / Function"
-          />
-          {errors?.role && (
-            <span className="text-primary">{errors?.role?.message}</span>
-          )}
-
-          <input
-            type="text"
-            name="country"
-            {...register("country")}
-            className={styles.input}
-            placeholder="Country / Region"
-          />
-
-          <textarea
-            name="comments"
-            {...register("comments")}
-            placeholder="How can we help you?"
-            rows={4}
-            className={styles.textarea}
-          />
-
-          <div className={`flex items-start gap-4 my-4 ${styles.checkInfo}`}>
+          <div>
             <input
-              type="checkbox"
-              name="consent"
-              {...register("consent")}
-              className="min-h-[30px] min-w-[30px]"
+              type="email"
+              placeholder="Email"
+              className={styles.input}
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "Invalid email format",
+                },
+              })}
             />
-            <label>
-              I consent to the processing of my personal information for this
-              request in alignment with{" "}
-              <Link href="#" className="text-red-500 hover:text-red-600">
-                Cloud23's Privacy Policy
-              </Link>
-            </label>
+            {errors?.email && (
+              <span className="text-primary">{errors.email.message}</span>
+            )}
           </div>
 
-          {/* <Button
+          <div>
+            <input
+              type="tel"
+              placeholder="Mobile Number"
+              className={styles.input}
+              {...register("mobile", {
+                required: "Mobile number is required",
+                pattern: {
+                  value: /^\+?[\d\s\-()]{7,20}$/,
+                  message: "Enter a valid mobile number",
+                },
+              })}
+            />
+            {errors?.mobile && (
+              <span className="text-primary">{errors.mobile.message}</span>
+            )}
+          </div>
+
+          <div>
+            <input
+              type="text"
+              placeholder="Organization Name"
+              className={styles.input}
+              {...register("organization")}
+            />
+          </div>
+
+          <div>
+            <input
+              type="text"
+              placeholder="Your Role / Function"
+              className={styles.input}
+              {...register("role")}
+            />
+          </div>
+
+          <div>
+            <input
+              type="text"
+              placeholder="Country / Region"
+              className={styles.input}
+              {...register("country", { required: "Country / Region is required" })}
+            />
+            {errors?.country && (
+              <span className="text-primary">{errors.country.message}</span>
+            )}
+          </div>
+
+          <div>
+            <textarea
+              placeholder="How can we help you?"
+              rows={4}
+              className={styles.textarea}
+              {...register("comments", { required: "This message is required" })}
+            />
+            {errors?.comments && (
+              <span className="text-primary">{errors.comments.message}</span>
+            )}
+          </div>
+
+          <div>
+            <div className={`flex items-start gap-4 my-4 ${styles.checkInfo}`}>
+              <input
+                type="checkbox"
+                className="min-h-[30px] min-w-[30px]"
+                {...register("consent", { required: "Please accept the privacy policy to proceed" })}
+              />
+              <label>
+                I consent to the processing of my personal information for this
+                request in alignment with{" "}
+                <Link href="#" className="text-red-500 hover:text-red-600">
+                  Cloud23&apos;s Privacy Policy
+                </Link>
+              </label>
+            </div>
+            {errors?.consent && (
+              <span className="text-primary">{errors.consent.message}</span>
+            )}
+          </div>
+
+          <Button
+            className={styles.submitBtn}
+            variant="outline"
             type="submit"
-            className="w-32 bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition-colors duration-200"
+            disabled={isSubmitting}
           >
-            Submit
-          </Button> */}
-          <Button className={styles.submitBtn} variant="outline" type="submit">
-            Submit
+            {isSubmitting ? "Submitting…" : "Submit"}
           </Button>
         </form>
       </div>
@@ -245,62 +207,3 @@ const ContactForm = ({ blok }) => {
 };
 
 export default ContactForm;
-
-const CountryCodeSelect = ({ control, name, error }) => {
-  return (
-    <Controller
-      control={control}
-      name={name}
-      rules={{ required: "Country code is required" }}
-      render={({ field: { onChange, value, ref } }) => (
-        <div className={styles.countryCodeSelect}>
-          <Select
-            inputRef={ref}
-            options={countryCodes}
-            value={countryCodes.find((option) => option.value === value) || null}
-            onChange={(selectedOption) => onChange(selectedOption?.value)}
-            placeholder="Select Country Code"
-            styles={customStyles}
-            isClearable
-          />
-          {error && <span className="text-primary">{error}</span>}
-        </div>
-      )}
-    />
-  );
-};
-
-const inquiryTypeDropdownOptions = [
-  {
-    label: "Request for Proposal (RFP)",
-    value: "Request for Proposal (RFP)",
-  },
-  {
-    label: "Service Inquiry",
-    value: "Service Inquiry",
-  },
-  {
-    label: "Partnership Opportunity",
-    value: "Partnership Opportunity",
-  },
-  {
-    label: "Technical Support",
-    value: "Technical Support",
-  },
-  {
-    label: "HR & Recruitment Query",
-    value: "HR & Recruitment Query",
-  },
-  {
-    label: "Career Opportunities",
-    value: "Career Opportunities",
-  },
-  {
-    label: "Compliance & Legal",
-    value: "Compliance & Legal",
-  },
-  {
-    label: "Other",
-    value: "Other",
-  },
-];

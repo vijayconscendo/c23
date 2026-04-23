@@ -31,13 +31,13 @@ function CongratsPage() {
           </ul>
         </div>
       </div>
-      <p className={styles.applicationMsg}>
+      {/* <p className={styles.applicationMsg}>
         Your Application Submitted Successfully. You can view the application
         status below
-      </p>
+      </p> */}
 
       {/* ----- Stepper  ----- */}
-      <div className={styles.stepperScroll}>
+      {/* <div className={styles.stepperScroll}>
         <div className={styles.stepperContainer}>
           <div className={`flex items-center ${styles.stepper}`}>
             <div className="flex items-center text-white relative">
@@ -80,7 +80,7 @@ function CongratsPage() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* ----- Stepper  ----- */}
 
       {/* ----- Congratulations ----- */}
@@ -97,12 +97,12 @@ function CongratsPage() {
           help you understand our culture and how you can be part of our
           journey.
         </p>
-        <button
+        {/* <button
           type="button"
           className="border-2 border-primary text-primary font-semibold rounded-md hover:text-white hover:bg-primary"
         >
           About us
-        </button>
+        </button> */}
       </div>
       {/* ----- End Congratulations ----- */}
     </section>

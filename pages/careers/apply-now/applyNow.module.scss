@@ -1,0 +1,83 @@
+@import "@/styles/mixins";
+
+.formSection {
+  background: #fff;
+  border: 1px solid #db2d3861;
+  padding: 48px 56px;
+  @include custom-breakpoint(1680px) { padding: 40px 44px; }
+  @include breakpoint(tablet-portrait) { padding: 32px 24px; }
+  @include breakpoint(mobile) { padding: 24px 16px; }
+}
+
+.sectionTitle {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 35.82px;
+  color: var(--color-primary);
+  margin-bottom: 40px;
+  @include custom-breakpoint(1680px) { font-size: 24px; }
+  @include custom-breakpoint(1536px) { font-size: 22px; margin-bottom: 30px; }
+  @include breakpoint(tablet) { font-size: 18px; }
+}
+
+.textareaContainer {
+  margin-bottom: 40px;
+  @include custom-breakpoint(1680px) { margin-bottom: 36px; }
+  @include breakpoint(tablet-portrait) { margin-bottom: 30px; }
+
+  label {
+    display: block;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: normal;
+    color: #000000e5;
+    margin-bottom: 8px;
+    @include custom-breakpoint(1680px) { font-size: 20px; }
+    @include custom-breakpoint(1536px) { font-size: 18px; }
+    @include breakpoint(tablet-portrait) { font-size: 16px; }
+
+    .required {
+      color: var(--color-primary);
+      margin-left: 3px;
+    }
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 100px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #00000066;
+    font-size: 18px;
+    font-weight: 500;
+    color: #000000;
+    line-height: 1.5;
+    resize: vertical;
+    padding: 8px 0;
+    @include custom-breakpoint(1680px) { font-size: 16px; }
+
+    &:focus {
+      outline: none;
+      border-bottom-color: #000000cc;
+    }
+
+    &::placeholder {
+      color: #00000066;
+      font-weight: 400;
+    }
+  }
+
+  .errorMsg {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-primary);
+    padding: 4px 0;
+  }
+}
+
+.submitRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 40px;
+  @include breakpoint(mobile) { justify-content: center; }
+}

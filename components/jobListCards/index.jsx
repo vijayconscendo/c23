@@ -47,7 +47,7 @@ const JobListCards = ({ blok }) => {
   ];
 
   const handleApply = () => {
-    router.push("/");
+    router.push("/careers/apply-now");
   };
 
   const handleSearch = (event) => {
